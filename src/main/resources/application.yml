@@ -21,6 +21,8 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+  mqtt:
+    broker: tcp://mqtt_broker_ip:1883
 upload:
   directory: /path/to/save/images/
 

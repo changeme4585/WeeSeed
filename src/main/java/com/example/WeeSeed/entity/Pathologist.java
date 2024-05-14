@@ -20,7 +20,7 @@ public class Pathologist {
     private String pathologistId;
 
     @Column
-    private String passWord;
+    private String password;
 
     @Column
     private String email;
@@ -32,9 +32,9 @@ public class Pathologist {
     private String name;
 
     @Builder
-    public Pathologist(String pId,String passWord,String email,String oName,String name){
+    public Pathologist(String pId,String password,String email,String oName,String name){
         this.pathologistId = pId;
-        this.passWord = passWord;
+        this.password = password;
         this.email = email;
         this.organizationName = oName;
         this.name = name;
