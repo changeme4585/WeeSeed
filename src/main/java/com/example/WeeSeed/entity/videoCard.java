@@ -35,14 +35,18 @@ public class videoCard {
     
     @Column
     private String userId;
+
+    @Column
+    private String color;
     
     @Builder
-    public videoCard(String vCId,String cardName,Date cTime,String vUrl,String childId,String userId){
+    public videoCard(String vCId,String cardName,Date cTime,String vUrl,String childId,String userId,String color){
         this.videoCardID = vCId;
         this.cardName = cardName;
         this.creationTime = cTime;
         this.videoUrl = vUrl;
         this.childId = childId;
         this.userId = userId;
+        this.color = color;
     }
 }

@@ -20,15 +20,15 @@ public class ExtendedCard {
     private String representativeCardId;
 
     @Column
-    private String cardName;
+    private String imageUrl;
 
     @Column
     private int sequence;
 
     @Builder
-    public  ExtendedCard(String representativeCardId,String cardName,int sequence){
+    public  ExtendedCard(String representativeCardId,String imageUrl,int sequence){
         this.representativeCardId = representativeCardId;
-        this.cardName = cardName;
+        this.imageUrl = imageUrl;
         this.sequence = sequence;
     }
 

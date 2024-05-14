@@ -26,10 +26,13 @@ public class sequenceVideoCard {
     @Column
     private int sequence ;
 
+    @Column
+    private String color;
     @Builder
-    public  sequenceVideoCard(String svcId,String structedVideoId,int sequence){
+    public  sequenceVideoCard(String svcId,String structedVideoId,int sequence,String color){
         this.svcId = svcId;
         this.structedVideoId = structedVideoId;
         this.sequence = sequence;
+        this.color = color;
     }
 }
