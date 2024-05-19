@@ -13,4 +13,5 @@ public class SignInRepository {
     public void registUser(User user){
         em.persist(user);
     }
+
 }
