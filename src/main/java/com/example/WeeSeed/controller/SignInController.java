@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 public class SignInController {
     private final SignInService service;
-//    private boolean validateUser(String id,String password) {
-//
-//    }
     @PostMapping("/signIn")
     public String receiveMessage(@RequestBody UserDto dto) {
         service.registUser(dto);
@@ -25,6 +22,5 @@ public class SignInController {
         System.out.println("Received message: " + dto.getEmail());
         return "Message received";
     }
-//    @PostMapping(value = "/signIn")
-//    public String signIn()
+
 }
