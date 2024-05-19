@@ -20,11 +20,18 @@ public class User {
     private String userId;
 
     @Column
+    private String password;
+    @Column
     private String state;
 
+    @Column
+   private String email;
+
     @Builder
-    public User(String userId,String state){
+    public User(String userId,String state,String email,String password){
         this.userId = userId;
+        this.password = password;
         this.state = state;
+        this.email = email;
     }
 }
