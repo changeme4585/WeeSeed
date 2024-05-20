@@ -19,11 +19,12 @@ import java.util.Optional;
 public class SignInService {
     private final SignInRepository repository;
     private final UserRepository userRepository;
-    public void registUser(UserDto userDto){
+
+    public boolean registUser(UserDto userDto){
         Optional<User> userInfo = userRepository.findByUserId(userDto.getId());
         if(userInfo.isPresent()){ // 중복된 id가 있으면 리턴
             System.out.println("중복된 id 입니다.");
-            return;
+            return false;
         }
         String pwd  = userDto.getPassword();
         Encrypt en = new Encrypt(pwd);
@@ -35,5 +36,6 @@ public class SignInService {
                 state(userDto.getState()).
                 build();
         repository.registUser(user);
+        return true;
     }
 }
