@@ -23,15 +23,22 @@ public class User {
     private String password;
     @Column
     private String state;
-
     @Column
    private String email;
 
+    @Column
+    private  String name;
+    public void updateUser(String password,String email,String name){
+        this.password = password;
+        this.email = email;
+        this.name = name;
+    }
     @Builder
-    public User(String userId,String state,String email,String password){
+    public User(String userId,String password,String state,String email,String name){
         this.userId = userId;
         this.password = password;
         this.state = state;
         this.email = email;
+        this.name = name;
     }
 }

@@ -1,36 +1,64 @@
 package com.example.WeeSeed.controller;
 
+import com.example.WeeSeed.dto.LoginDto;
 import com.example.WeeSeed.dto.UserDto;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.HashMap;
+import java.util.Map;
+
+
+@RestController //그냥 Controller를 사용하면 상태코드 404를 반환한다.
+
 public class LogInController {
     @PostMapping("/login")
-    public String login(@RequestBody UserDto user, HttpServletRequest request) {
+    public String login(@RequestBody LoginDto dto, HttpServletRequest request) {
 
-        if ("user".equals(user.getId()) && "password".equals(user.getPassword())) {
+        if ("user".equals(dto.getId()) && "password".equals(dto.getPassword())) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            System.out.println("로그인 한 아이디 : "+user.getId()+", 비번: "+user.getPassword());
+            session.setAttribute("user", dto);
+            System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
+
             return "로그인 성공";
         } else {
             return "Login failed";
         }
     }
-
-    @PostMapping("/checkSession")
-    public String checkSession(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("user") != null) {
-            return "Session is valid";
+    @PostMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false); // 기존 세션이 있는 경우에만 가져옴
+        if (session != null) {
+            session.invalidate(); // 세션 무효화
+            System.out.println("로그아웃 성공");
+            return "로그아웃 성공";
         } else {
-            return "No valid session";
+            return "로그아웃 실패: 세션이 존재하지 않음";
         }
     }
 
+
+
+    @PostMapping("/checkSession")
+    public ResponseEntity<Map<String, String>> checkSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false); // 기존 세션이 있는지 확인
+        Map<String, String> response = new HashMap<>();
+
+        if (session != null && session.getAttribute("user") != null) {
+            response.put("status", "valid");
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("status", "invalid");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+    }
 }

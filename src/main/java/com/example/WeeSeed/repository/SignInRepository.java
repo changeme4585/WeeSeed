@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public class SignInRepository {
     private final EntityManager em ;
 
-    public void registUser(User user){
+    public void registUser(Object user){  //object로 가능?
         em.persist(user);
     }
 

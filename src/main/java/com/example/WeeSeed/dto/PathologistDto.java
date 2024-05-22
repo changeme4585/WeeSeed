@@ -1,22 +1,15 @@
-package com.example.WeeSeed.entity;
+package com.example.WeeSeed.dto;
+
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Pathologist {
-    @Id
-    @Column
+public class PathologistDto {
     private String pathologistId;
 
     @Column
@@ -30,14 +23,8 @@ public class Pathologist {
 
     @Column
     private String name;
-    public void updatePathologist(String password,String email,String oName,String name){
-        this.password = password;
-        this.email = email;
-        this.organizationName = oName;
-        this.name = name;
-    }
     @Builder
-    public Pathologist(String pId,String password,String email,String oName,String name){
+    public PathologistDto(String pId,String password,String email,String oName,String name){
         this.pathologistId = pId;
         this.password = password;
         this.email = email;
