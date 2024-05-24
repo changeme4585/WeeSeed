@@ -1,5 +1,6 @@
 package com.example.WeeSeed.controller;
 
+import com.example.WeeSeed.Encrypt;
 import com.example.WeeSeed.dto.LoginDto;
 import com.example.WeeSeed.dto.UserDto;
 import com.example.WeeSeed.service.UserService;
@@ -25,14 +26,17 @@ public class LogInController {
     private final UserService userService;
     @PostMapping("/login")
     public String login(@RequestBody LoginDto dto, HttpServletRequest request) {
-        if ( userService.checkUserLogIn(dto.getId(), dto.getPassword()).size()!=0) {
+        String pwd  = dto.getPassword();
+        Encrypt en = new Encrypt(pwd);
+        String encryptedPassword = en.getEncryptedPassword();
+        if ( userService.checkUserLogIn(dto.getId(), encryptedPassword).size()!=0) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", dto);
+            session.setAttribute("user", dto.getId());
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
 
-            return "로그인 성공";
+            return "ok";
         } else {
-            return "Login failed";
+            return "failed";
         }
     }
     @PostMapping("/logout")

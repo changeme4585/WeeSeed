@@ -9,6 +9,7 @@ import com.example.WeeSeed.service.SignInService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,6 +57,7 @@ public class SignInController {
         if (passFlag == 2){
             return "비밀번호 길이를 10이상으로 만드세요.";
         }
+
         if (!service.registNok(dto)){
             return "중복된 ID 입니다.";
         }
@@ -79,8 +81,14 @@ public class SignInController {
 //
 //        return "yes";
 //    }
+    @CrossOrigin(origins = "*")
     @PostMapping(value = "/pathSignIn")
     public String pathSignIn(@RequestBody PathologistDto dto) {
+        System.out.println("재활사 회원가입: "+ dto.getPathologistId());
+        System.out.println("재활사 회원가입: "+ dto.getPassword());
+        System.out.println("재활사 회원가입: "+ dto.getName());
+        System.out.println("재활사 회원가입: "+ dto.getEmail());
+        System.out.println("재활사 회원가입: "+ dto.getOrganizationName());
         int passFlag = validatePassword(dto.getPassword());
         if(passFlag == 1 ){
             return "비밀번호에 숫자 문자가 모두 포함되어야 합니다.";
@@ -88,9 +96,10 @@ public class SignInController {
         if (passFlag == 2){
             return "비밀번호 길이를 10이상으로 만드세요.";
         }
-        if (!service.registPath(dto)){
+        if(!service.registPath(dto)){
             return "중복된 ID 입니다.";
         }
+
         service.registUser(
                 createUserInfo(dto.getPathologistId(), dto.getPassword(),dto.getEmail(),"Pathologist",dto.getName())
         );

@@ -37,11 +37,11 @@ public class Pathologist {
         this.name = name;
     }
     @Builder
-    public Pathologist(String pId,String password,String email,String oName,String name){
-        this.pathologistId = pId;
+    public Pathologist(String pathologistId,String password,String email,String organizationName,String name){
+        this.pathologistId = pathologistId;
         this.password = password;
         this.email = email;
-        this.organizationName = oName;
+        this.organizationName = organizationName;
         this.name = name;
     }
 }

@@ -27,9 +27,10 @@ public class Nok {
 
     @Column
     private String name;
-    public  void updateNok (String password,String email){
+    public  void updateNok (String password,String email,String name){
         this.password = password;
         this.email = email;
+        this.name = name;
     }
     @Builder
     public Nok(String nokId,String password,String email,String name){

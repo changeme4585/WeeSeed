@@ -49,6 +49,7 @@ public class SignInService {
         return true;
     }
     public  boolean registPath(PathologistDto userDto){
+        System.out.println("service로직 들어옴");
         Optional<User> userInfo = userRepository.findByUserId(userDto.getPathologistId());
         if(userInfo.isPresent()){ // 중복된 id가 있으면 리턴
             System.out.println("중복된 id 입니다.");
@@ -64,9 +65,9 @@ public class SignInService {
                 email(userDto.getEmail()).
                 organizationName(userDto.getOrganizationName()).
                 build();
-        User user = createUser(userDto);
-        repository.registUser(user);
-       // repository.registUser(pathologist);
+        //User user = createUser(userDto);
+        //repository.registUser(user);
+        repository.registPath(pathologist);
         return true;
     }
     public boolean registUser(UserDto userDto){

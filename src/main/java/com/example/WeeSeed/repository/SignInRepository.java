@@ -1,5 +1,6 @@
 package com.example.WeeSeed.repository;
 
+import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
@@ -13,5 +14,7 @@ public class SignInRepository {
     public void registUser(User user){  //object로 가능?
         em.persist(user);
     }
-
+    public void registPath(Pathologist path){
+        em.persist(path);
+    }
 }
