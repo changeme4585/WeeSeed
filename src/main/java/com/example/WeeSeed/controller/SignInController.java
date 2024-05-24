@@ -18,6 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SignInController {
     private final SignInService service;
+
+    public  UserDto createUserInfo(String id,String password,String email,String state,String name){
+        UserDto userDto = UserDto.builder().
+                id(id).
+                password(password).
+                email(email).
+                state(state).
+                name(name).
+                build();
+                return userDto;
+    }
     public int  validatePassword(String password){
         if(password.length()<10){ //문자열이 10미만이면 위반
             return 2;
@@ -48,10 +59,26 @@ public class SignInController {
         if (!service.registNok(dto)){
             return "중복된 ID 입니다.";
         }
-
+        service.registUser(
+                createUserInfo(dto.getNokId(),dto.getPassword(), dto.getEmail(),"Nok" ,dto.getName())
+        );
         return "yes";
     }
-
+//    @PostMapping(value = "/signIn")
+//    public String SignIn(@RequestBody UserDto dto) {
+//        int passFlag = validatePassword(dto.getPassword());
+//        if(passFlag == 1 ){
+//            return "비밀번호에 숫자 문자가 모두 포함되어야 합니다.";
+//        }
+//        if (passFlag == 2){
+//            return "비밀번호 길이를 10이상으로 만드세요.";
+//        }
+//        if (!service.registUser(dto)){
+//            return "중복된 ID 입니다.";
+//        }
+//
+//        return "yes";
+//    }
     @PostMapping(value = "/pathSignIn")
     public String pathSignIn(@RequestBody PathologistDto dto) {
         int passFlag = validatePassword(dto.getPassword());
@@ -64,6 +91,9 @@ public class SignInController {
         if (!service.registPath(dto)){
             return "중복된 ID 입니다.";
         }
+        service.registUser(
+                createUserInfo(dto.getPathologistId(), dto.getPassword(),dto.getEmail(),"Pathologist",dto.getName())
+        );
 
         return "yes";
     }

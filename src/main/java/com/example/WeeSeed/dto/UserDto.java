@@ -14,11 +14,14 @@ public class UserDto {
     private String email;
 
     private String state;
+
+    private String name;
     @Builder
-    UserDto(String id, String password,String email,String state){
+    UserDto(String id, String password,String email,String state,String name){
         this.id = id;
         this.password = password;
         this.email = email;
         this.state = state;
+        this.name = name;
     }
 }

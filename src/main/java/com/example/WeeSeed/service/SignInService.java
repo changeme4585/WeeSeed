@@ -45,7 +45,7 @@ public class SignInService {
                 build();
         User user = createUser(userDto);
         repository.registUser(user);
-        repository.registUser(nok);
+       // repository.registUser(nok);
         return true;
     }
     public  boolean registPath(PathologistDto userDto){
@@ -66,30 +66,30 @@ public class SignInService {
                 build();
         User user = createUser(userDto);
         repository.registUser(user);
-        repository.registUser(pathologist);
+       // repository.registUser(pathologist);
         return true;
     }
-//    public boolean registUser(UserDto userDto){
-//        Optional<User> userInfo = userRepository.findByUserId(userDto.getId());
-//        if(userInfo.isPresent()){ // 중복된 id가 있으면 리턴
-//            System.out.println("중복된 id 입니다.");
-//            return false;
-//        }
-//        String pwd  = userDto.getPassword();
-//        Encrypt en = new Encrypt(pwd);
-//        String encryptedPassword = en.getEncryptedPassword();
-//        User user = User.builder().
-//                userId(userDto.getId()).
-//                password(encryptedPassword).
-//                email(userDto.getEmail()).
-//                state(userDto.getState()).
-//                build();
-//        repository.registUser(user);
-//
-//        System.out.println("userid: "+userDto.getId());
-//        System.out.println("password: "+userDto.getPassword());
-//        System.out.println("email: "+userDto.getEmail());
-//        System.out.println("state: "+userDto.getState());
-//        return true;
-//    }
+    public boolean registUser(UserDto userDto){
+        Optional<User> userInfo = userRepository.findByUserId(userDto.getId());
+        if(userInfo.isPresent()){ // 중복된 id가 있으면 리턴
+            System.out.println("중복된 id 입니다.");
+            return false;
+        }
+        String pwd  = userDto.getPassword();
+        Encrypt en = new Encrypt(pwd);
+        String encryptedPassword = en.getEncryptedPassword();
+        User user = User.builder().
+                userId(userDto.getId()).
+                password(encryptedPassword).
+                email(userDto.getEmail()).
+                state(userDto.getState()).
+                build();
+        repository.registUser(user);
+
+        System.out.println("userid: "+userDto.getId());
+        System.out.println("password: "+userDto.getPassword());
+        System.out.println("email: "+userDto.getEmail());
+        System.out.println("state: "+userDto.getState());
+        return true;
+    }
 }

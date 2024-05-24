@@ -2,6 +2,7 @@ package com.example.WeeSeed.controller;
 
 import com.example.WeeSeed.dto.LoginDto;
 import com.example.WeeSeed.dto.UserDto;
+import com.example.WeeSeed.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +20,12 @@ import java.util.Map;
 
 
 @RestController //그냥 Controller를 사용하면 상태코드 404를 반환한다.
-
+@RequiredArgsConstructor
 public class LogInController {
+    private final UserService userService;
     @PostMapping("/login")
     public String login(@RequestBody LoginDto dto, HttpServletRequest request) {
-
-        if ("user".equals(dto.getId()) && "password".equals(dto.getPassword())) {
+        if ( userService.checkUserLogIn(dto.getId(), dto.getPassword()).size()!=0) {
             HttpSession session = request.getSession();
             session.setAttribute("user", dto);
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
