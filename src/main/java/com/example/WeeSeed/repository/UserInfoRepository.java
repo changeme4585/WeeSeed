@@ -18,8 +18,9 @@ public class UserInfoRepository {
 
     public List<User> checkUserLogIn(String userId,String password)
     {
-        return em.createQuery("SELECT m FROM User m WHERE m.userId =:userId", User.class)
-                .setParameter("userId", userId).getResultList();
+        return em.createQuery("SELECT m FROM User m WHERE m.userId =:userId and  m.password =: password", User.class)
+                .setParameter("userId", userId)
+                .setParameter("password",password).getResultList();
     }
 
     public Nok getNokInfo(String nokId){

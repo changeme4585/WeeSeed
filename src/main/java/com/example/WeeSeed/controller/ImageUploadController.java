@@ -25,6 +25,7 @@ public class ImageUploadController {
         try {
             // Save the uploaded file to the server
             byte[] bytes = file.getBytes();
+            System.out.println("파일 받음: " +bytes);
             String filePath = uploadDirectory + file.getOriginalFilename();
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
             stream.write(bytes);

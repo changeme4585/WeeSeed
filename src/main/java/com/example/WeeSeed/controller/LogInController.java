@@ -3,6 +3,7 @@ package com.example.WeeSeed.controller;
 import com.example.WeeSeed.Encrypt;
 import com.example.WeeSeed.dto.LoginDto;
 import com.example.WeeSeed.dto.UserDto;
+import com.example.WeeSeed.entity.User;
 import com.example.WeeSeed.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -29,12 +31,16 @@ public class LogInController {
         String pwd  = dto.getPassword();
         Encrypt en = new Encrypt(pwd);
         String encryptedPassword = en.getEncryptedPassword();
-        if ( userService.checkUserLogIn(dto.getId(), encryptedPassword).size()!=0) {
+        List<User> userInfo = userService.checkUserLogIn(dto.getId(), encryptedPassword);
+        if ( userInfo.size()!=0) {
             HttpSession session = request.getSession();
-            session.setAttribute("user", dto.getId());
+            session.setAttribute("user", dto);
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
-
-            return "ok";
+            if(userInfo.get(0).getState().equals("NOK")){
+                return "Nok";
+            }
+            // Path
+            return "Path";
         } else {
             return "failed";
         }
