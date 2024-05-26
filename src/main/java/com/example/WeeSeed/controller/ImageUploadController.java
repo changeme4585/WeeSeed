@@ -37,6 +37,7 @@ public class ImageUploadController {
         }
 
         try {
+
             // Save the uploaded file to the server
 //            byte[] bytes = file.getBytes();
 //            String filePath = uploadDirectory + file.getOriginalFilename();
