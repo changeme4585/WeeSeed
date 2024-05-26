@@ -24,7 +24,13 @@ spring:
   mqtt:
     broker: tcp://mqtt_broker_ip:1883
 upload:
-  directory: /path/to/save/images/
+  directory: /home/midas/uploads/
+sftp:
+  host: 192.168.35.243
+  port: 22
+  user: midas
+  password: P@ssw0rd
+
 
 logging.level:
   org.hibernate.SQL: debug

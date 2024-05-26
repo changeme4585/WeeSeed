@@ -18,11 +18,11 @@ public  class Encrypt {
     private String getSalt() {
 
         //1. Random, byte 객체 생성
-        SecureRandom r = new SecureRandom ();
+//        SecureRandom r = new SecureRandom ();
         byte[] salt = new byte[20];
-
-        //2. 난수 생성
-        r.nextBytes(salt);
+//
+//        //2. 난수 생성
+//        r.nextBytes(salt);
 
         //3. byte To String (10진수의 문자열로 변경)
         StringBuffer sb = new StringBuffer();
