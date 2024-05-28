@@ -9,7 +9,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChildDto {
 
-    private String childCode;
+
 
     private String nokId;
 
@@ -22,8 +22,8 @@ public class ChildDto {
     private Date birth;
 
     private String name;
-    public ChildDto( String childCode, String nokId, String disabilityType, int grade, String gender, Date birth, String name){
-        this.childCode = childCode;
+    public ChildDto(String nokId, String disabilityType, int grade, String gender, Date birth, String name){
+
         this.nokId = nokId;
         this.disabilityType =disabilityType;
         this.grade = grade;

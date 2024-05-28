@@ -1,5 +1,6 @@
 package com.example.WeeSeed.repository;
 
+import com.example.WeeSeed.entity.Child;
 import com.example.WeeSeed.entity.Nok;
 import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
@@ -21,4 +22,6 @@ public class SignInRepository {
     public void registNok(Nok nok){
         em.persist(nok);
     }
+
+    public void registChild(Child child) {em.persist(child);}
 }

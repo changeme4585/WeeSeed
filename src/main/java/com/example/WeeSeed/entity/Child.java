@@ -13,10 +13,11 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 //@AllArgsConstructor
 public class Child {
+//    @Id
+//    @GeneratedValue
+//    @Column
+//    private Long childId;
     @Id
-    @Column
-    private String childId;
-
     @Column
     private String childCode;
 
@@ -39,8 +40,8 @@ public class Child {
     private String name;
 
     @Builder
-    public Child(String childId,String childCode,String nokId,String disabilityType,int grade,String gender,Date birth,String name){
-        this.childId = childId;
+    public Child(String childCode,String nokId,String disabilityType,int grade,String gender,Date birth,String name){
+
         this.childCode = childCode;
         this.nokId = nokId;
         this.disabilityType =disabilityType;
