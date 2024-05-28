@@ -32,30 +32,43 @@ public class ImageUploadController {
     }
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
+
         if (file.isEmpty()) {
             return new ResponseEntity<>("Please select a file to upload", HttpStatus.BAD_REQUEST);
         }
+        String fileName = file.getOriginalFilename();
+        if (fileName == null) {
+            return new ResponseEntity<>("Invalid file name", HttpStatus.BAD_REQUEST);
+        }
+        String fileExtension = "";
+        int i = fileName.lastIndexOf('.');
+        if (i > 0) {
+            fileExtension = fileName.substring(i + 1);
+        }
+
+        long fileSize = file.getSize();
+
+        System.out.println("이미지 파일: " + file.getContentType());
+        System.out.println("이미지 파일 이름: " + fileName);
+        System.out.println("이미지 확장자명: " + fileExtension);
+        System.out.println("이미지 크기: " + fileSize + " bytes");
 
         try {
 
-            // Save the uploaded file to the server
-//            byte[] bytes = file.getBytes();
-//            String filePath = uploadDirectory + file.getOriginalFilename();
-//            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
-//            stream.write(bytes);
-//            stream.close();
-            // Send image to Raspberry Pi via WebSocket
-            //imageWebSocketHandler.sendImage(bytes);
+
 
 
             byte[] bytes = file.getBytes();
             String remoteFilePath = uploadDirectory + file.getOriginalFilename();
             sftpService.uploadFile(bytes, remoteFilePath);
+
+
             // Return the file path or any other response
             return new ResponseEntity<>("File uploaded successfully and sent via WebSocket", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to upload file: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 }
 

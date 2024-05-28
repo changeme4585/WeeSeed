@@ -3,6 +3,7 @@ package com.example.WeeSeed.service;
 
 import com.example.WeeSeed.dto.ChildDto;
 import com.example.WeeSeed.entity.Child;
+import com.example.WeeSeed.repository.ChildRepository;
 import com.example.WeeSeed.repository.SignInRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class RegistChildService {
     private  final SignInRepository signInRepository;
+    private final ChildRepository childRepository;
     public  String generateChildCode() {
         int length = 5;
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -30,8 +32,14 @@ public class RegistChildService {
     }
 
     public void registChild(ChildDto dto){
+        ;
+        String childCode  = generateChildCode();
+
+        while (childRepository.checkChildDuplicate(childCode)!=0){ //중복된 난수 코드 방지
+            childCode = generateChildCode();
+        }
         Child child = Child.builder().
-                childCode(generateChildCode()).
+                childCode(childCode).
                 nokId(dto.getNokId()).
                 disabilityType(dto.getDisabilityType()).
                 gender(dto.getGender()).

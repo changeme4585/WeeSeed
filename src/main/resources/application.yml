@@ -19,20 +19,20 @@ spring:
           batch_size: 1000
   servlet:
     multipart:
-      max-file-size: 10MB
-      max-request-size: 10MB
+      max-file-size: 500MB
+      max-request-size: 500MB
   mqtt:
     broker: tcp://mqtt_broker_ip:1883
 upload:
   directory: /home/midas/uploads/
 sftp:
-  host: 192.168.0.6
+  host: 192.168.117.79
   port: 22
   user: midas
   password: P@ssw0rd
 raspberry:
   pi:
-    url: http://192.168.0.6:8000/
+    url: http://192.168.117.79:8000/
 
 
 logging.level:
