@@ -1,28 +1,26 @@
 package com.example.WeeSeed;
 
-
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public  class Encrypt {
-    private String password;
+public class FileName {
+    private String file;
     private String salt;
-    private String encryptedPassword;
-    public  Encrypt (String password){
-        this.password = password;
+    private String fileName;
+    public  FileName (String file){
+        this.file = file;
         this.salt = getSalt();
-        this.encryptedPassword = getEncrypt(password,salt);
+        this.fileName = getEncrypt(file,salt);
     }
     private String getSalt() {
 
         //1. Random, byte 객체 생성
-//        SecureRandom r = new SecureRandom ();
+        SecureRandom r = new SecureRandom();
         byte[] salt = new byte[20];
 //
 //        //2. 난수 생성
-//        r.nextBytes(salt);
+        r.nextBytes(salt);
 
         //3. byte To String (10진수의 문자열로 변경)
         StringBuffer sb = new StringBuffer();
@@ -61,9 +59,7 @@ public  class Encrypt {
         return result;
     }
     //암호화된 비밀번호 보냄
-    public String getEncryptedPassword(){
-        return encryptedPassword;
+    public String getFileName(){
+        return fileName;
     }
-
-
 }

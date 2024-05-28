@@ -7,6 +7,7 @@ import com.example.WeeSeed.service.RegistChildService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -17,9 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistChildController {
     private final RegistChildService registChildService;
 
-    @PostMapping(value = "registchild")
-    public String registChild(ChildDto dto){
-        registChildService.registChild(dto);
+    @PostMapping(value = "/registchild")
+    public String registChild(@RequestBody ChildDto dto){
+        System.out.println("아동: "+ dto.getName());
+        System.out.println("아동: "+ dto.getNokId());
+        System.out.println("아동: "+ dto.getDisabilityType());
+        //System.out.println("아동: "+ dto.getBirth());
+        System.out.println("아동: "+ dto.getGrade());
+
+        //registChildService.registChild(dto);
         return "ok";
     }
 }

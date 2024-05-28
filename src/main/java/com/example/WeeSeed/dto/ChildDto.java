@@ -1,15 +1,12 @@
 package com.example.WeeSeed.dto;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 public class ChildDto {
-
-
 
     private String nokId;
 
@@ -22,6 +19,7 @@ public class ChildDto {
     private Date birth;
 
     private String name;
+    @Builder
     public ChildDto(String nokId, String disabilityType, int grade, String gender, Date birth, String name){
 
         this.nokId = nokId;
