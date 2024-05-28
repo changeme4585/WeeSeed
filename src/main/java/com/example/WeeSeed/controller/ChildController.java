@@ -17,10 +17,16 @@ import java.util.List;
 public class ChildController {
 
 
-    private ChildService childService;
+    private final  ChildService childService;
 
-    @GetMapping(value= "/childInfo")
-    public ResponseEntity<List<Child>> getAllChildren() {
+    @GetMapping(value= "/NokChildInfo/{nokId}")
+    public ResponseEntity<List<Child>> NokChildInfo(@PathVariable("nokId")String nokId) {
+        List<Child> children = childService.getAllChildren();
+        return new ResponseEntity<>(children, HttpStatus.OK);
+    }
+
+    @GetMapping(value= "/PathChildInfo/{pathId}")
+    public ResponseEntity<List<Child>> PathChildInfo(@PathVariable("pathId")String pathId) {
         List<Child> children = childService.getAllChildren();
         return new ResponseEntity<>(children, HttpStatus.OK);
     }

@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ChildService {
 
-    private ChildRepo childRepository;
+    private final ChildRepo childRepository;
 
     public List<Child> getAllChildren() {
         return childRepository.findAll();
