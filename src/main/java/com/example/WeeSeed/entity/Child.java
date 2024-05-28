@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -34,13 +35,13 @@ public class Child {
     private String gender;
 
     @Column
-    private Date birth;
+    private String birth;
 
     @Column
     private String name;
 
     @Builder
-    public Child(String childCode,String nokId,String disabilityType,int grade,String gender,Date birth,String name){
+    public Child(String childCode,String nokId,String disabilityType,int grade,String gender,String birth,String name){
 
         this.childCode = childCode;
         this.nokId = nokId;

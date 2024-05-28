@@ -26,7 +26,7 @@ public class RegistChildController {
         //System.out.println("아동: "+ dto.getBirth());
         System.out.println("아동: "+ dto.getGrade());
 
-        //registChildService.registChild(dto);
+        registChildService.registChild(dto);
         return "ok";
     }
 }
