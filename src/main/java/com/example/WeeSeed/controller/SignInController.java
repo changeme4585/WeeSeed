@@ -48,6 +48,12 @@ public class SignInController {
         }
         return 0;
     }
+
+//    @PostMapping(value ="/idCheck")
+//    public String idCheck(@RequestBody IdDto){
+//
+//        return
+//    }
     @PostMapping(value = "/nokSignIn")
     public String nokSignIn(@RequestBody NokDto dto) {
         int passFlag = validatePassword(dto.getPassword());

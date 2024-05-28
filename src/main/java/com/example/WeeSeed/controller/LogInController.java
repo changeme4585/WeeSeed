@@ -31,8 +31,9 @@ public class LogInController {
         String pwd  = dto.getPassword();
         Encrypt en = new Encrypt(pwd);
         String encryptedPassword = en.getEncryptedPassword();
+        System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
         List<User> userInfo = userService.checkUserLogIn(dto.getId(), encryptedPassword);
-        if ( userInfo.size()!=0) {
+        if (userInfo.size()!=0) {
             HttpSession session = request.getSession();
             session.setAttribute("user", dto);
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());

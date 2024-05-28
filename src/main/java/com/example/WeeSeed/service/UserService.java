@@ -45,17 +45,7 @@ public class UserService {
         return new ResponseEntity<NokDto>(nokDto, HttpStatus.OK);
     }
 
-    public @ResponseBody ResponseEntity updatePath(String pathId){
-
-        Pathologist pathInfo = userRepository.getPathInfo(pathId);
-        PathologistDto pathDto = PathologistDto.
-                builder().
-                pId(pathInfo.getPathologistId()).
-                password(pathInfo.getPassword()).
-                email(pathInfo.getEmail()).
-                oName(pathInfo.getOrganizationName()).
-                name(pathInfo.getName()).
-                build();
-        return new ResponseEntity<PathologistDto>(pathDto,HttpStatus.OK);
+    public Pathologist updatePath(String pathId){
+       return userRepository.getPathInfo(pathId);
     }
 }

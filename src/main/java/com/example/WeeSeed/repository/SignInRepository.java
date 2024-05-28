@@ -1,5 +1,6 @@
 package com.example.WeeSeed.repository;
 
+import com.example.WeeSeed.entity.Nok;
 import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
 import jakarta.persistence.EntityManager;
@@ -16,5 +17,8 @@ public class SignInRepository {
     }
     public void registPath(Pathologist path){
         em.persist(path);
+    }
+    public void registNok(Nok nok){
+        em.persist(nok);
     }
 }

@@ -25,11 +25,18 @@ public class SFTPConfig {
 
     @Bean
     public Session sftpSession() throws Exception {
+        Session session;
         JSch jsch = new JSch();
-        Session session = jsch.getSession(sftpUser, sftpHost, sftpPort);
-        session.setPassword(sftpPassword);
-        session.setConfig("StrictHostKeyChecking", "no");
-        session.connect();
+        session = jsch.getSession(sftpUser, sftpHost, sftpPort);
+        try {
+
+            session.setPassword(sftpPassword);
+            session.setConfig("StrictHostKeyChecking", "no");
+            session.connect();
+
+        }catch (Exception e){
+
+        }
         return session;
     }
 }

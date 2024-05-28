@@ -34,12 +34,13 @@ public class UserInfoRepository {
     }
 
     public Pathologist getPathInfo(String pathId) {
-        try {
-            return em.createQuery("SELECT m FROM Pathologist m WHERE m.pathId =:pathId", Pathologist.class)
+        //try {
+            return em.createQuery("SELECT m FROM Pathologist m WHERE m.pathologistId =:pathId", Pathologist.class)
                     .setParameter("pathId", pathId)
                     .getResultList().get(0);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nok not found");
-        }
+//        } catch (Exception e) {
+//
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nok not found");
+//        }
     }
 }

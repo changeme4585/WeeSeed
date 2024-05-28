@@ -44,8 +44,8 @@ public class SignInService {
                 email(userDto.getEmail()).
                 build();
         User user = createUser(userDto);
-        repository.registUser(user);
-       // repository.registUser(nok);
+        //repository.registUser(user);
+        repository.registNok(nok);
         return true;
     }
     public  boolean registPath(PathologistDto userDto){
