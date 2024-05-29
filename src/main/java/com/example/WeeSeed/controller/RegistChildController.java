@@ -18,14 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistChildController {
     private final RegistChildService registChildService;
 
-    @PostMapping(value = "/registchild")
+    @PostMapping(value = "/registchild") //
     public String registChild(@RequestBody ChildDto dto){
         System.out.println("아동: "+ dto.getName());
-        System.out.println("아동: "+ dto.getNokId());
+        System.out.println("아동: "+ dto.getUserId());
         System.out.println("아동: "+ dto.getDisabilityType());
         //System.out.println("아동: "+ dto.getBirth());
         System.out.println("아동: "+ dto.getGrade());
-
         registChildService.registChild(dto);
         return "ok";
     }

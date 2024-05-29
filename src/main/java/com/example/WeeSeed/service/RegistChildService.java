@@ -40,7 +40,7 @@ public class RegistChildService {
         }
         Child child = Child.builder().
                 childCode(childCode).
-                nokId(dto.getNokId()).
+                userId(dto.getUserId()).
                 disabilityType(dto.getDisabilityType()).
                 gender(dto.getGender()).
                 birth(dto.getBirth()).

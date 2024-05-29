@@ -22,6 +22,8 @@ public class ChildController {
     @GetMapping(value= "/NokChildInfo/{nokId}")
     public ResponseEntity<List<Child>> NokChildInfo(@PathVariable("nokId")String nokId) {
         List<Child> children = childService.getAllChildren();
+        System.out.println("nokId: "+ nokId);
+        System.out.println("아이 이름+ "+ children.get(0).getName());
         return new ResponseEntity<>(children, HttpStatus.OK);
     }
 

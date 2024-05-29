@@ -1,31 +1,27 @@
 package com.example.WeeSeed.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
 @Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 public class AacCard {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private  String aacCardId;
+    private  Long aacCardId;
 
     @Column
     private  String cardName;
 
     @Column
-    private Date creationTime;
+    private String creationTime;
 
     @Column
     private String color;
@@ -34,7 +30,7 @@ public class AacCard {
     private String childId;
 
     @Column
-    private  String constructorId;
+    private  String constructorId;  //사용자 id(재활사,보호자 구분)
 
     @Column
     private String imageUrl;
@@ -45,16 +41,16 @@ public class AacCard {
     @Column
     private  boolean share;
 
+
     @Builder
-    public AacCard(String aacCardId,String cardName,Date cTime,String color,String childId,String cId,String iUrl,String vUrl,boolean share){
-        this.aacCardId = aacCardId;
+    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,boolean share){
         this.cardName = cardName;
-        this.creationTime = cTime;
+        this.creationTime = creationTime;
         this.color = color;
         this.childId = childId;
-        this.constructorId = cId;
-        this.imageUrl = iUrl;
-        this.voiceUrl = vUrl;
+        this.constructorId = constructorId;
+        this.imageUrl = imageUrl;
+        this.voiceUrl = voiceUrl;
         this.share = share;
     }
 }

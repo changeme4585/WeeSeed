@@ -23,7 +23,7 @@ public class Child {
     private String childCode;
 
     @Column
-    private String nokId;
+    private String userId;
 
     @Column
     private String disabilityType;
@@ -41,10 +41,10 @@ public class Child {
     private String name;
 
     @Builder
-    public Child(String childCode,String nokId,String disabilityType,int grade,String gender,String birth,String name){
+    public Child(String childCode,String userId,String disabilityType,int grade,String gender,String birth,String name){
 
         this.childCode = childCode;
-        this.nokId = nokId;
+        this.userId = userId;
         this.disabilityType =disabilityType;
         this.grade = grade;
         this.gender = gender;

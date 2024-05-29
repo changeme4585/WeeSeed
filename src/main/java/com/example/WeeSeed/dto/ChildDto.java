@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class ChildDto {
 
-    private String nokId;
+    private String userId;
 
     private String disabilityType;
 
@@ -23,9 +23,9 @@ public class ChildDto {
 
     private String name;
     @Builder
-    public ChildDto(String nokId, String disabilityType, int grade, String gender, String birth, String name){
+    public ChildDto(String userId, String disabilityType, int grade, String gender, String birth, String name){
 
-        this.nokId = nokId;
+        this.userId = userId;
         this.disabilityType =disabilityType;
         this.grade = grade;
         this.gender = gender;
