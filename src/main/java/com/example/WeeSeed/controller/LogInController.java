@@ -27,7 +27,7 @@ import java.util.Map;
 public class LogInController {
     private final UserService userService;
     @PostMapping("/login")
-    public String login(@RequestBody LoginDto dto, HttpServletRequest request) {
+    public ResponseEntity<String> login(@RequestBody LoginDto dto, HttpServletRequest request) {
         String pwd  = dto.getPassword();
         Encrypt en = new Encrypt(pwd);
         String encryptedPassword = en.getEncryptedPassword();
@@ -38,23 +38,23 @@ public class LogInController {
             session.setAttribute("user", dto);
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
             if(userInfo.get(0).getState().equals("NOK")){
-                return "Nok";
+                return new ResponseEntity<>("Nok", HttpStatus.OK);
             }
             // Path
-            return "Path";
+            return new ResponseEntity<>("Path", HttpStatus.OK);
         } else {
-            return "failed";
+            return new ResponseEntity<>("failed", HttpStatus.UNAUTHORIZED);
         }
     }
     @PostMapping("/logout")
-    public String logout(HttpServletRequest request) {
+    public ResponseEntity<String> logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false); // 기존 세션이 있는 경우에만 가져옴
         if (session != null) {
             session.invalidate(); // 세션 무효화
             System.out.println("로그아웃 성공");
-            return "로그아웃 성공";
+            return new ResponseEntity<>("로그아웃 성공",HttpStatus.OK);
         } else {
-            return "로그아웃 실패: 세션이 존재하지 않음";
+            return new ResponseEntity<>("failed", HttpStatus.UNAUTHORIZED);
         }
     }
 
