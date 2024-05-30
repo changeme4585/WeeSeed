@@ -27,10 +27,10 @@ import java.time.format.DateTimeFormatter;
 public class AacService {
     private final AacRepository aacRepository;
     //private static final String UPLOAD_DIR = "uploads/";
+
+
     @Value("${upload.directory}")
     private String uploadDirectory;
-
-
     private final SFTPService sftpService;
 
 
@@ -64,16 +64,17 @@ public class AacService {
 
 
         try {
-//            byte[] bytes = image.getBytes();
-//            String remoteFilePath = uploadDirectory + imageUrl;
-//            sftpService.uploadFile(bytes, remoteFilePath);
-//
-//            byte[] audioBytesBytes = audio.getBytes();
-//            String audioRemoteFilePath = uploadDirectory + voiceUrl;
-//            sftpService.uploadFile(audioBytesBytes, audioRemoteFilePath);
+            byte[] bytes = image.getBytes();
+            String remoteFilePath = uploadDirectory +imageUrl;
+            sftpService.uploadFile(bytes, remoteFilePath);
+
+            byte[] audioBytesBytes = audio.getBytes();
+            String audioRemoteFilePath = uploadDirectory+voiceUrl;
+            sftpService.uploadFile(audioBytesBytes, audioRemoteFilePath);
 
            // return new ResponseEntity<>("File uploaded successfully and sent via WebSocket", HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println("라즈베리파이 + :"+e);
             //return new ResponseEntity<>("Failed to upload file: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
         //Path uploadPath = Paths.get(UPLOAD_DIR);

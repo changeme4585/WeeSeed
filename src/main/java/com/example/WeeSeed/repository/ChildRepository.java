@@ -7,6 +7,8 @@ import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @RequiredArgsConstructor
 public class ChildRepository {
@@ -17,5 +19,17 @@ public class ChildRepository {
         return em.createQuery("SELECT m FROM Child m WHERE m.childCode =:childCode", Child.class)
                 .setParameter("childCode", childCode)
                 .getResultList().size();
+    }
+
+    public Child getChild(String childCode){ //아동 코드로 아동을 불러오는 로직
+        return em.createQuery("SELECT m FROM Child m WHERE m.childCode =:childCode", Child.class)
+                .setParameter("childCode", childCode)
+                .getResultList().get(0);
+    }
+
+    public List<Child> getChildByUser(String userId){   //사용자에 연결된 아동을 불러오는 코드
+        return em.createQuery("SELECT m FROM Child m WHERE m.userId =:userId", Child.class)
+                .setParameter("userId", userId)
+                .getResultList();
     }
 }

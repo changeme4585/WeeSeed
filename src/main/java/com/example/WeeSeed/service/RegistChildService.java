@@ -49,4 +49,23 @@ public class RegistChildService {
                 build();
         signInRepository.registChild(child);
     }
+
+
+
+    public void linkChild(String childCode,String userId){
+        Child child = childRepository.getChild(childCode);
+
+        Child linkChild = child.builder().
+                childCode(child.getChildCode()).
+                userId(userId).
+                disabilityType(child.getDisabilityType()).
+                gender(child.getGender()).
+                birth(child.getBirth()).
+                grade(child.getGrade()).
+                name(child.getName()).
+                build();
+
+
+        signInRepository.registChild(linkChild);
+    }
 }

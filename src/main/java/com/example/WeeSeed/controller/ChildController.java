@@ -21,7 +21,7 @@ public class ChildController {
 
     @GetMapping(value= "/NokChildInfo/{nokId}")
     public ResponseEntity<List<Child>> NokChildInfo(@PathVariable("nokId")String nokId) {
-        List<Child> children = childService.getAllChildren();
+        List<Child> children = childService.getChildByUser(nokId);
         System.out.println("nokId: "+ nokId);
         System.out.println("아이 이름+ "+ children.get(0).getName());
         return new ResponseEntity<>(children, HttpStatus.OK);
@@ -29,7 +29,7 @@ public class ChildController {
 
     @GetMapping(value= "/PathChildInfo/{pathId}")
     public ResponseEntity<List<Child>> PathChildInfo(@PathVariable("pathId")String pathId) {
-        List<Child> children = childService.getAllChildren();
+        List<Child> children = childService.getChildByUser(pathId);
         return new ResponseEntity<>(children, HttpStatus.OK);
     }
 }

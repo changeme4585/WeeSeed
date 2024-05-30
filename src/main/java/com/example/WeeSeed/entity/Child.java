@@ -10,15 +10,15 @@ import java.util.Date;
 @Entity
 @Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-//@AllArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Child {
-//    @Id
-//    @GeneratedValue
-//    @Column
-//    private Long childId;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
+    private Long childId;
+
     @Column
     private String childCode;
 

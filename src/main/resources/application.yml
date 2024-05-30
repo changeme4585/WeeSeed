@@ -25,7 +25,7 @@ spring:
   mqtt:
     broker: tcp://mqtt_broker_ip:1883
 upload:
-  directory: /home/midas/
+  directory: /home/midas/Images/
 sftp:
   host: 192.168.117.79
   port: 22
