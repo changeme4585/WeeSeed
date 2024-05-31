@@ -39,11 +39,11 @@ public class AacCard {
     private String voiceUrl;
 
     @Column
-    private  boolean share;
+    private  int share; // 0이면 공유 안함 , 1이며 공유
 
 
     @Builder
-    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,boolean share){
+    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share){
         this.cardName = cardName;
         this.creationTime = creationTime;
         this.color = color;

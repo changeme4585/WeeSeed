@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AacDto {
     @Column
+    private Long aacCardId;
+    @Column
     private  String cardName;
 
     @Column
@@ -28,13 +30,14 @@ public class AacDto {
     private  String constructorId;  //사용자 id(재활사,보호자 구분)
 
     @Column
-    private InputStreamResource image;
+    private String image;
 
     @Column
-    private InputStreamResource voice;
+    private String voice;
 
     @Builder
-    public AacDto(String cardName,String creationTime,String color,String childId,String constructorId,InputStreamResource image,InputStreamResource voice){
+    public AacDto(Long aacCardId, String cardName,String creationTime,String color,String childId,String constructorId,String image,String voice){
+        this.aacCardId = aacCardId;
         this.cardName = cardName;
         this.creationTime = creationTime;
         this.color = color;

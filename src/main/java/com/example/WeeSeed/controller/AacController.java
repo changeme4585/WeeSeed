@@ -29,7 +29,7 @@ public class AacController {
             @RequestParam("color") String color,
             @RequestParam("childCode") String childCode,
             @RequestParam("constructorId")String constructorId,
-            @RequestParam("share")boolean share
+            @RequestParam("share")int share
            // @RequestParam("")
             ) {
         System.out.println("아동코드 :"+ childCode);
@@ -43,7 +43,12 @@ public class AacController {
 
     @GetMapping(value = "/getaac")
     public ResponseEntity<List<AacDto>> getAacCard(@RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId){
+    //public ResponseEntity<List<AacDto>> getAacCard(){
+        //System.out.println("이미지 불러오기: "+childCode+" : "+constructorId);
+
+
         List<AacDto> aacDto = aacService.getAacCard(childCode,constructorId);
+        //List<AacDto> aacDto = aacService.getAacCard("QQWW11","ZNuoQ");
         return new ResponseEntity<>(aacDto, HttpStatus.OK);
     }
 }

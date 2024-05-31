@@ -39,18 +39,34 @@ public class AacService {
 
     @Value("${upload.directory}")
     private String uploadDirectory;
+    @Value("${raspberry.pi.url}")
+    private String raspberryPiUrl;
     private final SFTPService sftpService;
 
 
     public void saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
-                            String color, String childCode,String constructorId,boolean share)
+                            String color, String childCode,String constructorId,int share)
             throws IOException {
         // Create directory if not exists
+        String imageFormat = "";
+        String imageFileName = image.getOriginalFilename();
+        int imageI = imageFileName.lastIndexOf('.');
+        if (imageI > 0) {
+            imageFormat = imageFileName.substring(imageI + 1);
+        }
+
+        String voiceFormat = "";
+        String voiceFileName = audio.getOriginalFilename();
+        int voiceI = voiceFileName.lastIndexOf('.');
+        if (voiceI > 0) {
+            voiceFormat = voiceFileName.substring(voiceI + 1);
+        }
+
 
         FileName imageName = new FileName(image.getOriginalFilename());
         FileName audioName = new FileName(audio.getOriginalFilename());
-        String imageUrl = imageName.getFileName();
-        String voiceUrl = audioName.getFileName();
+        String imageUrl = imageName.getFileName()+"."+imageFormat;
+        String voiceUrl = audioName.getFileName()+"."+voiceFormat;
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
@@ -107,34 +123,43 @@ public class AacService {
         System.out.println("Child Code: " + childCode);
     }
     public List<AacDto> getAacCard(String childCode, String constructorId){
+        System.out.println("childcode + constructorId " + childCode+" + "+constructorId);
         List<AacCard> aacCardList= aacRepository.getAacCardList(childCode,constructorId);
         List<AacDto> aacDtoList = new ArrayList<>(aacCardList.size());
         for (AacCard aacCard:aacCardList){
+            try {
+                System.out.println("이미지 이름: " + aacCard.getImageUrl());
+                String imageUrl = raspberryPiUrl + aacCard.getImageUrl();
+                RestTemplate imageTemplate = new RestTemplate();
+                byte[] imageBytes = imageTemplate.getForObject(URI.create(imageUrl), byte[].class);
+//                InputStream imageInputStream = new ByteArrayInputStream(imageBytes);
+//                InputStreamResource image = new InputStreamResource(imageInputStream);
 
-            String imageUrl = uploadDirectory + aacCard.getImageUrl();
-            RestTemplate imageTemplate = new RestTemplate();
-            byte[] imageBytes = imageTemplate.getForObject(URI.create(imageUrl), byte[].class);
-            InputStream imageInputStream = new ByteArrayInputStream(imageBytes);
-            InputStreamResource image = new InputStreamResource(imageInputStream);
-
-            String voiceUrl = uploadDirectory + aacCard.getVoiceUrl();
-            RestTemplate voiceTemplate = new RestTemplate();
-            byte[] voiceBytes = voiceTemplate.getForObject(URI.create(voiceUrl), byte[].class);
-            InputStream voiceInputStream = new ByteArrayInputStream(voiceBytes);
-            InputStreamResource voice = new InputStreamResource(voiceInputStream);
+                String voiceUrl = raspberryPiUrl + aacCard.getVoiceUrl();
+                System.out.println("오디오 이름: " + aacCard.getVoiceUrl());
+                RestTemplate voiceTemplate = new RestTemplate();
+                byte[] voiceBytes = voiceTemplate.getForObject(URI.create(voiceUrl), byte[].class);
+//                InputStream voiceInputStream = new ByteArrayInputStream(voiceBytes);
+//                InputStreamResource voice = new InputStreamResource(voiceInputStream);
 
 
-            AacDto aacDto = AacDto.builder().
-                    cardName(aacCard.getCardName()).
-                    creationTime(aacCard.getCreationTime()).
-                    color(aacCard.getColor()).
-                    childId(aacCard.getChildId()).
-                    constructorId(aacCard.getConstructorId()).
-                    image(image).
-                    voice(voice).
-                    build();
+                AacDto aacDto = AacDto.builder().
+                        aacCardId(aacCard.getAacCardId()).
+                        cardName(aacCard.getCardName()).
+                        creationTime(aacCard.getCreationTime()).
+                        color(aacCard.getColor()).
+                        childId(aacCard.getChildId()).
+                        constructorId(aacCard.getConstructorId()).
+                        image(imageUrl).
+                        voice(voiceUrl).
+//                        image(imageBytes).
+//                        voice(voiceBytes).
+                        build();
 
-            aacDtoList.add(aacDto);
+                aacDtoList.add(aacDto);
+            }catch (Exception e){
+                System.out.println("aac 카드 목록 조회 에러: "+e);
+            }
         }
 
         return aacDtoList;
