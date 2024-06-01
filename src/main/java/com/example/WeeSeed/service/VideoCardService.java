@@ -123,7 +123,7 @@ public class VideoCardService {
 
 
 
-            byte [] thumbNailbytes = video.getBytes();
+            byte [] thumbNailbytes = thumbnail.getBytes();
             String thumbNailRemoteFilePath = uploadDirectory +thumbNailUrl;
             sftpService.uploadFile(thumbNailbytes, thumbNailRemoteFilePath);
         }catch (Exception e){
