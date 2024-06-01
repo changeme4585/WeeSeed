@@ -22,7 +22,7 @@ public class videoCard {
     private String cardName;
     
     @Column
-    private Date creationTime;
+    private String creationTime;
     
     @Column
     private String videoUrl;
@@ -40,11 +40,11 @@ public class videoCard {
     @Column
     private String thumbnailUrl;
     @Builder
-    public videoCard(String cardName,Date cTime,String vUrl,String childId,String userId,String color,String thumbnailUrl){
+    public videoCard(String cardName,String creationTime,String videoUrl,String childId,String userId,String color,String thumbnailUrl){
 
         this.cardName = cardName;
-        this.creationTime = cTime;
-        this.videoUrl = vUrl;
+        this.creationTime = creationTime;
+        this.videoUrl = videoUrl;
         this.childId = childId;
         this.userId = userId;
         this.color = color;
