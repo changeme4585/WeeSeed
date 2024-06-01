@@ -34,6 +34,8 @@ sftp:
 raspberry:
   pi:
     url: http://192.168.117.79:8000/
+ffmpeg:
+  path: /opt/homebrew/bin/ffmpeg
 
 
 logging.level:

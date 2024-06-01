@@ -37,8 +37,15 @@ public class GrowthDiary {
     @Column
     private String userId;
 
+    @Column
+    private String creationTime; //생성일자
+
+
+    @Column
+    private Long learnedCard; //학습한 카드 id
+
     @Builder
-    public GrowthDiary(String growthId,String childCode,int iCN,int vCN,int uT,String childId,String userId){
+    public GrowthDiary(String growthId,String childCode,int iCN,int vCN,int uT,String childId,String userId,String creationTime,Long learnedCard){
         this.growthId = growthId;
         this.childCode = childCode;
         this.imageCardNum = iCN;
@@ -46,6 +53,8 @@ public class GrowthDiary {
         this.usageTime = uT;
         this.childId = childId;
         this.userId = userId;
+        this.creationTime = creationTime;
+        this.learnedCard =  learnedCard;
     }
 
 }

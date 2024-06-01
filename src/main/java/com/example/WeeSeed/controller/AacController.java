@@ -51,4 +51,8 @@ public class AacController {
         //List<AacDto> aacDto = aacService.getAacCard("QQWW11","ZNuoQ");
         return new ResponseEntity<>(aacDto, HttpStatus.OK);
     }
+
+//    @PostMapping(value = "clickaac")  //aacard를 클릭했을 때 해당
+//    public void e
+
 }

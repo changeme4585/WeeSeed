@@ -41,9 +41,12 @@ public class AacCard {
     @Column
     private  int share; // 0이면 공유 안함 , 1이며 공유
 
+    @Column
+    private int clickCnt;
+
 
     @Builder
-    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share){
+    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share,int clickCnt){
         this.cardName = cardName;
         this.creationTime = creationTime;
         this.color = color;
@@ -52,5 +55,6 @@ public class AacCard {
         this.imageUrl = imageUrl;
         this.voiceUrl = voiceUrl;
         this.share = share;
+        this.clickCnt = clickCnt;
     }
 }

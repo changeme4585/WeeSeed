@@ -81,6 +81,7 @@ public class AacService {
                 imageUrl(imageUrl).
                 voiceUrl(voiceUrl).
                 share(share).
+                clickCnt(0).
                 build();
         aacRepository.aacCardSave(aacCard);
 

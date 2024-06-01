@@ -1,25 +1,22 @@
 package com.example.WeeSeed.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
 @Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 public class videoCard {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String videoCardID;
+    private  Long videoCardID;
+
     
     @Column
     private String cardName;
@@ -38,15 +35,19 @@ public class videoCard {
 
     @Column
     private String color;
-    
+
+
+    @Column
+    private String thumbnailUrl;
     @Builder
-    public videoCard(String vCId,String cardName,Date cTime,String vUrl,String childId,String userId,String color){
-        this.videoCardID = vCId;
+    public videoCard(String cardName,Date cTime,String vUrl,String childId,String userId,String color,String thumbnailUrl){
+
         this.cardName = cardName;
         this.creationTime = cTime;
         this.videoUrl = vUrl;
         this.childId = childId;
         this.userId = userId;
         this.color = color;
+        this.thumbnailUrl = thumbnailUrl;
     }
 }
