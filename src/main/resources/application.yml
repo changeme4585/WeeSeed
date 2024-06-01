@@ -1,43 +1,47 @@
 spring:
-
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/weeseed?serverTimezone=Asia/Seoul
-    username: root
-    password: abc123
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
-        order_insert: true
-        order_update: true
-        show_sql: true
-        format_sql : true
+        order_insert: ${SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_INSERT}
+        order_update: ${SPRING_JPA_PROPERTIES_HIBERNATE_ORDER_UPDATE}
+        show_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_SHOW_SQL}
+        format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
         jdbc:
-          batch_size: 1000
+          batch_size: ${SPRING_JPA_PROPERTIES_HIBERNATE_JDBC_BATCH_SIZE}
+
   servlet:
     multipart:
+      max-file-size: ${SPRING_SERVLET_MULTIPART_MAX_FILE_SIZE}
+      max-request-size: ${SPRING_SERVLET_MULTIPART_MAX_REQUEST_SIZE}
 
-      max-file-size: 500MB
-      max-request-size: 500MB
-  mqtt:
-    broker: tcp://mqtt_broker_ip:1883
+mqtt:
+  broker: ${MQTT_BROKER}
+
 upload:
-  directory: /home/midas/Images/
+  directory: ${UPLOAD_DIRECTORY}
+
 sftp:
-  host: 192.168.117.79
-  port: 22
-  user: midas
-  password: P@ssw0rd
+  host: ${SFTP_HOST}
+  port: ${SFTP_PORT}
+  user: ${SFTP_USER}
+  password: ${SFTP_PASSWORD}
+
 raspberry:
   pi:
-    url: http://192.168.117.79:8000/
+    url: ${RASPBERRY_PI_URL}
+
 ffmpeg:
-  path: /opt/homebrew/bin/ffmpeg
+  path: ${FFMPEG_PATH}
 
-
-logging.level:
-  org.hibernate.SQL: debug
-  org.hibernate.type: trace  #sql 사용시 파라미터를 로그로 남긴다
+logging:
+  level:
+    org.hibernate.SQL: ${LOGGING_LEVEL_ORG_HIBERNATE_SQL}
+    org.hibernate.type: ${LOGGING_LEVEL_ORG_HIBERNATE_TYPE}
