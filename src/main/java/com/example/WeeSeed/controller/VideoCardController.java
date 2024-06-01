@@ -44,4 +44,10 @@ public class VideoCardController {
         List<VideoDto> videoDtos = videoCardService.getVideoCard(childCode,constructorId);
         return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
     }
+
+    @GetMapping (value ="/videocard")
+    public ResponseEntity<List<VideoDto>> videocard() {
+        List<VideoDto> videoDtos = videoCardService.getVideoCard("dh4d4","QQWW11");
+        return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
+    }
 }

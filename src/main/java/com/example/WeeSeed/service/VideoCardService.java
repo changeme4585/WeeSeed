@@ -80,12 +80,12 @@ public class VideoCardService {
 
 
         String thumbNailFormat = "";
-        String thumbNailFileName = video.getOriginalFilename();
+        String thumbNailFileName = thumbnail.getOriginalFilename();
         int thumbNailI = thumbNailFileName.lastIndexOf('.');
         if(thumbNailI > 0){
             thumbNailFormat = thumbNailFileName.substring(thumbNailI + 1);
         }
-        FileName thumbNailName = new FileName(video.getOriginalFilename());
+        FileName thumbNailName = new FileName(thumbnail.getOriginalFilename());
         String thumbNailUrl  =  thumbNailName.getFileName() +"." +thumbNailFormat;
 
         LocalDateTime now = LocalDateTime.now();
@@ -120,6 +120,12 @@ public class VideoCardService {
             byte [] bytes = video.getBytes();
             String remoteFilePath = uploadDirectory +videoUrl;
             sftpService.uploadFile(bytes, remoteFilePath);
+
+
+
+            byte [] thumbNailbytes = video.getBytes();
+            String thumbNailRemoteFilePath = uploadDirectory +thumbNailUrl;
+            sftpService.uploadFile(thumbNailbytes, thumbNailRemoteFilePath);
         }catch (Exception e){
             System.out.println("라즈베리파이 동영상 업로드 이슈: "+e);
         }
@@ -130,14 +136,16 @@ public class VideoCardService {
             List<VideoDto> videoDtoList  = new ArrayList<>();
             for (videoCard videoCard:videoCardList){
                 String videoUrl = raspberryPiUrl + videoCard.getVideoUrl();
-                VideoDto videoDto = VideoDto.builder().
+                String thumbNailUrl = raspberryPiUrl + videoCard.getThumbnailUrl();
+                        VideoDto videoDto = VideoDto.builder().
                         videoCardId(videoCard.getVideoCardID()).
                         cardName(videoCard.getCardName()).
                         creationTime(videoCard.getCreationTime()).
                         childId(videoCard.getChildId()).
                         constructorId(videoCard.getUserId()).
-                        thumbNail(videoCard.getThumbnailUrl()).
+                        thumbNail(thumbNailUrl).
                         video(videoUrl).
+                        color(videoCard.getColor()).
                         build();
 //
                 videoDtoList.add(videoDto);
