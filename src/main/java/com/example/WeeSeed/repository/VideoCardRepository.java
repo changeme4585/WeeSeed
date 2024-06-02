@@ -20,7 +20,7 @@ public class VideoCardRepository {
 
 
     public List<videoCard> getPathVideoCardList(String childId, String userId){
-        return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and (m.userId =:userId or m.state =: 'Pathologist')", videoCard.class)
+        return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and (m.userId =:userId or m.state = 'Nok')", videoCard.class)
                 .setParameter("childId", childId)
                 .setParameter("userId",userId)
                 .getResultList();
@@ -30,5 +30,11 @@ public class VideoCardRepository {
         return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId ", videoCard.class)
                 .setParameter("childId", childId)
                 .getResultList();
+    }
+
+    public videoCard getVideoCard(Long videoCardID){
+        return em.createQuery("SELECT m FROM videoCard m WHERE m.videoCardID =:videoCardID ", videoCard.class)
+                .setParameter("videoCardID", videoCardID)
+                .getResultList().get(0);
     }
 }

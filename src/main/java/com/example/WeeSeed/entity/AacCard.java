@@ -46,6 +46,11 @@ public class AacCard {
 
     @Column
     private String state;  //사용자 상태 구분
+
+    public void updateClick()
+    {
+        this.clickCnt+=1;
+    }
     @Builder
     public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share,int clickCnt,String state){
         this.cardName = cardName;

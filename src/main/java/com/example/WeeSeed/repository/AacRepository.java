@@ -28,4 +28,10 @@ public class AacRepository {
                 .setParameter("childId", childId)
                 .getResultList();
     }
+    public AacCard getAacCard(Long aacCardId) {
+        return em.createQuery("SELECT m FROM AacCard m WHERE m.aacCardId =:aacCardId", AacCard.class)
+                .setParameter("aacCardId", aacCardId)
+                .getResultList().get(0);
+    }
+
 }
