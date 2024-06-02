@@ -19,10 +19,16 @@ public class VideoCardRepository {
     }
 
 
-    public List<videoCard> getVideoCardList(String childId, String userId){
-        return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and m.userId =:userId ", videoCard.class)
+    public List<videoCard> getPathVideoCardList(String childId, String userId){
+        return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and (m.userId =:userId or m.state =: 'Pathologist')", videoCard.class)
                 .setParameter("childId", childId)
                 .setParameter("userId",userId)
+                .getResultList();
+    }
+
+    public List<videoCard> getNokVideoCardList(String childId){
+        return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId ", videoCard.class)
+                .setParameter("childId", childId)
                 .getResultList();
     }
 }

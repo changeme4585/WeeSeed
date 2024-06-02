@@ -135,7 +135,14 @@ public class VideoCardService {
     }
 
     public List<VideoDto> getVideoCard(String childCode, String constructorId){
-            List<videoCard> videoCardList =  videoCardRepository.getVideoCardList(childCode,constructorId);
+            String userState = userInfoRepository.getUserState(constructorId);
+        List<videoCard> videoCardList;
+            if (userState.equals("Nok")){
+                videoCardList = videoCardRepository.getNokVideoCardList(childCode);
+            }else{
+                videoCardList = videoCardRepository.getPathVideoCardList(childCode,constructorId);
+            }
+
             List<VideoDto> videoDtoList  = new ArrayList<>();
             for (videoCard videoCard:videoCardList){
                 String videoUrl = raspberryPiUrl + videoCard.getVideoUrl();

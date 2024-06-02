@@ -133,6 +133,7 @@ public class AacService {
         System.out.println("childcode + constructorId " + childCode+" + "+constructorId);
 
         String userState = userInfoRepository.getUserState(constructorId);
+
         List<AacCard> aacCardList;
         if (userState.equals("Nok")){
             aacCardList= aacRepository.getNokAacCardList(childCode);
