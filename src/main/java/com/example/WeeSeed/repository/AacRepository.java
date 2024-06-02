@@ -15,10 +15,17 @@ public class AacRepository {
     public void aacCardSave(AacCard aacCard){
         em.persist(aacCard);
     }
-    public List<AacCard> getAacCardList(String childId, String constructorId){
-        return em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId and m.constructorId =:constructorId ", AacCard.class)
+    public List<AacCard> getPathAacCardList(String childId, String constructorId){
+
+        return em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId and (m.constructorId =:constructorId or m.state = 'Nok')", AacCard.class)
                 .setParameter("childId", childId)
                 .setParameter("constructorId",constructorId)
+                .getResultList();
+    }
+
+    public List<AacCard> getNokAacCardList(String childId){
+        return em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId", AacCard.class)
+                .setParameter("childId", childId)
                 .getResultList();
     }
 }

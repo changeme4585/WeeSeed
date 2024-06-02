@@ -4,6 +4,7 @@ package com.example.WeeSeed.controller;
 import com.example.WeeSeed.FileName;
 import com.example.WeeSeed.dto.AacDto;
 import com.example.WeeSeed.service.AacService;
+import com.example.WeeSeed.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 public class AacController {
 
     private final AacService  aacService;
+    
     @PostMapping("/uploadaac")
     public ResponseEntity<String> createAACCard(
             @RequestParam("image") MultipartFile image,
@@ -43,12 +45,8 @@ public class AacController {
 
     @GetMapping(value = "/getaac")
     public ResponseEntity<List<AacDto>> getAacCard(@RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId){
-    //public ResponseEntity<List<AacDto>> getAacCard(){
-        //System.out.println("이미지 불러오기: "+childCode+" : "+constructorId);
-
 
         List<AacDto> aacDto = aacService.getAacCard(childCode,constructorId);
-        //List<AacDto> aacDto = aacService.getAacCard("QQWW11","ZNuoQ");
         return new ResponseEntity<>(aacDto, HttpStatus.OK);
     }
 

@@ -22,7 +22,10 @@ public class UserInfoRepository {
                 .setParameter("userId", userId)
                 .setParameter("password",password).getResultList();
     }
-
+    public String getUserState(String userId){
+        return em.createQuery("SELECT m FROM User m WHERE m.userId =:userId ", User.class)
+                .setParameter("userId", userId).getResultList().get(0).getState();
+    }
     public Nok getNokInfo(String nokId){
         try {
             return em.createQuery("SELECT m FROM Nok m WHERE m.nokId =:nokId", Nok.class)

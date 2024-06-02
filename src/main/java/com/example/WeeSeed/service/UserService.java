@@ -31,7 +31,9 @@ public class UserService {
         return  userRepository.checkUserLogIn(userID,password);
     }
 
-
+    public  String getUserInfo(String userId){
+        return userRepository.getUserState(userId);
+    }
     public @ResponseBody ResponseEntity updateNok(String nokId){
 
         Nok nokInfo = userRepository.getNokInfo(nokId);

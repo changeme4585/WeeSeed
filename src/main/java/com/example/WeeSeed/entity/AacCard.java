@@ -44,9 +44,10 @@ public class AacCard {
     @Column
     private int clickCnt;
 
-
+    @Column
+    private String state;  //사용자 상태 구분
     @Builder
-    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share,int clickCnt){
+    public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share,int clickCnt,String state){
         this.cardName = cardName;
         this.creationTime = creationTime;
         this.color = color;
@@ -56,5 +57,6 @@ public class AacCard {
         this.voiceUrl = voiceUrl;
         this.share = share;
         this.clickCnt = clickCnt;
+        this.state = state;
     }
 }

@@ -7,6 +7,7 @@ import com.example.WeeSeed.dto.AacDto;
 import com.example.WeeSeed.entity.AacCard;
 import com.example.WeeSeed.repository.AacRepository;
 import com.example.WeeSeed.repository.ChildRepository;
+import com.example.WeeSeed.repository.UserInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -34,6 +35,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AacService {
     private final AacRepository aacRepository;
+
+    private final UserInfoRepository userInfoRepository;
     //private static final String UPLOAD_DIR = "uploads/";
 
 
@@ -72,6 +75,8 @@ public class AacService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
         String formattedDate = now.format(formatter); //현재시간을 String 형으로
 
+
+        String userState  = userInfoRepository.getUserState(constructorId);
         AacCard aacCard  = AacCard.builder().
                 cardName(cardName).
                 creationTime(formattedDate).
@@ -82,6 +87,7 @@ public class AacService {
                 voiceUrl(voiceUrl).
                 share(share).
                 clickCnt(0).
+                state(userState).
                 build();
         aacRepository.aacCardSave(aacCard);
 
@@ -125,7 +131,15 @@ public class AacService {
     }
     public List<AacDto> getAacCard(String childCode, String constructorId){
         System.out.println("childcode + constructorId " + childCode+" + "+constructorId);
-        List<AacCard> aacCardList= aacRepository.getAacCardList(childCode,constructorId);
+
+        String userState = userInfoRepository.getUserState(constructorId);
+        List<AacCard> aacCardList;
+        if (userState.equals("Nok")){
+            aacCardList= aacRepository.getNokAacCardList(childCode);
+        }else{
+           aacCardList= aacRepository.getPathAacCardList(childCode,constructorId);
+        }
+
         List<AacDto> aacDtoList = new ArrayList<>(aacCardList.size());
         for (AacCard aacCard:aacCardList){
             try {

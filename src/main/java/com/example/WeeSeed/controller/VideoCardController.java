@@ -45,9 +45,9 @@ public class VideoCardController {
         return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
     }
 
-    @GetMapping (value ="/videocard")
-    public ResponseEntity<List<VideoDto>> videocard() {
-        List<VideoDto> videoDtos = videoCardService.getVideoCard("dh4d4","QQWW11");
-        return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
-    }
+//    @GetMapping (value ="/videocard")
+//    public ResponseEntity<List<VideoDto>> videocard() {
+//        List<VideoDto> videoDtos = videoCardService.getVideoCard("dh4d4","QQWW11");
+//        return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
+//    }
 }

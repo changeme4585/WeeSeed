@@ -4,6 +4,7 @@ import com.example.WeeSeed.FileName;
 import com.example.WeeSeed.SFTPService;
 import com.example.WeeSeed.dto.VideoDto;
 import com.example.WeeSeed.entity.videoCard;
+import com.example.WeeSeed.repository.UserInfoRepository;
 import com.example.WeeSeed.repository.VideoCardRepository;
 import lombok.RequiredArgsConstructor;
 import net.bramp.ffmpeg.FFmpeg;
@@ -31,6 +32,7 @@ import java.util.List;
 public class VideoCardService {
     private final VideoCardRepository videoCardRepository;
 
+    private final UserInfoRepository userInfoRepository;
     @Value("${ffmpeg.path}")
     private String ffmpegPath;
 
@@ -104,7 +106,7 @@ public class VideoCardService {
 
 
 
-
+        String userState  = userInfoRepository.getUserState(constructorId);
         videoCard videocard = videoCard.builder().
                 cardName(cardName).
                 creationTime(formattedDate).
@@ -113,6 +115,7 @@ public class VideoCardService {
                 thumbnailUrl(thumbNailUrl).
                 userId(constructorId).
                 color(color).
+                state(userState).
                 build();
         videoCardRepository.videoCardSave(videocard);
 

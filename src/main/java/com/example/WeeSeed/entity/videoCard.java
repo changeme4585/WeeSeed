@@ -39,8 +39,11 @@ public class videoCard {
 
     @Column
     private String thumbnailUrl;
+
+    @Column
+    private String state; //사용자의 상태를 구분
     @Builder
-    public videoCard(String cardName,String creationTime,String videoUrl,String childId,String userId,String color,String thumbnailUrl){
+    public videoCard(String cardName,String creationTime,String videoUrl,String childId,String userId,String color,String thumbnailUrl,String state){
 
         this.cardName = cardName;
         this.creationTime = creationTime;
@@ -49,5 +52,6 @@ public class videoCard {
         this.userId = userId;
         this.color = color;
         this.thumbnailUrl = thumbnailUrl;
+        this.state = state;
     }
 }
