@@ -40,9 +40,8 @@ public class GrowthDiary {
     private String creationTime; //생성일자
 
 
-    @Column
-    @OneToMany(mappedBy = "charge")
-    private List<LearningDiary> learnedCard = new ArrayList<>(); //학습한 카드 id
+    @OneToMany
+    private List<LearningDiary> learnedCard ;
 
     @Builder
     public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime,List<LearningDiary> learnedCard){

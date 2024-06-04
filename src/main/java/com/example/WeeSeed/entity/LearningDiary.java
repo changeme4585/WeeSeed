@@ -45,8 +45,7 @@ public class LearningDiary {
 
 
     @ManyToOne
-    @JoinColumn(name="charge_id")
-    private GrowthDiary charge;
+    private GrowthDiary growthDiary;
     @Builder
     public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt,String imageUrl,String color,String cardName){
             this.cardId = cardId;

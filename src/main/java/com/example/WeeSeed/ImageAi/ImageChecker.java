@@ -1,5 +1,6 @@
 package com.example.WeeSeed.ImageAi;
 
+import com.example.WeeSeed.service.AacService;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.zoo.ZooModel;
 import org.deeplearning4j.zoo.model.ResNet50;
@@ -20,22 +21,25 @@ public class ImageChecker {
     }
 
     public static boolean isObjectPresent(INDArray image) throws IOException {
-        // ResNet 모델 로드 및 초기화 (사전 훈련된 가중치 사용)
-        ZooModel<ComputationGraph> model = ResNet50.builder().build();
-        ComputationGraph resNet50 = (ComputationGraph) model.initPretrained();
+        // Get the ResNet50 model and ComputationGraph from the AacService
+        ZooModel<ComputationGraph> model = AacService.model;
+        ComputationGraph resNet50 = AacService.resNet50;
 
-        // 이미지 스케일링 및 전처리
+        // Preprocess the image
         ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(0, 1);
         scaler.transform(image);
-//edge 추출 코드 추가할 것 (여기서만 작용해야함)
-        // 이미지에 대한 예측 수행
+
+        // Perform prediction on the image
         INDArray[] output = resNet50.output(image);
 
-        // 수정할 것
-        // 첫 번째 클래스의 확률이 일정 값 이상이면 객체가 존재한다고 판단
-        double objectProbabilityThreshold = 0.0010232;
+        // Set the object probability threshold
+        double objectProbabilityThreshold = 0.0010232; // 0.00102311
+
+        // Get the probability of the first class (assuming it represents the presence of an object)
         double objectProbability = output[0].getDouble(0);
         System.out.println("ObjectProbability : " + objectProbability);
+
+        // Check if the object probability is above the threshold
         return objectProbability >= objectProbabilityThreshold;
     }
 
@@ -47,7 +51,7 @@ public class ImageChecker {
 
         /* 임계값 설정 */
         double brightThreshold = 0.9;
-        double darkThreshold = 0.25;
+        double darkThreshold = 0.25;//합 //0.35
 
         boolean isTooBright = mean > brightThreshold;
         boolean isTooDark = mean < darkThreshold;

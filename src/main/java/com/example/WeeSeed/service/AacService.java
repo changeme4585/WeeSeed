@@ -10,7 +10,12 @@ import com.example.WeeSeed.entity.AacCard;
 import com.example.WeeSeed.repository.AacRepository;
 import com.example.WeeSeed.repository.ChildRepository;
 import com.example.WeeSeed.repository.UserInfoRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.bytedeco.javacv.ProCamTransformer;
+import org.deeplearning4j.nn.graph.ComputationGraph;
+import org.deeplearning4j.zoo.ZooModel;
+import org.deeplearning4j.zoo.model.ResNet50;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -26,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.nio.file.Files;
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
@@ -40,6 +46,8 @@ public class AacService {
     private static final int IMAGE_WIDTH = 28;
     private static final int IMAGE_HEIGHT = 28;
     private static final int IMAGE_CHANNELS = 3;
+    public static ZooModel<ComputationGraph> model;
+    public static ComputationGraph resNet50;
     private final AacRepository aacRepository;
 
     private final UserInfoRepository userInfoRepository;
@@ -52,6 +60,11 @@ public class AacService {
     private String raspberryPiUrl;
     private final SFTPService sftpService;
 
+    @PostConstruct
+    public void init() throws IOException {
+        model = ResNet50.builder().build();
+        resNet50 = (ComputationGraph) model.initPretrained();
+    }
 
     public void saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
                             String color, String childCode,String constructorId,int share)
@@ -72,7 +85,10 @@ public class AacService {
         }
 
 //        try {
-//            INDArray imageAi = ImageLoader.loadImage(image, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//            // MultipartFile image을 File imageFile로 변경
+//            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
+//            image.transferTo(tempFile);
+//            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
 //            boolean isSuitable = ImageChecker.isSuitable(imageAi);
 //
 //            if (!isSuitable)

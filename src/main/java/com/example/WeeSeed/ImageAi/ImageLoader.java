@@ -26,20 +26,41 @@ public class ImageLoader {
         return imageMap;
     }
 
-    public static INDArray loadImage(MultipartFile imageFile, int imageWidth, int imageHeight, int channels) throws IOException {
+    /*
+        public static INDArray loadImage(String imagePath, int imageWidth, int imageHeight, int channels) throws IOException {
         NativeImageLoader loader = new NativeImageLoader(imageHeight, imageWidth, channels);
-//        File file = new File(imageFile.getOriginalFilename());
-//        imageFile.transferTo(file);
-        INDArray arrayImg = loader.asMatrix(imageFile.getOriginalFilename());
-        if (arrayImg == null)
-            System.out.printf("---------------------arrayImg\n");
-        return resizeImage(arrayImg, channels, imageWidth, imageHeight);
+        INDArray image = loader.asMatrix(new File(imagePath));
+        return resizeImage(image, channels, imageWidth, imageHeight);
+     }
+     */
+    /* @Override
+        public INDArray asMatrix(File f) throws IOException {
+          try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(f))) {
+            return asMatrix(bis);
+          }
+        }
+        */
+
+    public static INDArray loadImage(File file, int imageWidth, int imageHeight, int channels) throws IOException {
+            NativeImageLoader loader = new NativeImageLoader(imageHeight, imageWidth, channels);
+            INDArray image = loader.asMatrix(file);
+        return resizeImage(image, channels, imageWidth, imageHeight);
     }
 
     private static INDArray resizeImage(INDArray image, int channels, int newWidth, int newHeight) {
-        INDArray resizedImage = Nd4j.createUninitialized(image.size(0), channels, newWidth, newHeight);
-        resizedImage = resizedImage.assign(image);
+        try {
+            INDArray resizedImage = Nd4j.createUninitialized(image.size(0), channels, newWidth, newHeight);
+            resizedImage = resizedImage.assign(image);
+            return resizedImage;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error during image resizing", e);
+        }
+    }
 
-        return resizedImage;
+    private static File convertToFile(MultipartFile file) throws IOException {
+        File tempFile = File.createTempFile("upload", file.getOriginalFilename());
+        file.transferTo(tempFile);
+        return tempFile;
     }
 }
