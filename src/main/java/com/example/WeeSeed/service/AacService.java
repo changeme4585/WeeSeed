@@ -2,6 +2,8 @@ package com.example.WeeSeed.service;
 
 
 import com.example.WeeSeed.FileName;
+import com.example.WeeSeed.ImageAi.ImageChecker;
+import com.example.WeeSeed.ImageAi.ImageLoader;
 import com.example.WeeSeed.SFTPService;
 import com.example.WeeSeed.dto.AacDto;
 import com.example.WeeSeed.entity.AacCard;
@@ -9,6 +11,7 @@ import com.example.WeeSeed.repository.AacRepository;
 import com.example.WeeSeed.repository.ChildRepository;
 import com.example.WeeSeed.repository.UserInfoRepository;
 import lombok.RequiredArgsConstructor;
+import org.nd4j.linalg.api.ndarray.INDArray;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
@@ -34,6 +37,9 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class AacService {
+    private static final int IMAGE_WIDTH = 28;
+    private static final int IMAGE_HEIGHT = 28;
+    private static final int IMAGE_CHANNELS = 3;
     private final AacRepository aacRepository;
 
     private final UserInfoRepository userInfoRepository;
@@ -63,6 +69,19 @@ public class AacService {
         int voiceI = voiceFileName.lastIndexOf('.');
         if (voiceI > 0) {
             voiceFormat = voiceFileName.substring(voiceI + 1);
+        }
+
+        try {
+            INDArray imageAi = ImageLoader.loadImage(image, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+            boolean isSuitable = ImageChecker.isSuitable(imageAi);
+
+            if (!isSuitable)
+            {
+                return;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
         }
 
 

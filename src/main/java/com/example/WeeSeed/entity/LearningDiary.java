@@ -1,26 +1,25 @@
 package com.example.WeeSeed.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
 @Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
 public class LearningDiary {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String ldId;
+    private  Long learnId;
+
+    @Column
+    private Long cardId;
 
     @Column
     private String cardType;
@@ -29,17 +28,18 @@ public class LearningDiary {
     private String childId;
 
     @Column
-    private Date date;
+    private String date;
 
     @Column
     private int clickCnt;
 
+    public void updateClick() {this.clickCnt+=1;}
     @Builder
-    public LearningDiary(String ldId,String cardType,String childId,Date date,int clickCnt){
-        this.ldId = ldId;
-        this.cardType = cardType;
-        this.childId = childId;
-        this.date = date;
-        this.clickCnt = clickCnt;
+    public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt){
+            this.cardId = cardId;
+            this.cardType = cardType;
+            this.childId = childId;
+            this.date = date;
+            this.clickCnt = clickCnt;
     }
 }

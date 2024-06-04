@@ -1,23 +1,20 @@
 package com.example.WeeSeed.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table
 @Getter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
+@Builder
+
 public class GrowthDiary {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String growthId;
+    private  Long growthId;
 
     @Column
     private String childCode;
@@ -28,8 +25,7 @@ public class GrowthDiary {
     @Column
     private int videoCardNum;
 
-    @Column
-    private int usageTime;
+
 
     @Column
     private  String childId;
@@ -45,12 +41,11 @@ public class GrowthDiary {
     private Long learnedCard; //학습한 카드 id
 
     @Builder
-    public GrowthDiary(String growthId,String childCode,int iCN,int vCN,int uT,String childId,String userId,String creationTime,Long learnedCard){
-        this.growthId = growthId;
+    public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime,Long learnedCard){
+
         this.childCode = childCode;
-        this.imageCardNum = iCN;
-        this.videoCardNum = vCN;
-        this.usageTime = uT;
+        this.imageCardNum = imageCardNum;
+        this.videoCardNum = videoCardNum;
         this.childId = childId;
         this.userId = userId;
         this.creationTime = creationTime;

@@ -24,6 +24,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GrowthController implements HandlerInterceptor {
     private final GrowthService growthService;
+
+    @GetMapping(value = "/test")
+    public void we(){
+        growthService.test();
+
+        System.out.println("테스트test");
+    }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         long startTime = System.currentTimeMillis();
@@ -40,11 +47,11 @@ public class GrowthController implements HandlerInterceptor {
         System.out.println("URL: " + requestUrl + " | Time Taken: " + duration + " ms");
     }
 
-    @GetMapping (value = "/growth")
-    public String aa(){
-
-        return "1";
-    }
+//    @GetMapping (value = "/growth")
+//    public String aa(){
+//
+//        return "1";
+//    }
 
     @PostMapping (value = "/clicklog")
     public void  clicklog(
@@ -56,7 +63,8 @@ public class GrowthController implements HandlerInterceptor {
 
     @GetMapping (value =  "/growth")
     public ResponseEntity<List<GrowthDto>> growth(
-            @RequestParam("userId") String userId
+            @RequestParam("userId") String userId,
+            @RequestParam("childCode") String childCode
     ){
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
