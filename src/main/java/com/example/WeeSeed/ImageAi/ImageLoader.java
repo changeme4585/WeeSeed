@@ -7,6 +7,8 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +28,12 @@ public class ImageLoader {
 
     public static INDArray loadImage(MultipartFile imageFile, int imageWidth, int imageHeight, int channels) throws IOException {
         NativeImageLoader loader = new NativeImageLoader(imageHeight, imageWidth, channels);
-        INDArray image = loader.asMatrix(imageFile);
-        return resizeImage(image, channels, imageWidth, imageHeight);
+//        File file = new File(imageFile.getOriginalFilename());
+//        imageFile.transferTo(file);
+        INDArray arrayImg = loader.asMatrix(imageFile.getOriginalFilename());
+        if (arrayImg == null)
+            System.out.printf("---------------------arrayImg\n");
+        return resizeImage(arrayImg, channels, imageWidth, imageHeight);
     }
 
     private static INDArray resizeImage(INDArray image, int channels, int newWidth, int newHeight) {

@@ -33,13 +33,29 @@ public class LearningDiary {
     @Column
     private int clickCnt;
 
+    @Column
+    private String imageUrl;
+
+    @Column
+    private String color;
+
+    @Column
+    private String cardName;
     public void updateClick() {this.clickCnt+=1;}
+
+
+    @ManyToOne
+    @JoinColumn(name="charge_id")
+    private GrowthDiary charge;
     @Builder
-    public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt){
+    public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt,String imageUrl,String color,String cardName){
             this.cardId = cardId;
             this.cardType = cardType;
             this.childId = childId;
             this.date = date;
             this.clickCnt = clickCnt;
+            this.imageUrl = imageUrl;
+            this.color = color;
+            this.cardName =  cardName ;
     }
 }

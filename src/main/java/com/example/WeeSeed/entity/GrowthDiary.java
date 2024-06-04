@@ -3,6 +3,9 @@ package com.example.WeeSeed.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 @Getter
@@ -38,10 +41,11 @@ public class GrowthDiary {
 
 
     @Column
-    private Long learnedCard; //학습한 카드 id
+    @OneToMany(mappedBy = "charge")
+    private List<LearningDiary> learnedCard = new ArrayList<>(); //학습한 카드 id
 
     @Builder
-    public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime,Long learnedCard){
+    public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime,List<LearningDiary> learnedCard){
 
         this.childCode = childCode;
         this.imageCardNum = imageCardNum;

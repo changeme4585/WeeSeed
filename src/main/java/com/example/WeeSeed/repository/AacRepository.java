@@ -23,6 +23,13 @@ public class AacRepository {
                 .getResultList();
     }
 
+    public List<AacCard> getTodayAacCardList(String creationTime,String constructorId){
+        //오늘 생성한 aac카드 목록
+        return em.createQuery("SELECT m FROM AacCard m WHERE m.creationTime =:creationTime and m.constructorId =:constructorId ", AacCard.class)
+                .setParameter("creationTime", creationTime)
+                .setParameter("constructorId",constructorId)
+                .getResultList();
+    }
     public List<AacCard> getNokAacCardList(String childId){
         return em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId", AacCard.class)
                 .setParameter("childId", childId)

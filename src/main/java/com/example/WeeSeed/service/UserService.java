@@ -34,7 +34,7 @@ public class UserService {
     public  String getUserInfo(String userId){
         return userRepository.getUserState(userId);
     }
-    public @ResponseBody ResponseEntity updateNok(String nokId){
+    public  NokDto updateNok(String nokId){
 
         Nok nokInfo = userRepository.getNokInfo(nokId);
         NokDto nokDto = NokDto.builder().
@@ -44,10 +44,11 @@ public class UserService {
                 name(nokInfo.getName()).
                 build();
 
-        return new ResponseEntity<NokDto>(nokDto, HttpStatus.OK);
+       return nokDto;
     }
 
     public Pathologist updatePath(String pathId){
-       return userRepository.getPathInfo(pathId);
+
+        return userRepository.getPathInfo(pathId);
     }
 }

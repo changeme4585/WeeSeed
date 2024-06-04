@@ -18,7 +18,12 @@ public class VideoCardRepository {
         em.persist(vc);
     }
 
-
+    public  List<videoCard> getTodayVideoCardList(String creationTime,String userId){
+        return em.createQuery("SELECT m FROM videoCard m WHERE m.creationTime =:creationTime and m.userId =:userId", videoCard.class)
+                .setParameter("creationTime", creationTime)
+                .setParameter("userId",userId)
+                .getResultList();
+    }
     public List<videoCard> getPathVideoCardList(String childId, String userId){
         return em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and (m.userId =:userId or m.state = 'Nok')", videoCard.class)
                 .setParameter("childId", childId)

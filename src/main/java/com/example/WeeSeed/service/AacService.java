@@ -71,18 +71,24 @@ public class AacService {
             voiceFormat = voiceFileName.substring(voiceI + 1);
         }
 
-        try {
-            INDArray imageAi = ImageLoader.loadImage(image, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-            boolean isSuitable = ImageChecker.isSuitable(imageAi);
-
-            if (!isSuitable)
-            {
-                return;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
-        }
+//        try {
+//            INDArray imageAi = ImageLoader.loadImage(image, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//            boolean isSuitable = ImageChecker.isSuitable(imageAi);
+//
+//            if (!isSuitable)
+//            {
+//                System.out.println("이미지 부적합");
+//
+//                //return;
+//            }
+//            else {
+//                System.out.println("이미지 적합");
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
+//        }
 
 
         FileName imageName = new FileName(image.getOriginalFilename());

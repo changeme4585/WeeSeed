@@ -1,5 +1,6 @@
 package com.example.WeeSeed.controller;
 
+import com.example.WeeSeed.dto.NokDto;
 import com.example.WeeSeed.dto.PathologistDto;
 import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.service.UserService;
@@ -16,8 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     private final UserService userService;
     @GetMapping(value="/getNokInfo/{nokId}")  //보호자 정보를 가져오는 url
-    public  @ResponseBody ResponseEntity getNokInfo(@PathVariable("nokId")String nokId){
-        return userService.updateNok(nokId);
+    public  @ResponseBody ResponseEntity<NokDto> getNokInfo(@PathVariable("nokId")String nokId){
+        NokDto nokDto = userService.updateNok(nokId);
+        return new ResponseEntity<>(nokDto,HttpStatus.OK);
     }
 
     @GetMapping(value = "/getPathInfo/{pathId}") //재활사 정보를
