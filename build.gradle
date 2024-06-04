@@ -34,12 +34,13 @@ dependencies {
 	implementation("net.bramp.ffmpeg:ffmpeg:0.7.0")  //동영상 썸네일 만드는 라이브러리
 	// DeepLearning4j Core Dependency
 	implementation "org.deeplearning4j:deeplearning4j-core:${dl4jMasterVersion}"
-	implementation "org.nd4j:nd4j-native:${dl4jMasterVersion}"
+	implementation "org.nd4j:nd4j-native-platform:${dl4jMasterVersion}" // 변경된 부분
 	implementation "org.datavec:datavec-api:${dl4jMasterVersion}"
 	implementation "org.deeplearning4j:deeplearning4j-ui:${dl4jMasterVersion}"
 	implementation "org.deeplearning4j:deeplearning4j-zoo:${dl4jMasterVersion}"
 	implementation "org.deeplearning4j:deeplearning4j-modelimport:${dl4jMasterVersion}"
 	implementation "org.datavec:datavec-data-image:${dl4jMasterVersion}"
+
 
 	implementation "org.slf4j:slf4j-api:${slf4jApiVersion}"
 	implementation "ch.qos.logback:logback-classic:${logbackClassicVersion}"
