@@ -38,7 +38,7 @@ public class GrowthService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
         String formattedDate = now.format(formatter); //현재시간을 String 형으로
         String childId = "";
-        int clickCnt = 0;
+
         String color  = "";
         String  imageUrl = "";
         String cardName  = "";
@@ -48,7 +48,7 @@ public class GrowthService {
 
             AacCard aacCard = aacRepository.getAacCard(cardId);
             childId = aacCard.getChildId();
-            clickCnt = aacCard.getClickCnt();
+
             imageUrl = aacCard.getImageUrl();
             color = aacCard.getColor();
             cardName = aacCard.getCardName();
@@ -66,7 +66,6 @@ public class GrowthService {
             videoCard videoCard = videoCardRepository.getVideoCard(cardId);
             videoCard.updateClick();
             childId = videoCard.getChildId();
-            clickCnt = videoCard.getClickCnt();
             imageUrl = videoCard.getThumbnailUrl();
             cardName = videoCard.getCardName();
             color = videoCard.getColor();
@@ -79,8 +78,6 @@ public class GrowthService {
                     build();
             growthRepository.writeGrowth(growth);
         }
-
-
 
         //중복된 데이터 들어가면 안됨
         List<LearningDiary> learningDiaries = growthRepository.getAllLearning();

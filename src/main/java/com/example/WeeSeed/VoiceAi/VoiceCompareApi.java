@@ -12,6 +12,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,15 +28,16 @@ public class VoiceCompareApi {
 
 
     public String checkSimilarity(String script, MultipartFile audioFile) throws IOException {
-//            Path path = Paths.get(audioFilePath);
-//            byte[] audioBytes;
-//            audioBytes = Files.readAllBytes(path);
-
         byte[] audio=getFileArray(audioFile);
+        AudioConvert converter=new AudioConvert(audio);
+        String filepath= converter.convertAudio();
+        Path path = Paths.get(filepath);
+        byte[] audioBytes;
+        audioBytes = Files.readAllBytes(path);
         Map<String, Object> request = new HashMap<>();
         Map<String, String> argument = new HashMap<>();
         Gson gson = new Gson();
-        String audioContents = Base64.getEncoder().encodeToString(audio);
+        String audioContents = Base64.getEncoder().encodeToString(audioBytes);
         argument.put("language_code", languageCode);
         argument.put("script", script);
         argument.put("audio", audioContents);
@@ -108,6 +112,7 @@ public class VoiceCompareApi {
     }
 
     private byte[] getFileArray(MultipartFile audio) throws IOException {
+
         ByteArrayInputStream tmp=new ByteArrayInputStream(audio.getBytes());
         AudioFormat format = new AudioFormat(44100, 16, 2, true, false);
         AudioInputStream stream=new AudioInputStream(tmp,format, audio.getBytes().length / format.getFrameSize());

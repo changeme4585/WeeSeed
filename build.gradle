@@ -40,7 +40,7 @@ dependencies {
 	implementation "org.deeplearning4j:deeplearning4j-zoo:${dl4jMasterVersion}"
 	implementation "org.deeplearning4j:deeplearning4j-modelimport:${dl4jMasterVersion}"
 	implementation "org.datavec:datavec-data-image:${dl4jMasterVersion}"
-
+	implementation 'com.arthenica:mobile-ffmpeg-full:4.4.LTS'
 
 	implementation "org.slf4j:slf4j-api:${slf4jApiVersion}"
 	implementation "ch.qos.logback:logback-classic:${logbackClassicVersion}"
