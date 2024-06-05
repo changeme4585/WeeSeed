@@ -22,6 +22,13 @@ public class UserInfoRepository {
                 .setParameter("userId", userId)
                 .setParameter("password",password).getResultList();
     }
+
+    public List<User> getUser(String userId)
+    {
+        return em.createQuery("SELECT m FROM User m WHERE m.userId =:userId", User.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
     public String getUserState(String userId){
         return em.createQuery("SELECT m FROM User m WHERE m.userId =:userId ", User.class)
                 .setParameter("userId", userId).getResultList().get(0).getState();

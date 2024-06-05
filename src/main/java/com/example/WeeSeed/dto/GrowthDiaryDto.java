@@ -24,11 +24,15 @@ public class GrowthDiaryDto {
 
     @Column
     private String creationTime;
+
+    @Column
+    private String userName;
     @Builder
-    public GrowthDiaryDto(int imageCardNum,int videoCardNum,List<LearningDto> learningDtoList,String creationTime){
+    public GrowthDiaryDto(int imageCardNum,int videoCardNum,List<LearningDto> learningDtoList,String creationTime,String userName){
         this.imageCardNum = imageCardNum;
         this.videoCardNum = videoCardNum;
         this.learningDtoList = learningDtoList;
         this.creationTime = creationTime;
+        this.userName = userName;
     }
 }

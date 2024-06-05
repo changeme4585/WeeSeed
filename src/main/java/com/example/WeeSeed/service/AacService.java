@@ -64,9 +64,10 @@ public class AacService {
 
     }
 
-    public void saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
+    public String saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
                             String color, String childCode,String constructorId,int share)
             throws IOException {
+        String SuitableState ="";
         // Create directory if not exists
         String imageFormat = "";
         String imageFileName = image.getOriginalFilename();
@@ -82,27 +83,24 @@ public class AacService {
             voiceFormat = voiceFileName.substring(voiceI + 1);
         }
 
-//        try {
-//            // MultipartFile image을 File imageFile로 변경
-//            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
-//            image.transferTo(tempFile);
-//            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-//            boolean isSuitable = ImageChecker.isSuitable(imageAi);
-//
-//            if (!isSuitable)
-//            {
-//                System.out.println("이미지 부적합");
-//
-//                //return;
-//            }
-//            else {
-//                System.out.println("이미지 적합");
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
-//        }
+        try {
+            // MultipartFile image을 File imageFile로 변경
+            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
+            image.transferTo(tempFile);
+            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+            boolean isSuitable = ImageChecker.isSuitable(imageAi);
+
+            if (!isSuitable) {
+                System.out.println("이미지 부적합");
+                SuitableState = "이미지 부적합";
+            } else {
+                System.out.println("이미지 적합");
+                SuitableState = "이미지 적합";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
+        }
 
 
         FileName imageName = new FileName(image.getOriginalFilename());
@@ -167,6 +165,7 @@ public class AacService {
         System.out.println("Card Name: " + cardName);
         System.out.println("Color: " + color);
         System.out.println("Child Code: " + childCode);
+        return SuitableState;
     }
     public List<AacDto> getAacCard(String childCode, String constructorId){
         System.out.println("childcode + constructorId " + childCode+" + "+constructorId);
@@ -185,10 +184,6 @@ public class AacService {
             try {
                 System.out.println("이미지 이름: " + aacCard.getImageUrl());
                 String imageUrl = raspberryPiUrl + aacCard.getImageUrl();
-                RestTemplate imageTemplate = new RestTemplate();
-                byte[] imageBytes = imageTemplate.getForObject(URI.create(imageUrl), byte[].class);
-//                InputStream imageInputStream = new ByteArrayInputStream(imageBytes);
-//                InputStreamResource image = new InputStreamResource(imageInputStream);
 
                 String voiceUrl = raspberryPiUrl + aacCard.getVoiceUrl();
                 System.out.println("오디오 이름: " + aacCard.getVoiceUrl());

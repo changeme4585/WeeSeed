@@ -29,23 +29,46 @@ public class StatisticService {
         String image = "";
         String color = "";
         int maxCnt  = 0 ;
+        String aacDate = "";
+        String videoDate = "";
+        if(imageCardNum != 0) {
+            aacDate = aacCardList.get(0).getCreationTime();
+        }
+        if(videoCardNum != 0) {
+            videoDate = videoCardList.get(0).getCreationTime();
+        }
 
-            while (aacIdx < aacCardList.size()){
-                if(maxCnt <aacCardList.get(aacIdx).getClickCnt()){
-                    cardName = aacCardList.get(aacIdx).getCardName();
-                    image = aacCardList.get(aacIdx).getImageUrl() ;
-                    color = aacCardList.get(aacIdx).getColor();
-                }
-                aacIdx+=1;
+        int aacDateCnt = 0;
+        int videoDateCnt = 0;
+        while (aacIdx < aacCardList.size()  && aacDateCnt < num){
+            if(maxCnt <aacCardList.get(aacIdx).getClickCnt()){
+                cardName = aacCardList.get(aacIdx).getCardName();
+                image = aacCardList.get(aacIdx).getImageUrl() ;
+                color = aacCardList.get(aacIdx).getColor();
+                maxCnt = aacCardList.get(aacIdx).getClickCnt();
             }
-            while(videoIdx < videoCardList.size()){
-                if(maxCnt < videoCardList.get(videoIdx).getClickCnt()){
-                    cardName = videoCardList.get(videoIdx).getCardName();
-                    image = videoCardList.get(videoIdx).getThumbnailUrl();
-                    color = videoCardList.get(videoIdx).getColor();
-                }
-                videoIdx+=1;
+
+
+            if(!aacDate.equals(aacCardList.get(aacIdx).getCreationTime()) ){
+                aacDate = aacCardList.get(aacIdx).getCreationTime();
+                aacDateCnt+=1;
             }
+            aacIdx+=1;
+        }
+        while(videoIdx < videoCardList.size() && videoDateCnt < num){
+            if(maxCnt < videoCardList.get(videoIdx).getClickCnt()){
+                cardName = videoCardList.get(videoIdx).getCardName();
+                image = videoCardList.get(videoIdx).getThumbnailUrl();
+                color = videoCardList.get(videoIdx).getColor();
+                maxCnt = videoCardList.get(videoIdx).getClickCnt();
+            }
+
+            if(!videoDate.equals(videoCardList.get(videoIdx).getCreationTime())){
+                videoDate = videoCardList.get(videoIdx).getCreationTime();
+                videoDateCnt+=1;
+            }
+            videoIdx+=1;
+        }
 
         StatisticDto statisticDto = StatisticDto.builder().
                 imageCardNum(imageCardNum).
@@ -60,8 +83,8 @@ public class StatisticService {
     public List<StatisticDto> getPersonalStatistic(String childId,String userId){
         List<StatisticDto> statisticDtoList = new ArrayList<>();
         statisticDtoList.add(getDateStatistic(1,childId,userId));
-//        statisticDtoList.add(getDateStatistic(7,childId,userId));
-//        statisticDtoList.add(getDateStatistic(30,childId,userId));
+        statisticDtoList.add(getDateStatistic(7,childId,userId));
+        statisticDtoList.add(getDateStatistic(30,childId,userId));
         return statisticDtoList;
     }
 }

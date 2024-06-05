@@ -3,6 +3,8 @@ package com.example.WeeSeed.service;
 import com.example.WeeSeed.ImageAi.ImageLoader;
 
 import com.example.WeeSeed.ImageAi.ImageDistanceCalculator;
+import com.example.WeeSeed.dto.ExtendedCardDto;
+import com.example.WeeSeed.entity.ExtendedCard;
 import com.example.WeeSeed.entity.AacCard;
 import com.example.WeeSeed.repository.AacRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +26,16 @@ public class AacLearningService {
     private static final int IMAGE_WIDTH = 28;
     private static final int IMAGE_HEIGHT = 28;
     private static final int IMAGE_CHANNELS = 3;
-    public void findSimilarImage (Long cardId,String childCode) throws IOException {
+    @Value("${raspberry.pi.url}")
+    private String raspberryPiUrl;
+
+    public static void downloadImage(String imageUrl, String destinationPath) throws IOException {
+        URL url = new URL(imageUrl);
+        File destinationFile = new File(destinationPath);
+        FileUtils.copyURLToFile(url, destinationFile);
+    }
+
+    public void findSimilarImage(Long cardId, String childCode) throws IOException {
         List<AacCard> aacCardList = aacRepository.getAllAacCard();
         // 이미지 파일 경로
         String label = "bag";
@@ -32,7 +43,6 @@ public class AacLearningService {
         String[] imagePaths = new String[imageCount];
         String originPath = "";
         double distance = 0;
-        System.out.println(label);
 
         for (int i = 0; i < imageCount; i++) {
             if (cardId == aacCardList.get(i).getAacCardId()) {
@@ -63,9 +73,8 @@ public class AacLearningService {
         }
         System.out.println("distance : " + distance);
         System.out.println("imagePath : " + mostSimilarImage);
+        retrieveSimilars(cardId, mostSimilarImage, 0);
 
-        // return
     }
 }
-
 

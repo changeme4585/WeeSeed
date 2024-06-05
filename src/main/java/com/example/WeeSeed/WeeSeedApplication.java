@@ -11,6 +11,7 @@ import java.io.IOException;
 @SpringBootApplication
 public class WeeSeedApplication implements CommandLineRunner {
 	public static ComputationGraph resNet50;
+	//python -m http.server 8000
 
 	public static void main(String[] args) {
 		SpringApplication.run(WeeSeedApplication.class, args);

@@ -31,14 +31,12 @@ public class AacController {
             @RequestParam("constructorId")String constructorId,
             @RequestParam("share")int share
            // @RequestParam("")
-            ) {
+            ) throws IOException {
         System.out.println("아동코드 :"+ childCode);
-        try {
-            aacService.saveAACCard(image, cardName, audio, color, childCode,constructorId,share);
-            return new ResponseEntity<>("AAC card created successfully", HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity<>("Failed to create AAC card", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+
+            String isSuitable =aacService.saveAACCard(image, cardName, audio, color, childCode,constructorId,share);
+            return new ResponseEntity<>(isSuitable, HttpStatus.OK);
+
     }
 
     @GetMapping(value = "/getaac")

@@ -84,6 +84,7 @@ public class SignInService {
                 password(encryptedPassword).
                 email(userDto.getEmail()).
                 state(userDto.getState()).
+                name(userDto.getName()).
                 build();
         repository.registUser(user);
 

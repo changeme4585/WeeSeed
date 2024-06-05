@@ -8,8 +8,10 @@ import com.example.WeeSeed.dto.LearningDto;
 import com.example.WeeSeed.entity.*;
 import com.example.WeeSeed.repository.AacRepository;
 import com.example.WeeSeed.repository.GrowthRepository;
+import com.example.WeeSeed.repository.UserInfoRepository;
 import com.example.WeeSeed.repository.VideoCardRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,8 +30,10 @@ public class GrowthService {
 
     private  final GrowthRepository growthRepository;
 
+    private  final UserInfoRepository userInfoRepository;
 
-
+    @Value("${raspberry.pi.url}")
+    private String raspberryPiUrl;
 
     public void clicklog(Long cardId,String cardType)
     {
@@ -159,7 +163,7 @@ public class GrowthService {
             List<LearningDto> learningDtoList = new ArrayList<>();
             for(LearningDiary learningDiary : learningDiaryList){
                 LearningDto learningDto  = LearningDto.builder().
-                        image(learningDiary.getImageUrl()).
+                        image(raspberryPiUrl+learningDiary.getImageUrl()).
                         cardName(learningDiary.getCardName()).
                         color(learningDiary.getColor()).
                         build();
@@ -171,10 +175,10 @@ public class GrowthService {
                     videoCardNum(growthDiary.getVideoCardNum()).
                     learningDtoList(learningDtoList).
                     creationTime(growthDiary.getCreationTime()).
+                    userName(userInfoRepository.getUser(growthDiary.getUserId()).get(0).getName()).
                     build();
             growthDiaryDtoList.add(growthDiaryDto);
         }
-
         return growthDiaryDtoList;
     }
 
