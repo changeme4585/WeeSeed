@@ -26,12 +26,12 @@ import java.util.List;
 public class GrowthController  {
     private final GrowthService growthService;
 
-    @GetMapping(value = "/test")
-    public void we(){
-        growthService.test();
-
-        System.out.println("테스트test");
-    }
+//    @GetMapping(value = "/test")
+//    public void we(){
+//        growthService.test();
+//
+//        System.out.println("테스트test");
+//    }
 
 
 //    @GetMapping (value = "/growth")

@@ -45,6 +45,5 @@ public class AacDto {
         this.constructorId = constructorId;
         this.image = image;
         this.voice = voice;
-
     }
 }

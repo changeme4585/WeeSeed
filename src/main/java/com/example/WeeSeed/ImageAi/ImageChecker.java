@@ -1,6 +1,6 @@
 package com.example.WeeSeed.ImageAi;
 
-import com.example.WeeSeed.service.AacService;
+import com.example.WeeSeed.WeeSeedApplication;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.zoo.ZooModel;
 import org.deeplearning4j.zoo.model.ResNet50;
@@ -22,8 +22,7 @@ public class ImageChecker {
 
     public static boolean isObjectPresent(INDArray image) throws IOException {
         // Get the ResNet50 model and ComputationGraph from the AacService
-        ZooModel<ComputationGraph> model = AacService.model;
-        ComputationGraph resNet50 = AacService.resNet50;
+        ComputationGraph resNet50 = WeeSeedApplication.resNet50;
 
         // Preprocess the image
         ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(0, 1);

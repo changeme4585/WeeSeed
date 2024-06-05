@@ -1,6 +1,7 @@
 package com.example.WeeSeed.ImageAi;
 
 
+import com.example.WeeSeed.service.AacService;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.inputs.InputType;
@@ -20,15 +21,11 @@ import org.nd4j.linalg.ops.transforms.Transforms;
 import java.io.IOException;
 
 public class ImageDistanceCalculator {
-
-
-
-
-
-
     public static double calculateImageDistance(INDArray image1, INDArray image2) throws IOException {
-        // ResNet50 모델 로드 및 초기화 (사전 훈련된 가중치 사용)
-        ZooModel<ComputationGraph> model = ResNet50.builder().build();
+//        ZooModel<ComputationGraph> model = AacService.model;
+//        ComputationGraph resNet50 = AacService.resNet50;
+
+        ZooModel<ComputationGraph> model =  ResNet50.builder().build();
         ComputationGraph resNet50 = (ComputationGraph) model.initPretrained();
 
         // 이미지 스케일링 및 전처리
@@ -45,4 +42,9 @@ public class ImageDistanceCalculator {
 
         return euclideanDistance;
     }
+
+
+
+
+
 }

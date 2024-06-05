@@ -141,6 +141,7 @@ public class GrowthService {
                 imageCardNum(aacCards.size()).
                 videoCardNum(videoCards.size()).
                 userId(userId).
+                creationTime(creationTime).
                 build();
         growthRepository.writeGrowthDiary(growthDiary);
     }
@@ -169,6 +170,7 @@ public class GrowthService {
                     imageCardNum(growthDiary.getImageCardNum()).
                     videoCardNum(growthDiary.getVideoCardNum()).
                     learningDtoList(learningDtoList).
+                    creationTime(growthDiary.getCreationTime()).
                     build();
             growthDiaryDtoList.add(growthDiaryDto);
         }

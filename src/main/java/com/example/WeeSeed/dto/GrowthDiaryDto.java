@@ -21,10 +21,14 @@ public class GrowthDiaryDto {
     @Column
     private List<LearningDto> learningDtoList;
 
+
+    @Column
+    private String creationTime;
     @Builder
-    public GrowthDiaryDto(int imageCardNum,int videoCardNum,List<LearningDto> learningDtoList){
+    public GrowthDiaryDto(int imageCardNum,int videoCardNum,List<LearningDto> learningDtoList,String creationTime){
         this.imageCardNum = imageCardNum;
         this.videoCardNum = videoCardNum;
         this.learningDtoList = learningDtoList;
+        this.creationTime = creationTime;
     }
 }

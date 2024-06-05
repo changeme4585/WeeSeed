@@ -46,8 +46,7 @@ public class AacService {
     private static final int IMAGE_WIDTH = 28;
     private static final int IMAGE_HEIGHT = 28;
     private static final int IMAGE_CHANNELS = 3;
-    public static ZooModel<ComputationGraph> model;
-    public static ComputationGraph resNet50;
+
     private final AacRepository aacRepository;
 
     private final UserInfoRepository userInfoRepository;
@@ -62,8 +61,7 @@ public class AacService {
 
     @PostConstruct
     public void init() throws IOException {
-        model = ResNet50.builder().build();
-        resNet50 = (ComputationGraph) model.initPretrained();
+
     }
 
     public void saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
