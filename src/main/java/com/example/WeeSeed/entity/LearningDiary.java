@@ -41,13 +41,16 @@ public class LearningDiary {
 
     @Column
     private String cardName;
+
+    @Column
+    private String userId;
+
     public void updateClick() {this.clickCnt+=1;}
 
 
-    @ManyToOne
-    private GrowthDiary growthDiary;
+
     @Builder
-    public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt,String imageUrl,String color,String cardName){
+    public LearningDiary(Long cardId,String cardType,String childId,String date,int clickCnt,String imageUrl,String color,String cardName,String userId){
             this.cardId = cardId;
             this.cardType = cardType;
             this.childId = childId;
@@ -56,5 +59,6 @@ public class LearningDiary {
             this.imageUrl = imageUrl;
             this.color = color;
             this.cardName =  cardName ;
+            this.userId = userId;
     }
 }

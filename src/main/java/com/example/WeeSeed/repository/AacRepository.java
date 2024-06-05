@@ -40,5 +40,8 @@ public class AacRepository {
                 .setParameter("aacCardId", aacCardId)
                 .getResultList().get(0);
     }
-
+    public List<AacCard> getAllAacCard() {
+        return em.createQuery("SELECT m FROM AacCard m ", AacCard.class)
+                .getResultList();
+    }
 }

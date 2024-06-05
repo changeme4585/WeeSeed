@@ -72,13 +72,15 @@ public class GrowthController  {
     }
 
     @GetMapping (value = "/growthdiary")
-    public ResponseEntity<GrowthDiaryDto> getGrowthDiary(
+    public ResponseEntity<List<GrowthDiaryDto>> getGrowthDiary(
             @RequestParam("userId") String userId,
             @RequestParam("childCode") String childCode){
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
         String creationTime = now.format(formatter); //현재시간을 String 형으로
-        GrowthDiaryDto growthDiaryDto = growthService.getGrowthDiaryDto(creationTime,userId,childCode);
+        System.out.println("userId :"+ userId);
+        System.out.println("childCode :"+ childCode);
+        List<GrowthDiaryDto> growthDiaryDto = growthService.getGrowthDiaryDto(userId,childCode);
         return new ResponseEntity<>(growthDiaryDto,HttpStatus.OK);
     }
 }

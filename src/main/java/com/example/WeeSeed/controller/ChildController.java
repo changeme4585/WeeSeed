@@ -23,7 +23,7 @@ public class ChildController {
     public ResponseEntity<List<Child>> NokChildInfo(@PathVariable("nokId")String nokId) {
         List<Child> children = childService.getChildByUser(nokId);
         System.out.println("nokId: "+ nokId);
-        System.out.println("아이 이름+ "+ children.get(0).getName());
+        //System.out.println("아이 이름+ "+ children.get(0).getName());
         return new ResponseEntity<>(children, HttpStatus.OK);
     }
 

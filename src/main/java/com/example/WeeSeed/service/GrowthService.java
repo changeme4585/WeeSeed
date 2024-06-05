@@ -38,7 +38,7 @@ public class GrowthService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
         String formattedDate = now.format(formatter); //현재시간을 String 형으로
         String childId = "";
-
+        String userId = "";
         String color  = "";
         String  imageUrl = "";
         String cardName  = "";
@@ -48,14 +48,14 @@ public class GrowthService {
 
             AacCard aacCard = aacRepository.getAacCard(cardId);
             childId = aacCard.getChildId();
-
+            userId = aacCard.getConstructorId();
             imageUrl = aacCard.getImageUrl();
             color = aacCard.getColor();
             cardName = aacCard.getCardName();
             aacCard.updateClick();
             Growth growth = Growth.builder().
                     imageUrl(aacCard.getImageUrl()).
-                    userId(aacCard.getConstructorId()).
+                    userId(userId).
                     cardName(cardName).
                     color(color).
                     creationTime(formattedDate).
@@ -69,9 +69,10 @@ public class GrowthService {
             imageUrl = videoCard.getThumbnailUrl();
             cardName = videoCard.getCardName();
             color = videoCard.getColor();
+            userId  = videoCard.getUserId();
             Growth growth = Growth.builder().
                     imageUrl(videoCard.getThumbnailUrl()).
-                    userId(videoCard.getUserId()).
+                    userId(userId).
                     cardName(cardName).
                     color(color).
                     creationTime(formattedDate).
@@ -80,15 +81,15 @@ public class GrowthService {
         }
 
         //중복된 데이터 들어가면 안됨
-        List<LearningDiary> learningDiaries = growthRepository.getAllLearning();
-        if(learningDiaries.size()!=0) {  //데이터가 존재하고
-            String learningDate = growthRepository.compareLearningDate();
-            if(!formattedDate.equals(learningDate)){ //과거의 데이터인 경우
-                for(LearningDiary learningDiary:learningDiaries){
-                    growthRepository.deleteLearning(learningDiary); //모든 데이터 초기화
-                }
-            }
-        }
+//        List<LearningDiary> learningDiaries = growthRepository.getAllLearning();
+//        if(learningDiaries.size()!=0) {  //데이터가 존재하고
+//            String learningDate = growthRepository.compareLearningDate();
+//            if(!formattedDate.equals(learningDate)){ //과거의 데이터인 경우
+//                for(LearningDiary learningDiary:learningDiaries){
+//                    growthRepository.deleteLearning(learningDiary); //모든 데이터 초기화
+//                }
+//            }
+//        }
         List<LearningDiary> getLearningCard  = growthRepository.getLearningCard(cardId,cardType);
             //List<LearningDiary> getLearningCard  = growthRepository.getLearningCard(cardId,cardType);
             if(getLearningCard.size() ==0){ //오늘 처음 학습한 카드이면 저장
@@ -101,6 +102,7 @@ public class GrowthService {
                         childId(childId).
                         imageUrl(imageUrl).  //오늘 학습한 카드 이미지
                         color(color).
+                        userId(userId).
                         build();
                 growthRepository.writeLearning(learningDiary);
             }else{ //오늘 학습한적이 있는 카드이면 클릭횟수 증가
@@ -138,41 +140,41 @@ public class GrowthService {
                 creationTime(creationTime).
                 imageCardNum(aacCards.size()).
                 videoCardNum(videoCards.size()).
-                learnedCard(learningDiaries).
                 userId(userId).
                 build();
         growthRepository.writeGrowthDiary(growthDiary);
     }
-    public GrowthDiaryDto getGrowthDiaryDto(String creationTime,String userId,String childId){
-        System.out.println("성장일지 불러오기");
-        System.out.println("creationTime :"+creationTime);
-        System.out.println("userId :"+userId);
-        System.out.println("childId :"+childId);
-        GrowthDiary growthDiary = growthRepository.getGrowthDiary(creationTime,userId,childId).get(0);
-        List<LearningDiary> learningDiaryList = growthDiary.getLearnedCard();
-        List<LearningDto> learningDtoList = new ArrayList<>();
-       for(LearningDiary learningDiary : learningDiaryList){
-           LearningDto learningDto  = LearningDto.builder().
-                   image(learningDiary.getImageUrl()).
-                   cardName(learningDiary.getCardName()).
-                   color(learningDiary.getColor()).
-                   build();
-           learningDtoList.add(learningDto);
-       }
+    public List<GrowthDiaryDto> getGrowthDiaryDto(String userId,String childId){
+//        System.out.println("성장일지 불러오기");
+//        System.out.println("creationTime :"+creationTime);
+//        System.out.println("userId :"+userId);
+//        System.out.println("childId :"+childId);
+        List<GrowthDiaryDto> growthDiaryDtoList = new ArrayList<>();
+        List<GrowthDiary> growthDiaryList = growthRepository.getGrowthDiary(userId,childId);
 
+        for(GrowthDiary growthDiary:growthDiaryList){
 
-        GrowthDiaryDto growthDiaryDto = GrowthDiaryDto.
-                builder().
-                imageCardNum(growthDiary.getImageCardNum()).
-                videoCardNum(growthDiary.getVideoCardNum()).
-                learningDtoList(learningDtoList).
-                build();
+            List<LearningDiary> learningDiaryList = growthRepository.getLearning(growthDiary.getCreationTime(),childId,userId);
+            List<LearningDto> learningDtoList = new ArrayList<>();
+            for(LearningDiary learningDiary : learningDiaryList){
+                LearningDto learningDto  = LearningDto.builder().
+                        image(learningDiary.getImageUrl()).
+                        cardName(learningDiary.getCardName()).
+                        color(learningDiary.getColor()).
+                        build();
+                learningDtoList.add(learningDto);
+            }
+            GrowthDiaryDto growthDiaryDto = GrowthDiaryDto.
+                    builder().
+                    imageCardNum(growthDiary.getImageCardNum()).
+                    videoCardNum(growthDiary.getVideoCardNum()).
+                    learningDtoList(learningDtoList).
+                    build();
+            growthDiaryDtoList.add(growthDiaryDto);
+        }
 
-        return growthDiaryDto;
+        return growthDiaryDtoList;
     }
 
-    public void test(){
-        growthRepository.getLearningCard(Long.valueOf(1),"skdfsd");
-        growthRepository.compareLearningDate();
-    }
+
 }

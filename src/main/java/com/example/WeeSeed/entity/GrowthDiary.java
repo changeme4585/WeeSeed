@@ -40,11 +40,10 @@ public class GrowthDiary {
     private String creationTime; //생성일자
 
 
-    @OneToMany
-    private List<LearningDiary> learnedCard ;
+
 
     @Builder
-    public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime,List<LearningDiary> learnedCard){
+    public GrowthDiary(String childCode,int imageCardNum,int videoCardNum,String childId,String userId,String creationTime){
 
         this.childCode = childCode;
         this.imageCardNum = imageCardNum;
@@ -52,7 +51,7 @@ public class GrowthDiary {
         this.childId = childId;
         this.userId = userId;
         this.creationTime = creationTime;
-        this.learnedCard =  learnedCard;
+
     }
 
 }

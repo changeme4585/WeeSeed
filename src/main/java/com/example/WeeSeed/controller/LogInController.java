@@ -36,11 +36,15 @@ public class LogInController {
             HttpSession session = request.getSession();
             session.setAttribute("user", dto);
             System.out.println("로그인 한 아이디 : "+dto.getId()+", 비번: "+dto.getPassword());
-            if(userInfo.get(0).getState().equals("NOK")){
+
+            System.out.println("로그인 상태"+ userInfo.get(0).getState());
+            if(userInfo.get(0).getState().equals("Nok")){
                 return new ResponseEntity<>("Nok", HttpStatus.OK);
+            }else{
+                return new ResponseEntity<>("Path", HttpStatus.OK);
             }
             // Path
-            return new ResponseEntity<>("Path", HttpStatus.OK);
+
         } else {
             return new ResponseEntity<>("failed", HttpStatus.UNAUTHORIZED);
         }

@@ -46,6 +46,11 @@ public class ImageLoader {
             INDArray image = loader.asMatrix(file);
         return resizeImage(image, channels, imageWidth, imageHeight);
     }
+    public static INDArray loadImage(String imagePath, int imageWidth, int imageHeight, int channels) throws IOException {
+        NativeImageLoader loader = new NativeImageLoader(imageHeight, imageWidth, channels);
+        INDArray image = loader.asMatrix(new File(imagePath));
+        return resizeImage(image, channels, imageWidth, imageHeight);
+    }
 
     private static INDArray resizeImage(INDArray image, int channels, int newWidth, int newHeight) {
         try {

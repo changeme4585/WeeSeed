@@ -14,9 +14,9 @@ import java.util.List;
 public class StatisticRepository {
     private final EntityManager em;
 
-    public List<AacCard> getAacCard(String childCode,String constructorId){
-        return em.createQuery("SELECT m FROM AacCard m WHERE m.childCode =:childCode and m.constructorId =:constructorId ORDER BY m.creationTime DESC", AacCard.class)
-                .setParameter("childCode", childCode)
+    public List<AacCard> getAacCard(String childId,String constructorId){
+        return em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId and m.constructorId =:constructorId ORDER BY m.creationTime DESC", AacCard.class)
+                .setParameter("childId", childId)
                 .setParameter("constructorId",constructorId)
                 .getResultList();
     }

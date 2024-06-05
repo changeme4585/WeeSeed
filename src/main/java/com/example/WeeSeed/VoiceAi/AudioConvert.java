@@ -11,14 +11,14 @@ public class AudioConvert {
 
     AudioConvert(byte[] audio) throws FileNotFoundException {
         String TmpFilePath = "/Users/joseungbin/Desktop/forTmpFIle/";
-        try(FileOutputStream fos= new FileOutputStream(TmpFilePath+"tmp.3gp")){
+        try(FileOutputStream fos= new FileOutputStream(TmpFilePath+"tmp.m4a")){
             fos.write(audio);
         }catch (IOException e){
             e.printStackTrace();
         }
         // 변환된 WAV 파일 경로
 
-        this.filepath =TmpFilePath+"tmp.3gp";
+        this.filepath =TmpFilePath+"tmp.m4a";
         this.command = new String[]{ //명령어 바꿔야함
                 path,
                 "-i",
@@ -41,7 +41,7 @@ public class AudioConvert {
 
             int exitCode = process.waitFor();
             System.out.println("complete");
-            filepath.replace(".3gp",".wav");
+            filepath.replace(".m4a",".wav");
             return filepath;
 
 

@@ -28,12 +28,12 @@ public class GrowthRepository {
     }
 
 
-    public List<GrowthDiary> getGrowthDiary(String creationTime, String userId, String childId) {
+    public List<GrowthDiary> getGrowthDiary( String userId, String childCode) {
         //
-        return em.createQuery("SELECT m FROM GrowthDiary m WHERE m.creationTime = :creationTime ", GrowthDiary.class)
-                .setParameter("creationTime", creationTime)
-//                .setParameter("userId", userId)
-//                .setParameter("childId", childId)
+        return em.createQuery("SELECT m FROM GrowthDiary m WHERE m.userId =:userId and m.childCode =:childCode", GrowthDiary.class)
+                //.setParameter("creationTime", creationTime)
+                .setParameter("userId", userId)
+                .setParameter("childCode", childCode)
                 .getResultList();
     }
 
@@ -56,9 +56,11 @@ public class GrowthRepository {
     }
     public void deleteLearning(LearningDiary learningDiary){ em.remove(learningDiary);}
 
-    public  List<LearningDiary> getTodayLearning(String childId) {
-        return em.createQuery("SELECT m FROM LearningDiary m WHERE m.childId =:childId ",LearningDiary.class).
+    public  List<LearningDiary> getLearning(String date,String childId,String userId) {
+        return em.createQuery("SELECT m FROM LearningDiary m WHERE m.childId =:childId and m.userId =: userId and m.date =:date",LearningDiary.class).
                 setParameter("childId",childId).
+                setParameter("userId",userId).
+                setParameter("date",date).
                 getResultList();
     }
 }
