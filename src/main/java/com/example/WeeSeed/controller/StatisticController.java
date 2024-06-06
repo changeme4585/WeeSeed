@@ -1,5 +1,7 @@
 package com.example.WeeSeed.controller;
 
+import com.example.WeeSeed.dto.Statistic.AgeDto;
+import com.example.WeeSeed.dto.Statistic.GenderDto;
 import com.example.WeeSeed.dto.StatisticDto;
 import com.example.WeeSeed.service.StatisticService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,4 +29,26 @@ public class StatisticController {
         List<StatisticDto> statisticDto = statisticService.getPersonalStatistic(childCode,userId);
         return new ResponseEntity<>(statisticDto, HttpStatus.OK);
     }
+
+    @GetMapping (value = "/genderstatistic")
+    public ResponseEntity<GenderDto>  genderStatistic ()
+    {
+        GenderDto genderDto =statisticService.genderStatistic();
+        return new ResponseEntity<>(genderDto,HttpStatus.OK);
+    }
+
+
+    @GetMapping (value = "/agestatistic")
+    public ResponseEntity<AgeDto> ageStatistic(){
+        AgeDto ageDto =  statisticService.
+        return new ResponseEntity<>(genderDto,HttpStatus.OK);
+    }
+
+//    @GetMapping (value =  "/agestatistic")
+//    public ResponseEntity<AgeDto> ageStatistice(){
+//        AgeDto ageDto = statisticService.
+//        return new ResponseEntity<>(AgeDto,HttpStatus.OK);
+//    }
+
+
 }

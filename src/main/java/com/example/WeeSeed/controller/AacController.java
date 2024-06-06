@@ -35,6 +35,8 @@ public class AacController {
         System.out.println("아동코드 :"+ childCode);
 
             String isSuitable =aacService.saveAACCard(image, cardName, audio, color, childCode,constructorId,share);
+        System.out.println(isSuitable);
+
             return new ResponseEntity<>(isSuitable, HttpStatus.OK);
 
     }

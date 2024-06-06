@@ -29,52 +29,68 @@ public class AacLearningService {
     @Value("${raspberry.pi.url}")
     private String raspberryPiUrl;
 
-    public static void downloadImage(String imageUrl, String destinationPath) throws IOException {
-        URL url = new URL(imageUrl);
-        File destinationFile = new File(destinationPath);
-        FileUtils.copyURLToFile(url, destinationFile);
-    }
-
-    public void findSimilarImage(Long cardId, String childCode) throws IOException {
-        List<AacCard> aacCardList = aacRepository.getAllAacCard();
-        // 이미지 파일 경로
-        String label = "bag";
-        int imageCount = aacCardList.size();
-        String[] imagePaths = new String[imageCount];
-        String originPath = "";
-        double distance = 0;
-
-        for (int i = 0; i < imageCount; i++) {
-            if (cardId == aacCardList.get(i).getAacCardId()) {
-                originPath = aacCardList.get(i).getImageUrl();
-            } else {
-                //보호자 : 자기꺼 + 아동에 연결된 모든 재활사
-                //재활사 : 자기꺼 + 아동에 연결된 보호자
-                imagePaths[i] = aacCardList.get(i).getImageUrl();
-            }
-        }
-        System.out.println("get imagePath[0] : " + imagePaths[0]);
-        // 이미지를 INDArray로 변환하여 저장
-        Map<String, INDArray> imageMap = ImageLoader.loadImageMap(imagePaths, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-
-        // 원본 이미지를 INDArray로 변환
-        INDArray originImage = ImageLoader.loadImage(originPath, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-
-        // 가장 유사한 이미지 두 개 찾기
-        String mostSimilarImage = null;
-        double lowestDistance = Double.MAX_VALUE;
-        for (String imagePath : imagePaths) {
-            INDArray image = imageMap.get(imagePath);
-            distance = ImageDistanceCalculator.calculateImageDistance(originImage, image);
-            if (distance < lowestDistance) {
-                lowestDistance = distance;
-                mostSimilarImage = imagePath;
-            }
-        }
-        System.out.println("distance : " + distance);
-        System.out.println("imagePath : " + mostSimilarImage);
-        retrieveSimilars(cardId, mostSimilarImage, 0);
-
-    }
+//    public void findSimilarImage(Long cardId, String childCode) throws IOException {
+//        List<AacCard> aacCardList = aacRepository.getNokAacCardList(childCode);
+//        // 아동에 연결된 카드
+//
+//        // 이미지 파일 경로
+//        String label = "bag";
+//        int imageCount = aacCardList.size();
+//        System.out.println(imageCount);
+//        String[] imagePaths = new String[imageCount];
+//        String originPath = "";
+//        double distance = 0;
+//
+//
+//        for (int i = 0; i < aacCardList.size(); i++) {
+//            if (cardId.equals(aacCardList.get(i).getAacCardId())) {
+//                originPath = aacCardList.get(i).getImageUrl();
+//                System.out.println(i + " : " + originPath);
+//                break;
+//            }
+//        }
+//        if (originPath == null)
+//            throw new IllegalArgumentException("카드 ID에 해당하는 이미지를 찾을 수 없습니다: " + cardId);
+//
+//        for (int i = 0; i < aacCardList.size(); i++) {
+//            if (!cardId.equals(aacCardList.get(i).getAacCardId())) {
+//                imagePaths[i] = aacCardList.get(i).getImageUrl();
+//                System.out.println(i + " " + imagePaths[i]);
+//                i++;
+//            }
+//        }
+//
+//        // 이미지를 INDArray로 변환하여 저장
+//        Map<String, INDArray> imageMap = ImageLoader.loadImageMap(imagePaths, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//
+//        // 원본 이미지를 INDArray로 변환
+////        INDArray originImage = ImageLoader.loadImage(originPath, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//
+//        // 가장 유사한 이미지 두 개 찾기
+//        String mostSimilarImage = null;
+//        double lowestDistance = Double.MAX_VALUE;
+//        for (String imagePath : imagePaths) {
+//            INDArray image = imageMap.get(imagePath);
+//            distance = ImageDistanceCalculator.calculateImageDistance(originImage, image);
+//            if (distance < lowestDistance) {
+//                lowestDistance = distance;
+//                mostSimilarImage = imagePath;
+//            }
+//        }
+//        System.out.println(mostSimilarImage);
+//        System.out.println("distance : " + distance);
+//        System.out.println("imagePath : " + mostSimilarImage);
+//        retrieveSimilars(cardId, mostSimilarImage, 0);
+//
+//    }
+//    public void retrieveSimilars(Long repId, String imgUrl, int seqNum) {
+//        ExtendedCard extendedCard = ExtendedCard.builder()
+//                .representativeCardId(repId)
+//                .imageUrl(imgUrl)
+//                .sequence(seqNum + 1)
+//                .build();
+//// AACService에서, ExtendedCardDtoList 반환 해야함
+//        extendedCardDtoRepository.save(extendedCard);
+//    }
 }
 

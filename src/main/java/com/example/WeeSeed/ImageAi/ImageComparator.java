@@ -31,7 +31,7 @@ public class ImageComparator {
        // String originPath = "src/main/resources/images/originBag2.jpg";
 
         // 이미지를 INDArray로 변환하여 저장
-        Map<String, INDArray> imageMap = ImageLoader.loadImageMap(imagePaths, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//        Map<String, INDArray> imageMap = ImageLoader.loadImageMap(imagePaths, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
 
         // 원본 이미지를 INDArray로 변환
 //        INDArray originImage = ImageLoader.loadImage(originPath, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);

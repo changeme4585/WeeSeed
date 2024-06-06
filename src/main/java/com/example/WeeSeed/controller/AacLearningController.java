@@ -19,18 +19,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AacLearningController {
     private final AacLearningService aaclearningService;
-
-    @PostMapping("/findSimilars")
-    public void findSimilarImage(@RequestParam("cardId") Long cardId, @RequestParam("childCode") String childCode
-    ) {
-        System.out.println("아동코드 :" + childCode);
-        try {
-            System.out.println("ok");
-            aaclearningService.findSimilarImage(cardId, childCode);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private final ExtendedCardRepository extendedCardRepository;
+//
+//    @PostMapping("/findSimilars")
+//    public void findSimilarImage(@RequestParam("cardId") Long cardId, @RequestParam("childCode") String childCode
+//    ) {
+//        System.out.println("아동코드 :" + childCode);
+//        try {
+//            System.out.println("ok");
+//            aaclearningService.findSimilarImage(cardId, childCode);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
 
 

@@ -21,25 +21,22 @@ public class ImageChecker {
     }
 
     public static boolean isObjectPresent(INDArray image) throws IOException {
-        // Get the ResNet50 model and ComputationGraph from the AacService
         ComputationGraph resNet50 = WeeSeedApplication.resNet50;
-
-        // Preprocess the image
         ImagePreProcessingScaler scaler = new ImagePreProcessingScaler(0, 1);
         scaler.transform(image);
 
-        // Perform prediction on the image
         INDArray[] output = resNet50.output(image);
+        INDArray probabilities = output[0];
+        int predictedClass = probabilities.argMax(1).getInt(0);
+        double highestProbability = probabilities.getDouble(predictedClass);
+        double threshold = 0.0011;
 
-        // Set the object probability threshold
-        double objectProbabilityThreshold = 0.0010232; // 0.00102311
-
-        // Get the probability of the first class (assuming it represents the presence of an object)
-        double objectProbability = output[0].getDouble(0);
-        System.out.println("ObjectProbability : " + objectProbability);
-
-        // Check if the object probability is above the threshold
-        return objectProbability >= objectProbabilityThreshold;
+        if (highestProbability > threshold)
+            System.out.println("predicted Class : " + predictedClass + ", Probability : " + highestProbability*10000);
+        else
+            System.out.println("Can't predict Class.");
+//        return objectProbability >= objectProbabilityThreshold;
+        return highestProbability >= threshold;
     }
 
     public static boolean isBrightnessOutOfRange(INDArray image) {

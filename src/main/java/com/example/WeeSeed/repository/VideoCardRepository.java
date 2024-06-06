@@ -42,4 +42,10 @@ public class VideoCardRepository {
                 .setParameter("videoCardID", videoCardID)
                 .getResultList().get(0);
     }
+
+    public  List<videoCard> getAllVideoCard(){
+        return em.createQuery("SELECT m FROM videoCard m ", videoCard.class)
+
+                .getResultList();
+    }
 }

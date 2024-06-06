@@ -83,24 +83,24 @@ public class AacService {
             voiceFormat = voiceFileName.substring(voiceI + 1);
         }
 
-        try {
-            // MultipartFile image을 File imageFile로 변경
-            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
-            image.transferTo(tempFile);
-            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-            boolean isSuitable = ImageChecker.isSuitable(imageAi);
-
-            if (!isSuitable) {
-                System.out.println("이미지 부적합");
-                SuitableState = "이미지 부적합";
-            } else {
-                System.out.println("이미지 적합");
-                SuitableState = "이미지 적합";
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
-        }
+//        try {
+//            // MultipartFile image을 File imageFile로 변경
+//            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
+//            image.transferTo(tempFile);
+//            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
+//            boolean isSuitable = ImageChecker.isSuitable(imageAi);
+//
+//            if (!isSuitable) {
+//                System.out.println("이미지 부적합");
+//                SuitableState = "not suitable";
+//            } else {
+//                System.out.println("이미지 적합");
+//                SuitableState = "suitable";
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
+//        }
 
 
         FileName imageName = new FileName(image.getOriginalFilename());

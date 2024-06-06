@@ -22,6 +22,8 @@ public class ChildDto {
     private String birth;
 
     private String name;
+
+
     @Builder
     public ChildDto(String userId, String disabilityType, int grade, String gender, String birth, String name){
 
