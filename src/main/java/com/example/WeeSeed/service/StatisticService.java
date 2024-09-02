@@ -4,6 +4,8 @@ package com.example.WeeSeed.service;
 
 import com.example.WeeSeed.dto.Statistic.AgeDto;
 import com.example.WeeSeed.dto.Statistic.GenderDto;
+import com.example.WeeSeed.dto.Statistic.GradeDto;
+import com.example.WeeSeed.dto.Statistic.TypeDto;
 import com.example.WeeSeed.dto.StatisticDto;
 import com.example.WeeSeed.entity.AacCard;
 import com.example.WeeSeed.entity.videoCard;
@@ -214,5 +216,26 @@ public class StatisticService {
         statisticDtoList.add(getDateStatistic(30,childId,userId));
         return statisticDtoList;
     }
+    public TypeDto disabilityType(){
+        TypeDto typeDto=  TypeDto.builder().
+                autism(Math.toIntExact(statisticRepository.getTypeNum("자폐성장애"))).
+                intellectual(Math.toIntExact(statisticRepository.getTypeNum("지적장애"))).
+                behavioral(Math.toIntExact(statisticRepository.getTypeNum("행동장애"))).
+                pronunciation(Math.toIntExact(statisticRepository.getTypeNum("발음장애"))).
+                brainLesion(Math.toIntExact(statisticRepository.getTypeNum("뇌병변장애"))).
+                build();
+        return  typeDto;
+    }
 
+    public GradeDto disabilityGrade(){
+        GradeDto gradeDto = GradeDto.builder().
+                oneAac(Math.toIntExact(statisticRepository.getGradeNum("1"))).
+                twoAac(Math.toIntExact(statisticRepository.getGradeNum("2"))).
+                threeAac(Math.toIntExact(statisticRepository.getGradeNum("3"))).
+                fourAac(Math.toIntExact(statisticRepository.getGradeNum("4"))).
+                fiveAac(Math.toIntExact(statisticRepository.getGradeNum("5"))).
+                sixAac(Math.toIntExact(statisticRepository.getGradeNum("6"))).
+                build();
+        return gradeDto;
+    }
 }

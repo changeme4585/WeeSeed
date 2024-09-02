@@ -46,4 +46,14 @@ public class StatisticRepository {
                 .getResultList();
     }
 
+    public Long getTypeNum(String disabilityType){
+        return  em.createQuery("SELECT COUNT(c) FROM Child c WHERE c.disabilityType =:disabilityType",Long.class).
+                setParameter("disabilityType",disabilityType).
+                getSingleResult();
+    }
+    public Long getGradeNum(String grade){
+        return  em.createQuery("SELECT COUNT(c) FROM Child c WHERE c.grade =:grade",Long.class).
+                setParameter("grade",grade).
+                getSingleResult();
+    }
 }
