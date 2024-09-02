@@ -14,12 +14,16 @@ public class DefaultImageDto {
 
 
     @Column
-    private  String cardName;
+    private  byte[] cardImage;
+
+    @Column
+    private String cardName;
 
 
     @Builder
-    public  DefaultImageDto(String constructorId,String cardName){
+    public  DefaultImageDto(String constructorId,byte[] cardImage,String cardName){
         this.constructorId = constructorId;
+        this.cardImage = cardImage;
         this.cardName = cardName;
     }
 }
