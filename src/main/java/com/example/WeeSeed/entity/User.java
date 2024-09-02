@@ -28,10 +28,12 @@ public class User {
 
     @Column
     private  String name;
-    public void updateUser(String password,String email,String name){
-        this.password = password;
+    public void updateUser(String email,String name){
         this.email = email;
         this.name = name;
+    }
+    public  void updateUserPass(String password){
+        this.password = password;
     }
     @Builder
     public User(String userId,String password,String state,String email,String name){
