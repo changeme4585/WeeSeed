@@ -25,5 +25,13 @@ public class DefaultImageController {
         return new ResponseEntity<>(defaultImageService.getUserDefaultImageList(constructorId), HttpStatus.OK);
     }
 
+    //기본 이미지를 삭제하는 로직
+    @PostMapping (value = "/delete-default-image")
+    public  void deleteDefaultImage(@RequestParam("constructorId")String constructorId,
+                                    @RequestParam("cardName") String cardName){
+
+        defaultImageService.deleteDefaultImage(constructorId,cardName);
+    }
+
 
 }

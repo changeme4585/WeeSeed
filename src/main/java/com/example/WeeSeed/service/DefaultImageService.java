@@ -42,4 +42,8 @@ public class DefaultImageService {
         }
         return defaultImageDtos;
     }
+    public  void deleteDefaultImage(String constructorId,String cardName){
+        DefaultImage defaultImage = defaultImageRepository.getDeleteCard(constructorId,cardName);
+        defaultImageRepository.deleteDefaultImage(defaultImage);
+    }
 }
