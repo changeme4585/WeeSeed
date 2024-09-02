@@ -10,6 +10,7 @@ import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
 import com.example.WeeSeed.repository.SignInRepository;
 import com.example.WeeSeed.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

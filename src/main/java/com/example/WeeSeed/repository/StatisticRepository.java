@@ -14,7 +14,12 @@ import java.util.List;
 public class StatisticRepository {
     private final EntityManager em;
 
-
+//    public List<AacCard> getAacCardGrade(String grade) {
+//        return em.createQuery("SELECT a FROM AacCard a " +
+//                        "JOIN Child c ON a.childId = c.childCode WHERE c.gender =: gender", AacCard.class)
+//                .setParameter("gender",gender)
+//                .getResultList();
+//    }
     public List<AacCard> getAaCardGender(String gender){  //성별 기준으로
        return em.createQuery("SELECT a FROM AacCard a " +
                "JOIN Child c ON a.childId = c.childCode WHERE c.gender =: gender", AacCard.class)

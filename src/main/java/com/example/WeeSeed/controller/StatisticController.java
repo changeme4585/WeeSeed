@@ -40,8 +40,8 @@ public class StatisticController {
 
     @GetMapping (value = "/agestatistic")
     public ResponseEntity<AgeDto> ageStatistic(){
-        AgeDto ageDto =  statisticService.
-        return new ResponseEntity<>(genderDto,HttpStatus.OK);
+        AgeDto ageDto =  statisticService.ageStatistic();
+        return new ResponseEntity<>(ageDto,HttpStatus.OK);
     }
 
 //    @GetMapping (value =  "/agestatistic")

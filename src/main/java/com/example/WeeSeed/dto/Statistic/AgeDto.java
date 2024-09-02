@@ -12,32 +12,32 @@ import lombok.NoArgsConstructor;
 public class AgeDto {
 
     @Column
-    private String zeroAac;
+    private int zeroAac;
 
     @Column
-    private String fiveAac;
+    private int fiveAac;
 
     @Column
-    private String tenAac;
+    private int tenAac;
 
     @Column
-    private String fifteenAac;
+    private int fifteenAac;
 
     @Column
-    private String zeroVideo;
+    private int zeroVideo;
 
     @Column
-    private String fiveVideo;
+    private int fiveVideo;
 
     @Column
-    private String tenVideo;
+    private int tenVideo;
 
     @Column
-    private String fifteenVideo;
+    private int fifteenVideo;
 
 
     @Builder
-    public AgeDto(String zeroAac,String fiveAac,String tenAac,String fifteenAac,String zeroVideo,String fiveVideo,String tenVideo,String  fifteenVideo){
+    public AgeDto(int zeroAac,int fiveAac,int tenAac,int fifteenAac,int zeroVideo,int fiveVideo,int tenVideo,int  fifteenVideo){
         this.zeroAac = zeroAac;
         this.fiveAac = fiveAac;
         this.tenAac = tenAac;

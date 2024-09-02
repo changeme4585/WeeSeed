@@ -2,7 +2,7 @@ package com.example.WeeSeed.service;
 
 
 import com.example.WeeSeed.FileName;
-import com.example.WeeSeed.ImageAi.ImageChecker;
+//import com.example.WeeSeed.ImageAi.ImageChecker;
 import com.example.WeeSeed.ImageAi.ImageLoader;
 import com.example.WeeSeed.SFTPService;
 import com.example.WeeSeed.dto.AacDto;

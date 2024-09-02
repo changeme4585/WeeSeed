@@ -8,6 +8,7 @@ import com.example.WeeSeed.dto.StatisticDto;
 import com.example.WeeSeed.entity.AacCard;
 import com.example.WeeSeed.entity.videoCard;
 import com.example.WeeSeed.repository.AacRepository;
+import com.example.WeeSeed.repository.ChildRepository;
 import com.example.WeeSeed.repository.StatisticRepository;
 import com.example.WeeSeed.repository.VideoCardRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,29 +32,89 @@ public class StatisticService {
     private  final AacRepository aacRepository;
 
     private  final VideoCardRepository videoCardRepository;
+
+    private  final ChildRepository childRepository;
     @Value("${raspberry.pi.url}")
     private String raspberryPiUrl;
-//    public AgeDto ageStatistic() {
-//
-//
-//    }
-    public int  getAge(String birth){
-        int age = 0 ;
-        return  age;
+
+
+    public  int calculateAge(String birthdayStr) {
+        // 날짜 포맷터 정의
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
+        // 문자열을 LocalDate 객체로 변환
+        LocalDate birthday = LocalDate.parse(birthdayStr, formatter);
+        // 현재 날짜 가져오기
+        LocalDate today = LocalDate.now();
+
+        // Period 객체를 사용하여 나이 계산
+        Period age = Period.between(birthday, today);
+
+        return age.getYears();
     }
+
     public AgeDto ageStatistic(){
         List<AacCard> aacCards = aacRepository.getAllAacCard() ;
         List<videoCard> videoCards = videoCardRepository.getAllVideoCard() ;
+        int zeroAac = 0;
+        int fiveAac = 0;
+        int tenAac = 0;
+        int fifteenAac = 0;
+
+        for(int i = 0 ;i<aacCards.size();i++){
+
+            String childBirth = childRepository.getChildBirth(aacCards.get(i).getChildId());
+
+
+            int childAge = calculateAge(childBirth);
+
+            if (0<=childAge && childAge<5){
+                zeroAac = childAge;
+            }
+            else if (5<=childAge && childAge<10){
+                fiveAac = childAge;
+            }
+            else if (10<=childAge && childAge<15){
+                tenAac = childAge;
+            }
+            else if (childAge>=15){
+                fifteenAac = childAge;
+            }
+        }
+        int zeroVideo = 0 ;
+        int fiveVideo = 0;
+        int tenVideo = 0 ;
+        int fifteenVideo = 0;
+        for(int i = 0 ;i<videoCards.size();i++){
+            String childBirth = childRepository.getChildBirth(videoCards.get(i).getChildId());
+
+            System.out.println("아동 출력오류: "+childBirth);
+
+            int childAge = calculateAge(childBirth);
+
+            if (0<=childAge && childAge<5){
+                zeroVideo = childAge;
+            }
+            else if (5<=childAge && childAge<10){
+                fiveVideo = childAge;
+            }
+            else if (10<=childAge && childAge<15){
+                tenVideo = childAge;
+            }
+            else if (childAge>=15){
+                fifteenVideo = childAge;
+            }
+        }
+
         AgeDto ageDto = AgeDto.
                 builder().
-                zeroAac().
-                fifteenAac().
-                tenAac().
-                fifteenAac().
-                zeroVideo().
-                fiveVideo().
-                tenVideo().
-                fifteenVideo()
+                zeroAac(zeroAac).
+                fiveAac(fiveAac).
+                tenAac(tenAac).
+                fifteenAac(fifteenAac).
+                zeroVideo(zeroVideo).
+                fiveVideo(fiveVideo).
+                tenVideo(tenVideo).
+                fifteenVideo(fifteenVideo).
                 build();
 
         return ageDto;

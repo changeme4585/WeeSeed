@@ -32,4 +32,16 @@ public class ChildRepository {
                 .setParameter("userId", userId)
                 .getResultList();
     }
+
+    public String getChildBirth(String childCode){
+        String birth="";
+    try {
+        birth =  em.createQuery("SELECT m FROM Child m WHERE m.childCode =:childCode", Child.class)
+                .setParameter("childCode", childCode)
+                .getResultList().get(0).getBirth();
+        }catch (Exception e){
+            System.out.println("아동 출력 오류: "+childCode);
+        }
+        return birth;
+    }
 }
