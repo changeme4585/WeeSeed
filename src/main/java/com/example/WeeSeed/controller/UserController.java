@@ -7,10 +7,7 @@ import com.example.WeeSeed.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,5 +37,17 @@ public class UserController {
         return new ResponseEntity<>(pathDto, HttpStatus.OK);
     }
 
+
+    //회원탈퇴 컨트롤러
+    @PostMapping (value =  "/resign-user")
+    public  void resignUser(@RequestParam("constructorId")String constructorId,
+                            @RequestParam("state")String state){ //state는 재활사인지 보호자인지(Nok 또는 Path 둘 중 하나를 전송)
+            userService.removeUser(constructorId);
+            if(state.equals("Nok")){
+                userService.removeNok(constructorId);
+            }else{
+                userService.removePathologist(constructorId);
+            }
+    }
 
 }

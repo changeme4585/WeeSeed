@@ -1,5 +1,6 @@
 package com.example.WeeSeed.repository;
 
+import com.example.WeeSeed.entity.DefaultImage;
 import com.example.WeeSeed.entity.Nok;
 import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
@@ -52,5 +53,15 @@ public class UserInfoRepository {
 //
 //            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nok not found");
 //        }
+    }
+
+    public  void  removeUser(User user){
+        em.remove(user);
+    }
+    public  void removeNok(Nok nok){
+        em.remove(nok);
+    }
+    public  void removePathologist(Pathologist pathologist){
+        em.remove(pathologist);
     }
 }

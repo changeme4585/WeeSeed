@@ -51,4 +51,17 @@ public class UserService {
 
         return userRepository.getPathInfo(pathId);
     }
+
+    public  void  removeUser(String constructorId){
+        User user = userRepository.getUser(constructorId).get(0);
+        userRepository.removeUser(user);
+    }
+    public void removeNok(String constructorId){
+        Nok  nok = userRepository.getNokInfo(constructorId);
+        userRepository.removeNok(nok);
+    }
+    public void removePathologist(String constructorId){
+        Pathologist pathologist = userRepository.getPathInfo(constructorId);
+        userRepository.removePathologist(pathologist);
+    }
 }
