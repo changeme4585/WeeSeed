@@ -70,6 +70,7 @@ public class SignInController {
         service.registUser(
                 createUserInfo(dto.getNokId(),dto.getPassword(), dto.getEmail(),"Nok" ,dto.getName())
         );
+        service.saveDefaultImage(dto.getNokId());
         return "yes";
     }
 //    @PostMapping(value = "/signIn")
@@ -109,7 +110,7 @@ public class SignInController {
         service.registUser(
                 createUserInfo(dto.getPathologistId(), dto.getPassword(),dto.getEmail(),"Pathologist",dto.getName())
         );
-
+        service.saveDefaultImage(dto.getPathologistId());
         return "yes";
     }
 }

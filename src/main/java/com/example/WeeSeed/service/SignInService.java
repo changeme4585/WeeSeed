@@ -5,6 +5,7 @@ import com.example.WeeSeed.dto.NokDto;
 import com.example.WeeSeed.dto.PathologistDto;
 import com.example.WeeSeed.dto.SignInDto;
 import com.example.WeeSeed.dto.UserDto;
+import com.example.WeeSeed.entity.DefaultImage;
 import com.example.WeeSeed.entity.Nok;
 import com.example.WeeSeed.entity.Pathologist;
 import com.example.WeeSeed.entity.User;
@@ -94,5 +95,16 @@ public class SignInService {
         System.out.println("email: "+userDto.getEmail());
         System.out.println("state: "+userDto.getState());
         return true;
+    }
+
+    public  void saveDefaultImage(String constructorId){
+        String imageNameList[] ={"dad","giveme","hello","mom","no","rice","sick","sleep","teacher","toilet","yes"};
+        for(String imageName : imageNameList){
+            DefaultImage defaultImage = DefaultImage.builder().
+                    constructorId(constructorId).
+                    cardName(imageName).
+                    build();
+            repository.saveDefaultImage(defaultImage);
+        }
     }
 }
