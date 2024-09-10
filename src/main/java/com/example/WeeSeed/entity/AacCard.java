@@ -51,6 +51,11 @@ public class AacCard {
     {
         this.clickCnt+=1;
     }
+
+    public void updateAacCard(String cardName,String imageUrl) {
+        this.cardName = cardName;
+        this.imageUrl = imageUrl;
+    }
     @Builder
     public AacCard(String cardName,String creationTime,String color,String childId,String constructorId,String imageUrl,String voiceUrl,int share,int clickCnt,String state){
         this.cardName = cardName;
