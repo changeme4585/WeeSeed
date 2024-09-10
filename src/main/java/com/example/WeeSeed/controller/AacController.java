@@ -58,4 +58,11 @@ public class AacController {
             aacService.removeAacCard(childCode,constructorId,cardName);
     }
 
+    @PostMapping (value = "/update-aac")
+    public void updateAacCard( @RequestParam("image") MultipartFile image,
+                               @RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId,
+                               @RequestParam("cardName")String cardName) {
+            aacService.updateAacCard(image,childCode,constructorId,cardName);
+    }
+
 }
