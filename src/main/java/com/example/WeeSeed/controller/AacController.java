@@ -35,7 +35,7 @@ public class AacController {
             @RequestParam("constructorId")String constructorId,
             @RequestParam("share")int share
            // @RequestParam("")
-            ) throws IOException {
+            ) throws Exception {
         System.out.println("아동코드 :"+ childCode);
 
             String isSuitable =aacService.saveAACCard(image, cardName, audio, color, childCode,constructorId,share);
@@ -59,10 +59,11 @@ public class AacController {
     }
 
     @PostMapping (value = "/update-aac")
-    public void updateAacCard( @RequestParam("image") MultipartFile image,
+    public void updateAacCard( @RequestParam("image") MultipartFile image,  //변경할 이미지
                                @RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId,
-                               @RequestParam("cardName")String cardName) {
-            aacService.updateAacCard(image,childCode,constructorId,cardName);
+                               @RequestParam("cardName")String cardName,
+                               @RequestParam("newCardName") String newCardName) throws Exception {
+            aacService.updateAacCard(image,childCode,constructorId,cardName,newCardName);
     }
 
 }
