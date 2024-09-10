@@ -6,9 +6,12 @@ import com.example.WeeSeed.FileName;
 import com.example.WeeSeed.ImageAi.ImageLoader;
 import com.example.WeeSeed.SFTPService;
 import com.example.WeeSeed.dto.AacDto;
+import com.example.WeeSeed.dto.DefaultImageDto;
 import com.example.WeeSeed.entity.AacCard;
+import com.example.WeeSeed.entity.DefaultImage;
 import com.example.WeeSeed.repository.AacRepository;
 import com.example.WeeSeed.repository.ChildRepository;
+import com.example.WeeSeed.repository.DefaultImageRepository;
 import com.example.WeeSeed.repository.UserInfoRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,7 @@ import org.bytedeco.javacv.ProCamTransformer;
 import org.deeplearning4j.nn.graph.ComputationGraph;
 import org.deeplearning4j.zoo.ZooModel;
 import org.deeplearning4j.zoo.model.ResNet50;
+import org.hibernate.boot.model.internal.XMLContext;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -50,7 +54,7 @@ public class AacService {
     private final AacRepository aacRepository;
 
     private final UserInfoRepository userInfoRepository;
-    //private static final String UPLOAD_DIR = "uploads/";
+
 
 
     @Value("${upload.directory}")
@@ -213,5 +217,10 @@ public class AacService {
         }
 
         return aacDtoList;
+    }
+
+    public  void  removeAacCard(String childCode,String constructorId,String cardName){
+            AacCard aacCard = aacRepository.findByName(childCode,constructorId,cardName);
+            aacRepository.removeAacCard(aacCard);
     }
 }
