@@ -3,6 +3,7 @@ package com.example.WeeSeed.service;
 
 import com.example.WeeSeed.FileName;
 //import com.example.WeeSeed.ImageAi.ImageChecker;
+import com.example.WeeSeed.FileUploader;
 import com.example.WeeSeed.ImageAi.ImageLoader;
 import com.example.WeeSeed.SFTPService;
 import com.example.WeeSeed.dto.AacDto;
@@ -70,47 +71,12 @@ public class AacService {
 
     public String saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
                             String color, String childCode,String constructorId,int share)
-            throws IOException {
+            throws Exception {
         String SuitableState ="";
-        // Create directory if not exists
-        String imageFormat = "";
-        String imageFileName = image.getOriginalFilename();
-        int imageI = imageFileName.lastIndexOf('.');
-        if (imageI > 0) {
-            imageFormat = imageFileName.substring(imageI + 1);
-        }
-
-        String voiceFormat = "";
-        String voiceFileName = audio.getOriginalFilename();
-        int voiceI = voiceFileName.lastIndexOf('.');
-        if (voiceI > 0) {
-            voiceFormat = voiceFileName.substring(voiceI + 1);
-        }
-
-//        try {
-//            // MultipartFile image을 File imageFile로 변경
-//            File tempFile = File.createTempFile("upload", image.getOriginalFilename());
-//            image.transferTo(tempFile);
-//            INDArray imageAi = ImageLoader.loadImage(tempFile, IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_CHANNELS);
-//            boolean isSuitable = ImageChecker.isSuitable(imageAi);
-//
-//            if (!isSuitable) {
-//                System.out.println("이미지 부적합");
-//                SuitableState = "not suitable";
-//            } else {
-//                System.out.println("이미지 적합");
-//                SuitableState = "suitable";
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println("Error loading or preprocessing the image: " + e.getMessage());
-//        }
+        FileUploader fileUploader = new FileUploader(sftpService);
 
 
-        FileName imageName = new FileName(image.getOriginalFilename());
-        FileName audioName = new FileName(audio.getOriginalFilename());
-        String imageUrl = imageName.getFileName()+"."+imageFormat;
-        String voiceUrl = audioName.getFileName()+"."+voiceFormat;
+
 
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd");
@@ -124,46 +90,20 @@ public class AacService {
                 color(color).
                 childId(childCode).
                 constructorId(constructorId).
-                imageUrl(imageUrl).
-                voiceUrl(voiceUrl).
+                imageUrl(fileUploader.uploadImage(image)).
+                voiceUrl(fileUploader.uploadVoice(audio)).
                 share(share).
                 clickCnt(0).
                 state(userState).
                 build();
         aacRepository.aacCardSave(aacCard);
 
-
-
-
-        try {
-            byte[] bytes = image.getBytes();
-            String remoteFilePath = uploadDirectory +imageUrl;
-            sftpService.uploadFile(bytes, remoteFilePath);
-
-            byte[] audioBytesBytes = audio.getBytes();
-            String audioRemoteFilePath = uploadDirectory+voiceUrl;
-            sftpService.uploadFile(audioBytesBytes, audioRemoteFilePath);
-
-           // return new ResponseEntity<>("File uploaded successfully and sent via WebSocket", HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println("라즈베리파이 + :"+e);
-            //return new ResponseEntity<>("Failed to upload file: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
         //Path uploadPath = Paths.get(UPLOAD_DIR);
 //        if (!Files.exists(uploadPath)) {
 //            Files.createDirectories(uploadPath);
 //        }
 //        // Save image file
-//        if (!image.isEmpty()) {
-//            Path imagePath = uploadPath.resolve(image.getOriginalFilename());
-//            Files.copy(image.getInputStream(), imagePath);
-//        }
-//
-//        // Save audio file
-//        if (!audio.isEmpty()) {
-//            Path audioPath = uploadPath.resolve(audio.getOriginalFilename());
-//            Files.copy(audio.getInputStream(), audioPath);
-//        }
+
 
         // Save other data (for demonstration purposes, we're printing it)
         System.out.println("Card Name: " + cardName);
@@ -222,5 +162,10 @@ public class AacService {
     public  void  removeAacCard(String childCode,String constructorId,String cardName){
             AacCard aacCard = aacRepository.findByName(childCode,constructorId,cardName);
             aacRepository.removeAacCard(aacCard);
+    }
+
+    public void updateAacCard(MultipartFile image,String childCode,String constructorId,String cardName){
+        AacCard aacCard = aacRepository.findByName(childCode,constructorId,cardName);
+        aacCard.updateAacCard(cardName,"a");
     }
 }
