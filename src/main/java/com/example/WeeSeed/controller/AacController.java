@@ -2,7 +2,9 @@ package com.example.WeeSeed.controller;
 
 
 import com.example.WeeSeed.dto.AacDto;
+import com.example.WeeSeed.dto.DefaultImageDto;
 import com.example.WeeSeed.service.AacService;
+import com.example.WeeSeed.service.DefaultImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,8 @@ import java.util.List;
 public class AacController {
 
     private final AacService  aacService;
+
+
     
     @PostMapping("/uploadaac")
     public ResponseEntity<String> createAACCard(
@@ -47,8 +51,11 @@ public class AacController {
         List<AacDto> aacDto = aacService.getAacCard(childCode,constructorId);
         return new ResponseEntity<>(aacDto, HttpStatus.OK);
     }
-
-//    @PostMapping(value = "clickaac")  //aacard를 클릭했을 때 해당
-//    public void e
+    // aac 카드를 삭제하는 컨트롤러
+    @PostMapping (value = "/delete-aac")
+    public void  removeAacCard(@RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId,
+                               @RequestParam("cardName")String cardName){
+            aacService.removeAacCard(childCode,constructorId,cardName);
+    }
 
 }
