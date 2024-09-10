@@ -19,19 +19,25 @@ public class DefaultImageController {
 
     private  final DefaultImageService defaultImageService;
 
-    //기본 이미지를 불러오는 로직
-    @GetMapping(value = "/get-default-image")
-    public ResponseEntity<List<DefaultImageDto>> getDefualtImage (@RequestParam("constructorId")String constructorId) throws IOException {
+    //기본 카드를 불러오는 컨트롤러
+    @GetMapping(value = "/get-default-card")
+    public ResponseEntity<List<DefaultImageDto>> getDefualtCard (@RequestParam("constructorId")String constructorId) throws IOException {
         return new ResponseEntity<>(defaultImageService.getUserDefaultImageList(constructorId), HttpStatus.OK);
     }
 
-    //기본 이미지를 삭제하는 로직
-    @PostMapping (value = "/delete-default-image")
-    public  void deleteDefaultImage(@RequestParam("constructorId")String constructorId,
+    //기본 카드를 삭제하는 컨트롤러
+    @PostMapping (value = "/delete-default-card")
+    public void deleteDefaultCard(@RequestParam("constructorId")String constructorId,
                                     @RequestParam("cardName") String cardName){
 
         defaultImageService.deleteDefaultImage(constructorId,cardName);
     }
+    //기본 카드의 제목을 변경하는 컨트롤러
+    @PostMapping (value = "/update-default-card")
+    public void updateDefaultCard(@RequestParam("constructorId")String constructorId,
+                                  @RequestParam("cardName") String cardName,
+                                  @RequestParam("newCardName") String newCardName ){
 
+    }
 
 }
