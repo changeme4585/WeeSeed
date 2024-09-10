@@ -164,8 +164,9 @@ public class AacService {
             aacRepository.removeAacCard(aacCard);
     }
 
-    public void updateAacCard(MultipartFile image,String childCode,String constructorId,String cardName){
+    public void updateAacCard(MultipartFile image,String childCode,String constructorId,String cardName) throws Exception {
         AacCard aacCard = aacRepository.findByName(childCode,constructorId,cardName);
-        aacCard.updateAacCard(cardName,"a");
+        FileUploader fileUploader = new FileUploader(sftpService);
+        aacCard.updateAacCard(cardName,fileUploader.uploadImage(image));
     }
 }
