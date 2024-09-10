@@ -21,7 +21,7 @@ public class DefaultImageRepository {
         em.remove(defaultImage);
     }
 
-    public DefaultImage getDeleteCard(String constructorId,String cardName) {
+    public DefaultImage findByCardName(String constructorId,String cardName) {
         return  em.createQuery("select m from DefaultImage m where m.constructorId =:constructorId and m.cardName =:cardName",DefaultImage.class).
                 setParameter("constructorId",constructorId).
                 setParameter("cardName",cardName).
