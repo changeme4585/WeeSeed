@@ -23,7 +23,9 @@ public class DefaultImage {
     @Column
     private String cardName;
 
-
+    public void updateCardName(String cardName){
+        this.cardName = cardName;
+    }
     @Builder
     public  DefaultImage(String constructorId,String cardName){
         this.constructorId = constructorId;
