@@ -44,4 +44,14 @@ public class AacRepository {
         return em.createQuery("SELECT m FROM AacCard m ", AacCard.class)
                 .getResultList();
     }
+    public AacCard findByName(String childId, String constructorId,String cardName){
+        return  em.createQuery("SELECT m FROM AacCard m WHERE m.childId =:childId and m.constructorId =:constructorId and m.cardName =:cardName", AacCard.class)
+                .setParameter("childId", childId)
+                .setParameter("constructorId",constructorId)
+                .setParameter("cardName",cardName)
+                .getSingleResult();
+    }
+    public void removeAacCard(AacCard aacCard){
+            em.remove(aacCard);
+    }
 }
