@@ -48,4 +48,14 @@ public class VideoCardRepository {
 
                 .getResultList();
     }
+    public  videoCard findByName(String childId, String userId,String cardName) {
+        return  em.createQuery("SELECT m FROM videoCard m WHERE m.childId =:childId and m.userId=:userId and m.cardName=:cardName",videoCard.class)
+                .setParameter("childId",childId)
+                .setParameter("userId",userId)
+                .setParameter("cardName",cardName)
+                .getSingleResult();
+    }
+    public void removeVideoCard(videoCard videoCard){
+        em.remove(videoCard);
+    }
 }
