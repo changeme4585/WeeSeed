@@ -40,11 +40,15 @@ public class VideoCardController {
     }
 
     @GetMapping (value ="/getvideocard")
-    public ResponseEntity<List<VideoDto>> getAacCard(@RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId) {
+    public ResponseEntity<List<VideoDto>> getVideoCard(@RequestParam("childCode") String childCode, @RequestParam("constructorId")String constructorId) {
         List<VideoDto> videoDtos = videoCardService.getVideoCard(childCode,constructorId);
         return  new ResponseEntity<>(videoDtos,HttpStatus.OK);
     }
-
+    @PostMapping (value = "/delete-video")
+    public void removeVideoCard(@RequestParam("childId") String childId, @RequestParam("userId")String userId,
+                                @RequestParam("cardName")String cardName){
+        videoCardService.removeVideoCard(childId,userId,cardName);
+    }
 //    @GetMapping (value ="/videocard")
 //    public ResponseEntity<List<VideoDto>> videocard() {
 //        List<VideoDto> videoDtos = videoCardService.getVideoCard("dh4d4","QQWW11");
