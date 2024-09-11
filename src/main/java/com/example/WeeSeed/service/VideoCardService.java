@@ -162,5 +162,8 @@ public class VideoCardService {
             }
          return videoDtoList;
     }
-
+    public void removeVideoCard(String childId,String userId,String cardName){
+        videoCard videoCard = videoCardRepository.findByName(childId,userId,cardName);
+        videoCardRepository.removeVideoCard(videoCard);
+    }
 }
