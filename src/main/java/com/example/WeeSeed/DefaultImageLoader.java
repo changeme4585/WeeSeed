@@ -11,7 +11,7 @@ public class DefaultImageLoader {
         this.imageUrl = imageUrl;
     }
     public byte[] loadImage() throws IOException {
-
+        System.out.println("기본 이미지 주소 : "+ imageUrl);
         // 리소스 파일을 불러옵니다.
         Path path = Paths.get(imageUrl);
         return Files.readAllBytes(path);

@@ -24,7 +24,8 @@ public class DefaultImageService {
     private String imagePath;
     //private static final String UPLOAD_DIR = "uploads/";
     public byte[] getImageData(String cardName) throws IOException {
-        DefaultImageLoader imageLoader = new DefaultImageLoader(imagePath+cardName+".jpg");
+        DefaultImageLoader imageLoader = new DefaultImageLoader(imagePath+cardName+".png");
+        System.out.println("이미지 데이터 : "+imageLoader.loadImage());
         return imageLoader.loadImage();
     }
 
