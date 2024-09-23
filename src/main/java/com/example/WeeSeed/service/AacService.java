@@ -64,9 +64,38 @@ public class AacService {
     private String raspberryPiUrl;
     private final SFTPService sftpService;
 
-    @PostConstruct
-    public void init() throws IOException {
-
+    public String uploadImage(MultipartFile image) {
+        String imageFormat = "";
+        String imageFileName = image.getOriginalFilename();
+        System.out.println(imageFileName);
+        int imageI = imageFileName.lastIndexOf('.');
+        if (imageI > 0) {
+            imageFormat = imageFileName.substring(imageI + 1);
+        }
+        FileName imageName = new FileName(image.getOriginalFilename());
+        String imageUrl = imageName.getFileName()+"."+imageFormat;
+        try{
+            byte[] bytes = image.getBytes();
+            String remoteFilePath = uploadDirectory +imageUrl;
+            sftpService.uploadFile(bytes, remoteFilePath);}
+        catch (Exception e) {
+            System.out.println("이미지 업로드 에러: "+ e);
+        }
+        return imageUrl;
+    }
+    public String uploadVoice(MultipartFile audio) throws Exception {
+        String voiceFormat = "";
+        String voiceFileName = audio.getOriginalFilename();
+        int voiceI = voiceFileName.lastIndexOf('.');
+        if (voiceI > 0) {
+            voiceFormat = voiceFileName.substring(voiceI + 1);
+        }
+        FileName audioName = new FileName(audio.getOriginalFilename());
+        String voiceUrl = audioName.getFileName()+"."+voiceFormat;
+        byte[] audioBytesBytes = audio.getBytes();
+        String audioRemoteFilePath = uploadDirectory+voiceUrl;
+        sftpService.uploadFile(audioBytesBytes, audioRemoteFilePath);
+        return  voiceUrl;
     }
 
     public String saveAACCard(MultipartFile image, String cardName, MultipartFile audio,
@@ -90,8 +119,8 @@ public class AacService {
                 color(color).
                 childId(childCode).
                 constructorId(constructorId).
-                imageUrl(fileUploader.uploadImage(image)).
-                voiceUrl(fileUploader.uploadVoice(audio)).
+                imageUrl(uploadImage(image)).
+                voiceUrl(uploadVoice(audio)).
                 share(share).
                 clickCnt(0).
                 state(userState).
@@ -166,7 +195,7 @@ public class AacService {
 
     public void updateAacCard(MultipartFile image,String childCode,String constructorId,String cardName,String newCardName) throws Exception {
         AacCard aacCard = aacRepository.findByName(childCode,constructorId,cardName);
-        FileUploader fileUploader = new FileUploader(sftpService);
-        aacCard.updateAacCard(newCardName,fileUploader.uploadImage(image));
+        //FileUploader fileUploader = new FileUploader(sftpService);
+        aacCard.updateAacCard(newCardName,uploadImage(image));
     }
 }
