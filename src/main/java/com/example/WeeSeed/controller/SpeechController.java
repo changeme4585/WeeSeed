@@ -17,14 +17,14 @@ public class SpeechController {
     private  final ChatGptService chatGptService;
 
     @PostMapping(value = "/save-speech-result") //발음 테스트 결과 저장
-    public void saveResult(@RequestParam("childId") String childId,
+    public void saveResult(@RequestParam("childCode") String childCode,
                            @RequestParam("cardName") String cardName,
                            @RequestParam("score") String score){
-        speechService.saveResult(childId,cardName,score);
+        speechService.saveResult(childCode,cardName,score);
     }
 
     @GetMapping (value = "/feed-back") // 지피티로부터 피드백
-    public String getFeedBack(@RequestParam("childId") String childId){
-        return chatGptService.question(childId);
+    public String getFeedBack(@RequestParam("childCode") String childCode){
+        return chatGptService.question(childCode);
     }
 }
