@@ -39,7 +39,7 @@ public class ChatGptService {
         }
         return "w";
     }
-    public String recommend(String prompt){
+    public String question(String prompt){
 
                 ;
         String chatAnswer  =chat(prompt);
