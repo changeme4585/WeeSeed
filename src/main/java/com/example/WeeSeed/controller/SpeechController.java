@@ -24,7 +24,7 @@ public class SpeechController {
     }
 
     @GetMapping (value = "/feed-back") // 지피티로부터 피드백
-    public String getFeedback(@RequestParam("childId") String childId){
-        return chatGptService.question("");
+    public String getFeedBack(@RequestParam("childId") String childId){
+        return chatGptService.question(childId);
     }
 }
