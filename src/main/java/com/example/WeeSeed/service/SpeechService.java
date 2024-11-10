@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SpeechService {
     private final SpeechRepository speechRepository;
-    public void saveResult(String childId,String cardName,String score){
+    public void saveResult(String childCode,String cardName,String score){
         SpeechAccuracy speechAccuracy  = SpeechAccuracy.builder().
-                childId(childId).
+                childId(childCode).
                 cardName(cardName).
                 score(score).
                 build();
