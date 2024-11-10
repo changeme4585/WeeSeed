@@ -14,6 +14,7 @@ public class ChatGptController {
 
     @GetMapping (value = "/gpt_test")
     public  String gptTest(@RequestParam("gpt") String gpt){
+        //
         return chatGptService.question(gpt);
     }
 }
