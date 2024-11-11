@@ -16,9 +16,9 @@ public class SpeechRepository {
     public void saveResult(SpeechAccuracy speechAccuracy){
         em.persist(speechAccuracy);
     }
-    public List<SpeechAccuracy> getSpeechList(String childCode){
-        return  em.createQuery("select m from SpeechAccuracy m where m.childCode =:childCode").
-                setParameter("childCode",childCode).
+    public List<SpeechAccuracy> getSpeechList(String childId){
+        return  em.createQuery("select m from SpeechAccuracy m where m.childId =:childId").
+                setParameter("childId",childId).
                 getResultList();
     }
 }
