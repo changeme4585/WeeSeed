@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".card.StudyResultFragment"
+
+    android:clickable="true">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="50dp"
+        app:cardBackgroundColor="@color/sys_50"
+
+        android:layout_gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:layout_gravity="center"
+            android:gravity="center"
+
+            android:layout_marginVertical="40dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_res_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="잘했어요!"
+
+                android:fontFamily="@font/right_life_140"
+                android:textSize="32sp"
+                android:textColor="@color/font_black"
+
+                />
+            <ImageView
+                android:id="@+id/iv_res_bear"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:visibility="visible"
+
+                android:layout_marginVertical="40dp"
+
+                android:src="@drawable/bear_great"
+                />
+            <TextView
+                android:id="@+id/tv_res_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="잘했어요! \n정말 멋진 일을 했어요!"
+
+                android:fontFamily="@font/right_life_140"
+                android:textSize="16sp"
+                android:lineSpacingExtra="10dp"
+                android:gravity="center"
+                android:textColor="@color/font_black"
+                />
+
+            <Button
+                android:id="@+id/btn_res_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="또 배우기"
+
+                android:layout_marginTop="20dp"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="30dp"
+
+                android:fontFamily="@font/right_life_140"
+                android:textSize="16sp"
+                android:textColor="@color/font_white"
+                android:backgroundTint="@color/sys_700"
+
+                android:elevation="5dp"
+                />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.TempFragment"
+    android:background="@color/app_bar_text"
+    android:clickable="true"
+    android:fitsSystemWindows="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="경계 목록"
+                android:textColor="@color/app_bar_text"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/switch_ba_block"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:thumb="@drawable/switch_thumb"
+                android:layout_gravity="end|center"
+                android:layout_marginEnd="10dp"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="52dp"
+                android:text="학습에 방해가 되는 어플리케이션을 경계 설정하여\n아이의 집중력을 향상시키세요.\n설정한 어플리케이션이 실행되면 알림이 울립니다."
+                />
+
+            <TextView
+                android:id="@+id/btn_ba_init"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="초기화"
+                android:layout_gravity="end"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:textColor="@color/font_black"
+                />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_blockApps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_marginBottom="48dp"
+            />
+
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_ba_go"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="저장하기"
+        android:layout_gravity="end|bottom"
+        android:background="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="17sp"
+        />
+</FrameLayout>

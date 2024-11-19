@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".card.CreateAacCardFragment"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:id="@+id/cr_aac_titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/cr_aac_btn_back_titleBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:background="@android:color/transparent"
+                />
+            <TextView
+                android:id="@+id/cr_aac_tv_name_titleBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="말해봐요 카드 생성"
+                android:textColor="@color/app_bar_text"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:fillViewport="true"
+            android:scrollbars="none"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/iv_cr_aac_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/test_img"
+                    android:visibility="gone"
+
+                    android:maxHeight="500dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="30dp"
+                    android:gravity="center_horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+                        <Button
+                            android:id="@+id/btn_cr_aac_img"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:textColor="@color/btn_line"
+                            android:text="사진 추가"
+                            android:fontFamily="@font/pretendard_bold"
+                            android:backgroundTint="@color/btn_back"
+                            android:textSize="17dp"
+                            android:layout_marginTop="30dp"
+
+                            android:visibility="gone"
+                            />
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp"
+                            >
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+
+                                android:layout_gravity="start"
+                                >
+                                <com.airbnb.lottie.LottieAnimationView
+                                    android:id="@+id/lt_imageAI_anime"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:scaleType="fitCenter"
+
+                                    android:visibility="invisible"
+
+                                    android:gravity="center"
+                                    android:layout_gravity="center"
+
+                                    app:lottie_autoPlay="true"
+                                    app:lottie_loop="true"
+                                    app:lottie_rawRes="@raw/lottie_loading_dots_small"
+                                    />
+                                <TextView
+                                    android:id="@+id/tv_imageAI_word"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="신발"
+                                    android:gravity="center_vertical"
+
+                                    android:visibility="gone"
+
+                                    android:paddingStart="5dp"
+
+                                    android:textColor="@color/font_black"
+                                    android:fontFamily="@font/pretendard_bold"
+
+                                    />
+                                <TextView
+                                    android:id="@+id/tv_imageAI_desc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text=" "
+                                    android:gravity="center_vertical"
+
+                                    android:paddingStart="5dp"
+
+                                    android:textColor="@color/font_black"
+                                    android:fontFamily="@font/pretendard_regular"
+
+                                    />
+
+                            </LinearLayout>
+                            <TextView
+                                android:id="@+id/btn_imageAI_apply"
+                                android:layout_width="35dp"
+                                android:layout_height="25dp"
+                                android:text="확인"
+                                android:layout_gravity="end|center_vertical"
+                                android:gravity="center"
+                                android:paddingHorizontal="5dp"
+
+                                android:visibility="invisible"
+
+                                android:layout_marginEnd="5dp"
+                                android:background="@drawable/round_border_for_select_child"
+                                android:backgroundTint="@color/brand_mandarin"
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:textSize="12sp"
+
+                                />
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_cr_aac_select_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="선택한 이미지경로"
+                        android:visibility="gone"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        >
+                        <Button
+                            android:id="@+id/btn_cr_aac_start_record"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:text="녹음 시작"
+                            android:backgroundTint="@color/sys_500"
+                            />
+                        <Button
+                            android:id="@+id/btn_cr_aac_stop_record"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:text="녹음 중지"
+                            android:backgroundTint="@color/sys_500"
+                            />
+                        <ImageButton
+                            android:id="@+id/btn_cr_aac_play_record"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:src="@drawable/icon_play"
+                            android:backgroundTint="@android:color/transparent"
+                            />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어떤 것을 말할까요?"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+
+                        />
+                    <EditText
+                        android:id="@+id/cr_aac_et_cardName"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:paddingStart="20dp"
+                        android:hint="카드의 이름을 입력해주세요"
+                        android:textSize="15dp"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:background="@drawable/round_border_for_edit_text"
+                        android:inputType="text"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="라벨링"
+                            android:textColor="@color/font_black"
+                            android:fontFamily="@font/pretendard_regular"
+                            />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            >
+                            <Spinner
+                                android:id="@+id/spinner_cr_aac_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:spinnerMode="dropdown"
+                                android:background="@drawable/round_border_for_edit_text"
+                                android:padding="10dp"
+                                android:textColor="@color/font_black"
+                                android:dropDownVerticalOffset="60dp"
+                                />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/icon_s_down"
+
+                                android:layout_gravity="end"
+                                android:layout_marginEnd="30dp"
+                                />
+                        </FrameLayout>
+
+                        <!--
+                        android:entries="@array/card_label"
+                        -->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="음성"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:textColor="@color/font_black"
+                            android:fontFamily="@font/pretendard_regular"
+
+                            />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@drawable/round_border_for_edit_text"
+                            android:layout_marginBottom="20dp"
+                            android:paddingHorizontal="20dp"
+                            >
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                >
+                                <ImageView
+                                    android:id="@+id/iv_record_icon"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/icon_sound"
+                                    android:layout_marginEnd="5dp"
+                                    />
+                                <TextView
+                                    android:id="@+id/tv_record_msg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="음성을 녹음해주세요"
+                                    android:textSize="15dp"
+                                    android:gravity="center_vertical"
+                                    android:fontFamily="@font/pretendard_regular"
+                                    />
+                            </LinearLayout>
+                            <ImageButton
+                                android:id="@+id/btn_cr_aac_record"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/icon_s_mike"
+                                android:backgroundTint="@android:color/transparent"
+                                android:layout_gravity="end|center_vertical"
+                                />
+                        </FrameLayout>
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="음성 대신 TTS를 사용하시겠습니까?"
+                                android:textColor="@color/font_black"
+                                android:fontFamily="@font/pretendard_regular"
+
+                                android:layout_gravity="start|center_vertical"
+                                />
+                            <CheckBox
+                                android:id="@+id/check_cre_aac_tts"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_gravity="end|center_vertical"
+                                />
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="80dp"
+                            android:visibility="visible"
+                            >
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="카드 공유"
+                                android:textColor="@color/font_black"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:layout_gravity="center_vertical"
+                                />
+
+                            <Switch
+                                android:id="@+id/switch_cre_aac_share"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:checked="true"
+                                android:thumb="@drawable/switch_thumb"
+                                android:track="@drawable/switch_track" />
+
+                        </FrameLayout>
+
+                        <!--TEMP: 이미지 적절성 테스트용-->
+                        <Button
+                            android:id="@+id/btn_test_aac_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+
+                            android:text="테스트"
+                            android:fontFamily="@font/pretendard_bold"
+                            android:backgroundTint="@color/btn_back"
+                            android:textSize="10dp"
+                            android:layout_marginBottom="80dp"
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cr_aac_btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="카드 생성하기"
+
+        android:fontFamily="@font/pretendard_bold"
+        android:backgroundTint="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:textSize="17dp"
+
+        android:layout_gravity="end|bottom"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="10dp"
+        />
+
+    <FrameLayout
+        android:id="@+id/layout_ac_isOK"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+
+        android:clickable="true"
+        android:visibility="gone"
+
+        >
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            android:background="@drawable/round_border_for_select_child"
+            android:backgroundTint="@color/sys_50"
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:elevation="10dp"
+            android:clickable="true"
+            >
+
+
+            <TextView
+                android:id="@+id/title_ac_isOK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="24dp"
+                android:text="사진 추가"
+                android:textColor="@color/font_black"
+                />
+
+            <TextView
+                android:id="@+id/desc_ac_isOK"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/pretendard_regular"
+                android:text="사진을 어디서 가져올까요?"
+                android:textSize="15dp"
+                android:textColor="@color/font_darkgray"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+
+                >
+
+                <android.widget.Button
+                    android:id="@+id/btn_cra_left"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="갤러리"
+                    android:textSize="16dp"
+                    android:textColor="@color/font_black"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:background="@drawable/round_border_for_select_child"
+                    android:backgroundTint="@color/font_white"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:elevation="10dp"
+                    />
+
+                <android.widget.Button
+                    android:id="@+id/btn_cra_right"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:text="카메라"
+                    android:textSize="16dp"
+                    android:textColor="@color/font_white"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:background="@drawable/round_border_for_select_child"
+                    android:backgroundTint="@color/font_black"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginEnd="5dp"
+
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,59 @@
+<!-- res/layout/popup_layout.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+
+    android:background="@drawable/popup_background_gradient"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/round_border_for_select_child"
+        android:backgroundTint="@color/ic_50"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:elevation="5dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🙅 앗! 안돼요! 🙅"
+            android:textSize="24sp"
+            android:padding="8dp"
+            android:fontFamily="@font/right_life_140"
+            android:textColor="@color/brand_red"
+            android:layout_marginBottom="10dp"
+            />
+
+        <TextView
+            android:id="@+id/popup_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="지금은 공부에 집중하세요."
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:fontFamily="@font/pretendard_regular"
+            />
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="네!"
+            android:fontFamily="@font/right_life_140"
+            android:textColor="@color/btn_line"
+
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_border_for_select_child"
+            android:backgroundTint="@color/btn_back"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

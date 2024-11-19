@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_vcl_cardView_web"
+    android:layout_width="160dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/btn_back"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="20dp"
+    android:layout_gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/iv_vcl_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_new_add_card"
+        android:layout_gravity="center"
+        app:tint="@color/sys_600"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/iv_vcl_img"
+        android:layout_width="160dp"
+        android:layout_height="268dp"
+        android:scaleType="centerCrop"
+        android:background="@color/loading_item"
+        android:clipToOutline="false"
+
+        android:scrollbars="none"
+        android:clickable="false"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/tv_vcl_name"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:text="비디오카드명"
+
+        android:maxLength="8"
+        android:textSize="18dp"
+        android:fontFamily="@font/pretendard_bold"
+        android:textColor="@color/font_white"
+        android:gravity="center"
+        android:layout_gravity="bottom"
+        android:clickable="false"
+        />
+
+    <View
+        android:id="@+id/v_vcl_select"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/cardview_outline"
+        android:background="#52000000"
+        android:visibility="invisible"
+        android:clickable="false"
+        />
+    <CheckBox
+        android:id="@+id/cb_vcl_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:checked="false"
+        android:visibility="invisible"
+        />
+</androidx.cardview.widget.CardView>

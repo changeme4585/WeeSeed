@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".user.FindIdFragment"
+
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:clickable="false"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:background="@android:color/transparent"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="아이디 찾기"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/app_bar_text"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!--입력칸들-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+
+                android:text="회원 가입 시 등록한 이름과 이메일을 작성해주세요."
+                android:textColor="@color/font_black"
+                android:fontFamily="@font/pretendard_regular"
+                android:textSize="15dp" />
+
+            <!--이메일-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_border"
+                    android:digits="@string/emailDigit"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:hint="이름"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="@color/font_black"
+                    android:textColorHint="@color/font_black"
+                    android:textSize="15dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_desc_find_ID_forId"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="right"
+                    android:text=" "
+                    android:textColor="@color/brand_red" />
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edit_text_border"
+                    android:digits="@string/emailDigit"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:hint="이메일"
+                    android:imeOptions="actionDone"
+                    android:inputType="textEmailAddress"
+
+                    android:maxLength="50"
+                    android:maxLines="1"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="@color/font_black"
+                    android:textColorHint="@color/font_black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_desc_find_ID"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="right"
+                    android:text=" "
+                    android:textColor="@color/brand_red" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_findid_result"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/ic_50"
+                android:layout_gravity="center"
+
+                android:padding="20dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="50dp"
+
+                android:visibility="gone"
+                >
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:paddingVertical="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:text="회원님의 아이디는 "
+                        android:textColor="@color/font_darkgray"
+                        />
+                    <TextView
+                        android:id="@+id/tv_resultFindID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="50dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/pretendard_bold"
+                        android:textColor="@color/font_darkgray"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:text=" 입니다."
+                        android:textColor="@color/font_darkgray"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+
+                    >
+
+                    <android.widget.Button
+                        android:id="@+id/btn_copy"
+                        android:layout_width="110dp"
+                        android:layout_height="50dp"
+                        android:text="클립보드에 복사"
+                        android:fontFamily="@font/pretendard_bold"
+
+                        android:textColor="@color/font_white"
+                        android:background="@color/ic_600"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_findid_go"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="확인"
+        android:layout_gravity="end|bottom"
+        android:background="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="17sp"
+        />
+</FrameLayout>

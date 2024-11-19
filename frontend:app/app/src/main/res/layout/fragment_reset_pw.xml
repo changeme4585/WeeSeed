@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".user.ResetPwFragment"
+
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:clickable="false"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="비밀번호 변경"
+                android:textColor="@color/app_bar_text"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </FrameLayout>
+        <!--입력칸들-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="50dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="아이디와 새로운 비밀번호를 입력해주세요"
+                android:lineSpacingExtra="4dp"
+
+                android:fontFamily="@font/pretendard_regular"
+                android:textColor="@color/font_black"
+                android:textSize="15dp"
+                />
+
+            <!--이메일-->
+            <LinearLayout
+                android:id="@+id/layout_findid_input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <EditText
+                    android:id="@+id/et_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="아이디"
+                    android:background="@drawable/edit_text_border"
+
+                    android:textColor="@color/font_black"
+                    android:textColorHint="@color/font_black"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textSize="15dp"
+
+                    android:paddingHorizontal="20dp"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:maxLength="10"
+                    android:imeOptions="actionDone"
+                    />
+                <TextView
+                    android:id="@+id/tv_desc_resetPw_Id"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="right"
+                    android:text=" "
+                    android:textColor="@color/brand_red" />
+                <EditText
+                    android:id="@+id/et_newPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="새로운 비밀번호"
+                    android:background="@drawable/edit_text_border"
+                    android:textColor="@color/font_black"
+                    android:textColorHint="@color/font_black"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textSize="15dp"
+
+                    android:paddingHorizontal="20dp"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:maxLength="50"
+                    android:digits="@string/emailDigit"
+                    android:imeOptions="actionDone"
+                    />
+                <TextView
+                    android:id="@+id/tv_desc_resetPw_newPw"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text=" "
+                    android:gravity="right"
+                    android:textColor="@color/brand_red"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_resetpw_go"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="확인"
+        android:layout_gravity="end|bottom"
+        android:background="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="17sp"
+        />
+
+</FrameLayout>

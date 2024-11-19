@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="disability_type">
+
+        <item> 장애 유형 </item>
+        <item> 지적장애 </item>
+        <item> 자폐성장애 </item>
+        <item> 뇌병변장애 </item>
+        <item> 발음장애 </item>
+        <item> 행동장애 </item>
+        <item> 중도중복장애 </item>
+        <item> 기타 </item>
+    </string-array>
+
+    <string-array name="disability_grade">
+
+        <item> 장애 등급 </item>
+        <item> 1 </item>
+        <item> 2 </item>
+        <item> 3 </item>
+        <item> 4 </item>
+        <item> 5 </item>
+        <item> 6 </item>
+    </string-array>
+
+    <string-array name="card_label">
+
+        <item> 라벨을 선택하세요 </item>
+        <item> 검정 </item>
+        <item> 빨강 </item>
+        <item> 주황 </item>
+        <item> 노랑 </item>
+        <item> 초록 </item>
+        <item> 파랑 </item>
+        <item> 남색 </item>
+        <item> 보라 </item>
+    </string-array>
+
+    <string-array name="list_order">
+
+        <item> 기본순 </item>
+        <item> 최신순 </item>
+    </string-array>
+
+</resources>

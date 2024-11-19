@@ -1,0 +1,34 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="52dp"
+    android:height="52dp"
+    android:viewportWidth="52"
+    android:viewportHeight="52">
+  <path
+      android:pathData="M26,26m-26,0a26,26 0,1 1,52 0a26,26 0,1 1,-52 0"
+      android:fillColor="@color/btn_back">
+  </path>
+  <path
+      android:pathData="M32,17C32,13.686 29.314,11 26,11C22.686,11 20,13.686 20,17V26C20,29.314 22.686,32 26,32C29.314,32 32,29.314 32,26V17Z"
+      android:fillColor="@color/btn_line"/>
+  <path
+      android:pathData="M32,17C32,13.686 29.314,11 26,11C22.686,11 20,13.686 20,17V26C20,29.314 22.686,32 26,32C29.314,32 32,29.314 32,26V17Z"
+      android:fillColor="@color/btn_line"/>
+  <path
+      android:pathData="M20,41H32"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="@color/btn_line"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M35,26C35,30.97 30.97,35 26,35C21.03,35 17,30.97 17,26"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="@color/btn_line"
+      android:strokeLineCap="round"/>
+  <path
+      android:pathData="M26,35V41"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="@color/btn_line"
+      android:strokeLineCap="round"/>
+</vector>

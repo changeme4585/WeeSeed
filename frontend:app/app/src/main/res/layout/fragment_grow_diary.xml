@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".growthDiary.GrowthDiaryFragment"
+    android:fitsSystemWindows="true"
+    >
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:background="@android:color/transparent"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성장일지"
+                android:textColor="@color/app_bar_text"
+                android:textSize="20sp"
+                android:fontFamily="@font/pretendard_bold"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="48dp"
+            >
+
+            <!--spinner-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="아동의 성장일지를 모아볼 수 있어요."
+                    android:textColor="@color/font_black"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:layout_marginTop="20dp"
+                    />
+                <Spinner
+                    android:id="@+id/spinner_gr_maker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/spinner_bg_info"
+                    android:padding="10dp"
+                    android:textColor="@color/font_black"
+                    android:entries="@array/list_order"
+                    />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_gr_select_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <android.widget.Button
+        android:id="@+id/btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="성장일지 작성하기"
+        android:layout_gravity="end|bottom"
+        android:background="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="17sp"
+        />
+</FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/dialog_for_preCreate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dimmed2"
+        android:visibility="gone"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="70dp"
+            android:background="@color/ic_50"
+            >
+            <FrameLayout
+                android:id="@+id/layout_for_growthElement"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <android.widget.Button
+                android:id="@+id/btn_dialog_right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                android:background="@color/btn_back"
+                android:textColor="@color/btn_line"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="17sp"
+                android:layout_gravity="bottom"
+
+                />
+        </FrameLayout>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/layout_for_growthViewer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</FrameLayout>

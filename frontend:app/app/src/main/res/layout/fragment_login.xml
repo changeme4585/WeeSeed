@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".user.LoginFragment"
+    android:background="@color/background_color"
+    android:clickable="false"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:fillViewport="true"
+        android:scrollbars="none"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+
+        android:layout_marginHorizontal="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_baby_face"
+            android:layout_width="wrap_content"
+            android:layout_height="77dp"
+            android:src="@drawable/logo_only_face"
+            android:scaleType="fitStart"
+            android:clickable="true"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="아주 작은 씨앗의 성장\nWee-Seed, 위시드입니다."
+            android:fontFamily="@font/pretendard_bold"
+            android:textSize="22dp"
+            android:lineSpacingExtra="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="서비스 이용을 위해 로그인해주세요."
+            android:textSize="15dp"
+            android:textColor="@color/font_lightgray"
+            android:fontFamily="@font/pretendard_regular"
+
+            android:layout_marginBottom="20dp"
+            />
+
+
+        <!--여기부터 입력칸들-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <LinearLayout
+                android:id="@+id/layout_input_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <EditText
+                    android:id="@+id/lg_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="아이디"
+                    android:background="@drawable/edit_text_border_transparent"
+                    android:textColor="@color/font_black"
+                    android:textColorHint="@color/font_black"
+                    android:fontFamily="@font/right_life_140"
+                    android:textSize="15dp"
+
+
+                    android:paddingHorizontal="20dp"
+
+                    android:maxLines="1"
+                    android:maxLength="20"
+                    android:inputType="text"
+                    android:digits="@string/idDigit"
+                    android:privateImeOptions="defaultInputmode=english"
+                    android:imeOptions="actionNext"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:passwordToggleEnabled="true"
+                    android:layout_marginTop="10dp"
+                    app:passwordToggleDrawable="@drawable/password_visiblity"
+                    app:hintEnabled="false"
+                    >
+                    <!--                    android:text="@string/ID"-->
+                    <!--                        android:text="@string/PW"-->
+                    <EditText
+                        android:id="@+id/lg_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="비밀번호"
+                        android:background="@drawable/edit_text_border_transparent"
+
+
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/right_life_140"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:maxLength="30"
+                        android:digits="@string/passwordDigit"
+                        android:privateImeOptions="defaultInputmode=english"
+
+                        android:imeOptions="actionDone"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <CheckBox
+                    android:id="@+id/checkBox_lg_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="로그인 정보 저장"
+                    android:textColorHint="@color/font_black"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textSize="15dp"
+                    android:textColor="@color/font_darkgray"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/btn_findID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:fontFamily="@font/pretendard_bold"
+
+                    android:text="아이디 찾기"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:fontFamily="@font/pretendard_bold"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:text="|"
+                    />
+                <TextView
+                    android:id="@+id/btn_resetPW"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:fontFamily="@font/pretendard_bold"
+
+                    android:text="비밀번호 찾기"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:fontFamily="@font/pretendard_bold"
+
+                    android:layout_marginHorizontal="20dp"
+                    android:text="|"
+                    />
+                <TextView
+                    android:id="@+id/btn_signin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:fontFamily="@font/pretendard_bold"
+
+                    android:text="회원가입"
+                    />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="로그인"
+
+                android:textColor="@color/font_black"
+                android:textColorHint="@color/font_black"
+                android:fontFamily="@font/right_life_140"
+                android:textSize="18dp"
+                android:gravity="center"
+
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/hidden_svaddr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+
+                android:visibility="gone"
+
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <EditText
+                        android:id="@+id/h_et_svip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serverURL"
+                        android:hint="IP addr"
+                        android:layout_weight="3"
+                        />
+                    <EditText
+                        android:id="@+id/h_et_svport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serverPORT"
+                        android:hint="port"
+                        android:layout_weight="4"
+                        />
+                    <Button
+                        android:id="@+id/h_btn_set_svadddr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="SET"
+                        android:layout_weight="4"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <EditText
+                        android:id="@+id/h_et_svip2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voice_serverURL"
+                        android:hint="음성ai IP addr"
+                        android:layout_weight="3"
+                        />
+                    <EditText
+                        android:id="@+id/h_et_svport2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/voice_serverPORT"
+                        android:hint="음성ai port"
+                        android:layout_weight="4"
+                        />
+                    <Button
+                        android:id="@+id/h_btn_set_svadddr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="V_AI"
+                        android:layout_weight="4"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <EditText
+                        android:id="@+id/h_et_svip3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/GPTserverURL"
+                        android:hint="챗지 IP addr"
+                        android:layout_weight="3"
+                        />
+                    <EditText
+                        android:id="@+id/h_et_svport3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/GPTserverPORT"
+                        android:hint="챗지 port"
+                        android:layout_weight="4"
+                        />
+                    <Button
+                        android:id="@+id/h_btn_set_svadddr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="gpt"
+                        android:layout_weight="4"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+    <FrameLayout
+        android:id="@+id/layout_for_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <ImageButton
+        android:visibility="visible"
+
+        android:id="@+id/btn_temp_frag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+
+        android:textColor="@color/font_black"
+        android:textColorHint="@color/font_black"
+        android:fontFamily="@font/right_life_140"
+        android:textSize="18dp"
+        android:gravity="center"
+
+        android:src="@drawable/icon_lock"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="10dp"
+        />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_lg_loading_dots"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+
+        android:visibility="gone"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_loading_dots2"
+        android:paddingTop="60dp"
+        android:paddingBottom="0dp"
+        />
+</FrameLayout>

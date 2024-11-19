@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="bottom"
+    android:layoutDirection="ltr"
+
+    android:orientation="vertical"
+    tools:targetApi="28">
+
+    <ImageButton
+        android:id="@+id/ib_btn_back_viewer_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/abtn_back"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+
+        />
+
+    <Button
+        android:id="@+id/btn_temp_delete_vid"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_gravity="top|end"
+        android:backgroundTint="@android:color/transparent"
+        />
+
+    <ImageButton
+        android:id="@+id/exo_play"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/abtn_play"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="150dp"
+        android:clickable="true"
+        />
+    <ImageButton
+        android:id="@+id/exo_pause"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/abtn_pause"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="150dp"
+        android:clickable="true"
+
+        android:visibility="visible"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/rectangle_32989"
+        android:padding="20dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+
+        >
+        <TextView
+            android:id="@+id/tv_vv_video_cardName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="영상 제목"
+            android:textColor="@color/font_black"
+            android:fontFamily="@font/pretendard_bold"
+            android:textSize="22dp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="20dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            >
+
+            <View android:id="@+id/exo_progress_placeholder"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                />
+            <androidx.media3.ui.DefaultTimeBar
+                android:id="@+id/exo_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:played_color="@color/ic_launcher_background"
+                app:buffered_color="@color/ic_300"
+                app:unplayed_color="@color/font_gray"
+                app:bar_height="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="5dp"
+                >
+
+                <TextView android:id="@+id/exo_position"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+
+                    android:textSize="14sp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/font_black"
+                    android:layout_gravity="start"
+                    />
+
+
+                <TextView android:id="@+id/exo_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+
+                    android:textSize="14sp"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/font_black"
+                    android:layout_gravity="end"
+                    />
+            </FrameLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+</FrameLayout>

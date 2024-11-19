@@ -1,0 +1,103 @@
+.aac-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(290px);
+  min-height: 100vh;
+  width: calc(100% - 345px);
+  max-width: 1530px;
+  margin-top: 60px;
+  margin-left: 55px;
+  margin-right: 55px;
+  overflow-y: auto;
+}
+
+.aac-top-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 136px;
+  margin-left: -10px;
+}
+
+input.aac-search__input {
+  font-family: "Pretendard-Regular";
+  background-color: #ffffff;
+  color: var(--black);
+  width: 99.2%;
+  max-width: 1000px;
+  height: 48px;
+  box-shadow: none;
+  border: 1px solid #ffce1b;
+  margin-bottom: 25px;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+input.aac-search__input:hover {
+  background-color: rgba(255, 239, 133, 1);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+input.aac-search__input:focus {
+  background-color: rgba(255, 253, 234, 1);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.aac-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1520px;
+  padding: 0px;
+  margin-left: -20px;
+  margin-top: 35px;
+  margin-bottom: 32px;
+}
+
+.add-card-btn {
+  background-color: var(--white);
+  border: none;
+  cursor: pointer;
+  width: 157px;
+  height: 44px;
+}
+
+.aac-print-btn {
+  display: flex;
+  margin-top: 0px;
+}
+
+.aac-print-btn > .PrintImg {
+  margin-right: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.aac-print-btn > .MultiPrintImg {
+  margin-right: 15px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.aac-print-btn > .DeleteAAC {
+  cursor: pointer;
+  margin-right: -5px;
+  visibility: hidden;
+}

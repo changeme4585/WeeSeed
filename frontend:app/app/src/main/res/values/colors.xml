@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#D9D4CF</color>
+    <color name="teal_700">#FFCE1B</color>
+
+    <color name="black">#FF000000</color>
+    <color name="gray">#CFCFCF</color>
+    <color name="lightgray">#F1F1F5</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="dimmed">#11111111</color>
+    <color name="dimmed2">#55111111</color>
+    <color name="dimmed3">#55FFFFFF</color>
+
+    <color name="black_pop">#272727</color>
+    <color name="black_pop_dim">#DC272727</color>
+
+
+    <color name="font_black">#FF111111</color>
+    <color name="font_darkgray">#FF555555</color>
+    <color name="font_gray">#FF767676</color>
+    <color name="font_lightgray">#FF999999</color>
+    <color name="font_white">#FFFFFFFF</color>
+
+    <color name="brand_yellow">#FFFFCE00</color>
+    <color name="brand_red">#FFDC0000</color>
+    <color name="brand_green">#FF04B014</color>
+    <color name="brand_mandarin">#FFFFAA00</color>
+    <color name="brand_black">#FF33312B</color>
+
+    <color name="btn_back">#FFCE1B</color>
+    <color name="btn_line">#BB5B02</color>
+    <color name="app_bar">#4D4441</color>
+    <color name="app_bar_sub">#5D524F</color>
+    <color name="app_bar_text">#FFFFFF</color>
+
+
+    <color name="label_black">#767676</color>
+    <color name="label_red">#F9A69E</color>
+    <color name="label_orange">#F3B98B</color>
+    <color name="label_yellow">#F4E097</color>
+    <color name="label_green">#92D79E</color>
+    <color name="label_blue">#A9CDE5</color>
+    <color name="label_deepblue">#B1C8FE</color>
+    <color name="label_purple">#F4AFEF</color>
+
+    <color name="loading_item">#D0FFFFFF</color>
+
+
+    <color name="sys_900">#7C3A0B</color>
+    <color name="sys_800">#984608</color>
+    <color name="sys_700">#BB5B02</color>
+    <color name="sys_600">#E28300</color>
+    <color name="sys_500">#FFAD00</color>
+    <color name="sys_400">#FFCE1B</color>
+    <color name="sys_300">#FFE046</color>
+    <color name="sys_200">#FFEF85</color>
+    <color name="sys_100">#FFF7C5</color>
+    <color name="sys_50">#FFFDEA</color>
+
+    <color name="ic_900">#4D4441</color>
+    <color name="ic_800">#5D524F</color>
+    <color name="ic_700">#71635D</color>
+    <color name="ic_600">#87776F</color>
+    <color name="ic_500">#94857B</color>
+    <color name="ic_400">#A69A91</color>
+    <color name="ic_300">#B6AEA5</color>
+    <color name="ic_200">#D9D4CF</color>
+    <color name="ic_100">#ECEAE8</color>
+    <color name="ic_50">#F7F6F5</color>
+    <color name="background_color">#FFFDF3</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+
+</resources>

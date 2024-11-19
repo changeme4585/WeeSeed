@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".user.SigninFragment"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:clickable="false"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:id="@+id/titleBar_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/btn_back_titleBar_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:background="@android:color/transparent"
+                />
+            <TextView
+                android:id="@+id/tv_name_titleBar_signin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원 가입"
+                android:textSize="20dp"
+                android:fontFamily="@font/pretendard_bold"
+                android:textColor="@color/app_bar_text"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+
+        <!--입력칸들-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="60dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="30dp"
+                >
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="회원가입 화면에서 공통적으로 사용되는 설명창이에요\n\n"
+                    android:visibility="gone"/>
+
+                <!--여기부터 입력칸들 layout_input_-->
+                <!--아이디-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아이디"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textColor="@color/font_black"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="15dp"
+                    />
+                <LinearLayout
+                    android:id="@+id/layout_input_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <EditText
+                        android:id="@+id/et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="아이디"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:maxLength="20"
+                        android:digits="@string/idDigit"
+                        android:imeOptions="actionDone"
+                        />
+                    <TextView
+                        android:id="@+id/dest_et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        />
+                </LinearLayout>
+                <!--비밀번호/비밀번호확인-->
+                <LinearLayout
+                    android:id="@+id/layout_input_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleDrawable="@drawable/password_visiblity"
+                        app:hintEnabled="false"
+                        >
+                        <EditText
+                            android:id="@+id/et_pw"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="비밀번호"
+                            android:background="@drawable/edit_text_border"
+
+                            android:textColor="@color/font_black"
+                            android:textColorHint="@color/font_black"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:textSize="15dp"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:maxLength="30"
+                            android:digits="@string/passwordDigit"
+                            android:imeOptions="actionNext"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="비밀번호 확인"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleDrawable="@drawable/password_visiblity"
+                        app:hintEnabled="false"
+                        >
+                        <EditText
+                            android:id="@+id/et_pwcheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="비밀번호 확인"
+                            android:background="@drawable/edit_text_border"
+
+                            android:textColor="@color/font_black"
+                            android:textColorHint="@color/font_black"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:textSize="15dp"
+
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:maxLength="30"
+                            android:digits="@string/passwordDigit"
+                            android:imeOptions="actionDone"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/desc_et_pw"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+
+                        android:maxLines="1"
+                        />
+                </LinearLayout>
+                <!--이메일-->
+                <LinearLayout
+                    android:id="@+id/layout_input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이메일"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="이메일"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:maxLength="50"
+                        android:digits="@string/emailDigit"
+                        android:imeOptions="actionDone"
+                        />
+                    <TextView
+                        android:id="@+id/desc_et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        />
+                </LinearLayout>
+                <!--이름-->
+                <LinearLayout
+                    android:id="@+id/layout_input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이름"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="이름"
+                        android:background="@drawable/edit_text_border"
+
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:imeOptions="actionDone"
+                        />
+                    <TextView
+                        android:id="@+id/desc_et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        android:maxLines="1"
+                        />
+                </LinearLayout>
+                <!--소속기관-->
+                <LinearLayout
+                    android:id="@+id/layout_input_org"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="소속기관"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_org"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="소속기관"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        />
+                    <TextView
+                        android:id="@+id/desc_org"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        android:maxLines="1"
+                        android:imeOptions="actionDone"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:layout_gravity="end|bottom"
+        android:background="@color/btn_back"
+        android:textColor="@color/btn_line"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="16dp"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_si_loading_dots"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+
+        android:visibility="gone"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_loading_dots2"
+        android:paddingTop="60dp"
+        android:paddingBottom="0dp"
+        />
+
+</FrameLayout>

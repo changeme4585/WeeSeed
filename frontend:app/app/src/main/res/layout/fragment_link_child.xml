@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".child.LinkChildFragment"
+    android:background="@color/sys_50"
+    android:fitsSystemWindows="true"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dimmed2"
+        android:clickable="true"
+        />
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:background="@color/sys_50"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="30dp"
+        android:elevation="10dp"
+        android:minWidth="300dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/pretendard_bold"
+            android:textSize="24dp"
+            android:text="코드 입력"
+            android:textColor="@color/font_black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/pretendard_regular"
+            android:lineSpacingExtra="5dp"
+            android:text="아동의 연동 코드를 입력해주세요.\n연동 코드는 보호자 계정의 설정란에 있습니다."
+            android:textColor="@color/font_darkgray"
+            />
+
+        <EditText
+            android:id="@+id/lc_et_child_code"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="아동 연동 코드"
+            android:background="@drawable/edit_text_border_transparent"
+
+            android:textColor="@color/font_black"
+            android:textColorHint="@color/font_black"
+            android:fontFamily="@font/pretendard_regular"
+            android:textSize="15dp"
+
+            android:paddingHorizontal="20dp"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:maxLength="10"
+            android:imeOptions="actionDone"
+
+            android:layout_marginTop="15dp"
+            />
+        <TextView
+            android:id="@+id/lc_desc_child_code"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:text=" "
+            android:gravity="right"
+            android:textColor="@color/brand_red"
+            android:maxLines="1"
+            />
+
+        <android.widget.Button
+            android:id="@+id/lc_btn_go"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|center"
+            android:text="확인"
+            android:fontFamily="@font/pretendard_bold"
+            android:textColor="@color/btn_line"
+
+            android:background="@color/btn_back"
+            android:layout_marginBottom="3dp"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

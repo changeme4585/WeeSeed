@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#80000000"
+
+    android:id="@+id/dialog_date_picker"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@color/sys_50"
+
+        android:layout_gravity="center"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/app_bar_sub"
+            android:paddingStart="20dp"
+            android:paddingEnd="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_selected_day_dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0000년 00월 00일"
+                android:fontFamily="@font/pretendard_regular"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/app_bar_text"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_dp_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_calendar"
+                android:background="@android:color/transparent"
+                android:scaleX="0.6"
+                android:scaleY="0.6"
+                app:tint="@color/app_bar_text"
+
+                android:layout_gravity="end|center_vertical"
+                />
+
+        </FrameLayout>
+
+        <DatePicker
+            android:id="@+id/datepicker_wheel_dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:spinnersShown="true"
+            android:calendarViewShown="false"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+
+            android:theme="@style/PickerTheme"
+            >
+        </DatePicker>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:background="@color/font_lightgray"
+            >
+            <android.widget.Button
+                android:id="@+id/btn_dp_no"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="취소"
+
+                android:fontFamily="@font/pretendard_regular"
+                android:background="@color/ic_200"
+                android:layout_weight="1"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="1dp"
+                />
+            <android.widget.Button
+                android:id="@+id/btn_dp_yes"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="확인"
+
+                android:fontFamily="@font/pretendard_regular"
+                android:background="@color/btn_back"
+                android:layout_weight="1"
+                android:layout_marginTop="1dp"
+                />
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+</FrameLayout>

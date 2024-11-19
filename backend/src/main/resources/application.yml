@@ -1,0 +1,66 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${RDS_USERNAME}
+    password: ${RDS_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        order_insert: true
+        order_update: true
+        show_sql: true
+        format_sql: true
+        jdbc:
+          batch_size: 1000
+        dialect: org.hibernate.dialect.MySQLDialect
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  logging:
+    level:
+      root: INFO
+      org.weeseed: DEBUG
+    file:
+      path: /var/log/weeseed/app.log
+      max-size: 10MB
+      max-history: 30
+
+cloud:
+    aws:
+      s3:
+        bucket-name: ${S3_BUCKET_NAME}
+        folder:
+          images: Images/
+          videos: Videos/
+          audios: Audios/
+          default: Default/
+          thumbs: Videos/Thumbs/
+          temps: Temps/
+      credentials:
+        accessKey: ${CLOUD_AWS_CREDENTIALS_ACCESSKEY}
+        secretKey: ${CLOUD_AWS_CREDENTIALS_SECRETKEY}
+      region:
+        static: ${CLOUD_AWS_REGION}
+      stack:
+        auto: false
+
+flask:
+  server:
+    url: ${FLASK_SERVER_URL}
+whisper:
+  server:
+    url: ${WHISPER_SERVER_URL}
+
+openai:
+  model:
+    image: dall-e-3
+    chat: gpt-3.5-turbo
+  api:
+    key: ${OPENAI_API_KEY}
+    url:
+      chat: https://api.openai.com/v1/chat/completions
+      image: https://api.openai.com/v1/images/generations

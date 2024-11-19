@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--pretendard-->
+    <font
+        android:font="@font/pretendard_black"
+        android:fontStyle="normal"
+        app:font="@font/pretendard_black"
+        app:fontStyle="normal"
+        />
+
+    <font
+        android:font="@font/pretendard_bold"
+        android:fontStyle="normal"
+        app:font="@font/pretendard_bold"
+        app:fontStyle="normal"
+        />
+
+    <font
+        android:font="@font/pretendard_extrabold"
+        android:fontStyle="normal"
+        app:font="@font/pretendard_extrabold"
+        app:fontStyle="normal"
+        />
+
+    <font
+        android:font="@font/pretendard_medium"
+        android:fontStyle="normal"
+        app:font="@font/pretendard_medium"
+        app:fontStyle="normal"
+        />
+    <font
+        android:font="@font/pretendard_regular"
+        android:fontStyle="normal"
+        app:font="@font/pretendard_regular"
+        app:fontStyle="normal"
+        />
+
+    <font
+        android:font="@font/right_life_140"
+        android:fontStyle="normal"
+        app:font="@font/right_life_140"
+        app:fontStyle="normal"
+        />
+
+
+</font-family>

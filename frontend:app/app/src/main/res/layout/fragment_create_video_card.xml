@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".card.CreateVideoCardFragment"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/cr_video_btn_back_titleBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_back"
+                android:background="@android:color/transparent"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="따라해요 카드 생성"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/app_bar_text"
+                />
+        </FrameLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:layout_marginHorizontal="30dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                >
+                <ImageView
+                    android:id="@+id/iv_cr_video_vid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    app:srcCompat="@drawable/test_img"
+                    android:layout_marginTop="30dp"
+                    android:maxHeight="500dp"
+
+                    android:visibility="gone"
+
+                    android:background="@drawable/aac_background"
+                    android:clipToOutline="true"
+                    />
+                <Button
+                    android:id="@+id/btn_cr_video"
+                    android:layout_width="140dp"
+                    android:layout_height="60dp"
+
+                    android:text="비디오 추가"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:backgroundTint="@color/btn_back"
+                    android:textColor="@color/btn_line"
+                    android:textSize="17dp"
+
+                    android:layout_marginTop="30dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_cr_video_select_vid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="선택한 동영상경로"
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="어떤 것을 따라할까요?"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/font_black"
+                    android:fontFamily="@font/pretendard_regular"
+
+                    android:layout_marginTop="40dp"
+                    />
+                <EditText
+                    android:id="@+id/cr_video_et_cardName"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingStart="20dp"
+                    android:hint="비디오 카드의 이름을 입력해주세요"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:background="@drawable/round_border_for_edit_text"
+                    android:inputType="text"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="라벨링"
+                    android:textColor="@color/font_black"
+                    android:fontFamily="@font/pretendard_regular"
+                    />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <Spinner
+                    android:id="@+id/spinner_cr_video_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/round_border_for_edit_text"
+                    android:padding="10dp"
+                    android:textColor="@color/font_black"
+                    android:dropDownVerticalOffset="60dp"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/icon_s_down"
+
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    />
+                </FrameLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cr_video_btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="카드 생성하기"
+
+        android:fontFamily="@font/pretendard_bold"
+        android:backgroundTint="@color/btn_back"
+        android:textSize="17dp"
+        android:textColor="@color/btn_line"
+
+        android:layout_gravity="end|bottom"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:elevation="10dp"
+        />
+
+</FrameLayout>

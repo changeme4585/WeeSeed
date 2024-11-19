@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".cardlist.CardListFragment"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+
+    <FrameLayout
+        android:id="@+id/layout_banner_card_list"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+
+        android:background="@drawable/round_border_for_card_list"
+        android:elevation="10dp"
+        >
+        <ImageView
+            android:id="@+id/iv_cl_bear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bear_speak2"
+            android:paddingStart="60dp"
+            android:paddingTop="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="12dp"
+            >
+            <ImageButton
+                android:id="@+id/btn_back_card_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abtn_back"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="12dp"
+            android:layout_gravity="end"
+            >
+            <ImageButton
+                android:id="@+id/btn_selectAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abtn_select_all"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"
+
+                android:visibility="gone"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_selectAll_NOT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abtn_select_not"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"
+
+                android:visibility="gone"
+                />
+
+            <ImageButton
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abtn_setting"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"
+                />
+            <ImageButton
+                android:id="@+id/btn_lock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abtn_lock"
+                android:backgroundTint="@android:color/transparent"
+                android:padding="0dp"
+                />
+        </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="150dp"
+        android:layout_marginHorizontal="20dp"
+        >
+        <!--이 안에 card list용 recyclerView-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_card_list_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:overScrollMode="never"
+            android:scrollbars="vertical"
+            android:clipToPadding="false"
+            android:background="@color/white"
+
+            />
+
+
+        <LinearLayout
+            android:id="@+id/layout_card_list_subfunc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:visibility="visible"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                >
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
+                    >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        >
+                        <Spinner
+                            android:id="@+id/spinner_cl_aac_label"
+                            android:layout_width="158dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal|start"
+                            android:layout_margin="10dp"
+
+                            android:spinnerMode="dropdown"
+                            android:padding="10dp"
+                            android:textColor="@android:color/transparent"
+                            android:dropDownVerticalOffset="60dp"
+
+                            android:visibility="invisible"
+                            />
+                        <LinearLayout
+                            android:id="@+id/btn_cl_filter"
+                            android:layout_width="158dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal|start"
+                            android:layout_margin="10dp"
+
+                            android:background="@drawable/round_more_border_for_select_child"
+                            android:backgroundTint="@color/btn_back"
+                            android:clickable="true"
+
+                            android:elevation="5dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:scaleX="0.9"
+                                android:scaleY="0.9"
+                                android:src="@drawable/new_icon_filter"
+                                app:tint="@color/sys_600" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="35dp"
+                                android:text="필터"
+
+                                android:textColor="@color/btn_line"
+                                android:textSize="16dp"
+                                />
+                        </LinearLayout>
+
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|end"
+                        >
+                        <Spinner
+                            android:id="@+id/spinner_cl_label_align"
+                            android:layout_width="158dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal|start"
+                            android:layout_margin="10dp"
+
+                            android:spinnerMode="dropdown"
+                            android:padding="10dp"
+                            android:textColor="@android:color/transparent"
+                            android:dropDownVerticalOffset="60dp"
+
+                            android:visibility="invisible"
+                            />
+                        <LinearLayout
+                            android:id="@+id/btn_cl_align"
+                            android:layout_width="158dp"
+                            android:layout_height="50dp"
+                            android:orientation="horizontal"
+                            android:clickable="true"
+
+                            android:background="@drawable/round_more_border_for_select_child"
+                            android:backgroundTint="@color/btn_back"
+                            android:elevation="5dp"
+                            android:layout_margin="10dp"
+
+                            android:gravity="center"
+                            >
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:scaleX="0.9"
+                                android:scaleY="0.9"
+                                android:src="@drawable/new_icon_align"
+                                app:tint="@color/sys_600"
+                                android:layout_marginStart="10dp"
+                                />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="정렬"
+                                android:textColor="@color/btn_line"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:textSize="16dp"
+
+                                android:paddingStart="15dp"
+                                android:paddingEnd="35dp"
+                                />
+                        </LinearLayout>
+                    </FrameLayout>
+                </FrameLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:clickable="true"
+
+                    android:background="@drawable/round_border_for_edit_text"
+
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal|start"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="20dp"
+                    >
+                    <ImageButton
+                        android:id="@+id/btn_cl_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="0.9"
+                        android:scaleY="0.9"
+                        android:src="@drawable/icon_search"
+                        android:background="@android:color/transparent"
+                        android:layout_marginStart="10dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_marginEnd="18dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_cl_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="검색어를 입력하세요"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_darkgray"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:background="@null"
+                        android:textSize="14dp"
+
+                        android:paddingStart="25dp"
+                        android:layout_marginEnd="60dp"
+
+                        android:gravity="center_vertical"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:inputType="text"
+                        android:imeOptions="actionDone"
+                        />
+                </FrameLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/background_bottom_gradient"
+                />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        >
+        <Button
+            android:id="@+id/btn_go_to_VideoList"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="따라해요"
+
+            android:layout_gravity="center_horizontal|bottom"
+            android:fontFamily="@font/pretendard_bold"
+            android:backgroundTint="@color/btn_back"
+            android:textColor="@color/btn_line"
+            android:textSize="16sp"
+
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:elevation="5dp"
+            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abtn_trashcan"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_gravity="bottom|end"
+
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="75dp"
+            android:elevation="5dp"
+            />
+
+    </FrameLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_cl_loading_dots"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+
+        android:visibility="gone"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_loading_dots2"
+        android:paddingTop="60dp"
+        android:paddingBottom="0dp"
+        />
+
+</FrameLayout>

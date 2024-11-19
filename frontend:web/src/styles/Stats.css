@@ -1,0 +1,89 @@
+.stats-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(290px);
+  min-height: 100vh;
+  width: calc(100% - 735px);
+  max-width: 740px;
+  margin-top: 77px;
+  margin-left: 445px;
+  margin-right: 445px;
+}
+
+.stats-top-div {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  max-width: 740px;
+  height: 48px;
+  margin-bottom: 87px;
+}
+
+.stats-top-div > h1 {
+  font-family: "Pretendard-Bold";
+  font-size: 32px;
+}
+
+.stats-main-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 740px;
+  height: 100vh;
+}
+
+.stats-main-detail {
+  width: 100%;
+  height: 100%;
+}
+
+.stats-info {
+  font-family: "Pretendard-Bold";
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.stats-info-card {
+  font-family: "Pretendard-Bold";
+  font-size: 16px;
+}
+
+.stats-learning-info {
+  font-family: "Pretendard-Bold";
+  font-size: 16px;
+}
+.stats-no-card > img {
+  width: 220px;
+  height: 264px;
+}
+
+.stats-image-detail {
+  margin-bottom: 40px;
+}
+
+.stats-info-card {
+  font-family: "Pretendard-Bold";
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.stats-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 740px;
+  height: 308px;
+  margin-top: 40px;
+}
+
+.stats-bottom-left {
+  width: 223px;
+  height: 308px;
+}
+
+.stats-bottom-right {
+  width: 480px;
+  height: 300px;
+}

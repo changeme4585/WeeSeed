@@ -1,0 +1,151 @@
+.nav-wrapper {
+  display: flex;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  width: 290px;
+  overflow: hidden;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  width: 290px;
+  height: 100vh;
+  background-color: #ffce1b;
+  transition: width 0.5s ease;
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* 애니메이션 줘보기.. */
+.nav-bar-hidden {
+  width: 0px;
+  overflow: hidden;
+  transition: width 0.5s ease;
+  background-color: var(--yellow);
+}
+
+.nav-bar-hidden .nav-bar__top,
+.nav-bar-hidden .nav-bar__bottom {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.nav-logo {
+  width: 225.01px;
+  height: 72px;
+  margin-top: -40px;
+  margin-left: 32px;
+  margin-bottom: 40px;
+}
+
+.mini-nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 50px;
+  height: 100vh;
+  width: 116px;
+  background-color: var(--pink);
+  transition: left 0.5s ease, opacity 0.5s ease, visibility 0.5s ease; /* 애니메이션 추가 */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1002;
+}
+
+.mini-nav-visible {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+}
+
+.stat-nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: -370px;
+  height: 100vh;
+  width: 260px;
+  background-color: var(--light-pink);
+  transition: width 0.5s ease, opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.stat-nav-visible {
+  left: 116px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-bar__top {
+  flex-shrink: 0;
+  margin-top: 80px;
+}
+
+.nav-bar__bottom {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-bottom: 30px;
+  width: 290px;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  padding-left: 40px;
+  text-decoration: none;
+  border-radius: 10px;
+  box-shadow: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.menu.active {
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.nav-img {
+  cursor: pointer;
+  width: 56.57px;
+  height: 56.5px;
+  margin-right: 10px;
+}
+
+.menu-text {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-size: 22px;
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
+  font-family: "Pretendard-Regular";
+  margin-left: 10px;
+  margin-top: 2px;
+  transition: opacity 0.1s ease, visibility 0.1s ease;
+}
+.nav-bar__bottom .menu {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  padding-left: 40px;
+}
+
+.logout-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.nav-bar__middle {
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  overflow-y: auto;
+  height: 100px;
+  flex-grow: 1;
+}

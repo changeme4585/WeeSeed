@@ -1,0 +1,79 @@
+.video-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(290px);
+  min-height: 100vh;
+  width: calc(100% - 345px);
+  max-width: 1530px;
+  margin-top: 60px;
+  margin-left: 55px;
+  margin-right: 55px;
+  overflow-y: auto;
+}
+
+.video-top-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 48px;
+  margin-bottom: 64px;
+  margin-left: -10px;
+}
+
+.video-content-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1520px;
+  padding: 0px;
+  margin-left: -20px;
+  margin-bottom: 32px;
+}
+
+.add-video-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 157px;
+  height: 44px;
+}
+.add-video-card-btn {
+  display: flex;
+  justify-content: space-between;
+  width: 338px;
+  height: 44px;
+}
+.add-sequence-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 157px;
+  height: 44px;
+  visibility: hidden;
+}
+.delete-video-btn > .DeleteVideo {
+  display: flex;
+  background-color: transparent;
+  align-items: center;
+  border: none;
+  margin-left: 920px;
+  position: absolute;
+  width: 90%;
+}
+.DeleteVideo {
+  cursor: pointer;
+  visibility: hidden;
+}
+.video-list {
+  display: flex;
+  gap: 10px;
+  background-color: var(--light-pink);
+  padding: 10px;
+  border-radius: 10px;
+}

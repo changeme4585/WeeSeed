@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".user.IntroFragment"
+    android:background="@color/brand_yellow"
+    android:clickable="false"
+    >
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_text"
+            android:background="@android:color/transparent"
+
+            android:layout_marginVertical="50dp"
+            />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="로그인"
+            android:textColor="@color/font_black"
+            android:fontFamily="@font/pretendard_bold"
+
+            android:background="@color/white"
+            android:layout_marginTop="30dp"
+
+            />
+        <Button
+            android:id="@+id/btn_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="회원가입"
+
+            android:textColor="@color/font_black"
+            android:fontFamily="@font/pretendard_bold"
+
+            android:background="@color/font_white"
+            android:layout_marginTop="20dp"
+
+            />
+
+    </LinearLayout>
+
+    <!--frame for signin/login-->
+    <FrameLayout
+        android:id="@+id/frame_for_newfrag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</FrameLayout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/sys_50"
+    tools:context=".child.SelectChildFragment"
+    android:fitsSystemWindows="true">
+
+
+    <!--[보호자/재활사]아동 선택 layout_for_select_child-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <ImageView
+                android:id="@+id/iv_sc_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/select_child_header_right"
+                android:scaleType="centerCrop"
+                />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_gravity="top"
+                android:paddingVertical="40dp"
+                android:paddingHorizontal="15dp"
+                >
+                <TextView
+                    android:id="@+id/tv_sc_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pretendard_extrabold"
+                    android:textSize="23dp"
+                    android:text="학습할 아동을 선택하세요"
+                    android:paddingBottom="5dp"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_sc_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/abtn_back"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="center_vertical"
+                    android:elevation="10dp"
+                    />
+                <ImageButton
+                    android:id="@+id/btn_sc_list_or_grid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/abtn_grid"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="center_vertical|end"
+                    android:elevation="10dp"
+                    />
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <ScrollView
+            android:id="@+id/layout_for_select_child"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:fadingEdge="vertical"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <!--이 안에 selectChild용 recyclerView-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_select_child"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    />
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!--[보호자/재활사]아동 추가/삭제-->
+        <FrameLayout
+            android:id="@+id/layout_for_no_child"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:id="@+id/btn_sc_addChild"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:clickable="true"
+
+                android:background="@drawable/round_more_border_for_select_child"
+                android:backgroundTint="@color/btn_back"
+                android:elevation="10dp"
+
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/new_icon_add"
+                    app:tint="@color/btn_line"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추가"
+                    android:textColor="@color/btn_line"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:textSize="18dp"
+
+                    android:paddingStart="20dp"
+                    android:paddingEnd="35dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_sc_linkChild"
+                android:layout_width="140dp"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:clickable="true"
+
+                android:background="@drawable/round_more_border_for_select_child"
+                android:backgroundTint="@color/btn_back"
+                android:elevation="10dp"
+
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/new_icon_link"
+                    app:tint="@color/btn_line"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="연동"
+                    android:textColor="@color/btn_line"
+                    android:fontFamily="@font/pretendard_bold"
+                    android:textSize="16dp"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="35dp"
+                    />
+            </LinearLayout>
+
+            <android.widget.Button
+                android:id="@+id/btn_select_child_nochild"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text=" 둘러보기 "
+                android:textColor="@color/btn_line"
+                android:fontFamily="@font/pretendard_bold"
+                android:textSize="16dp"
+
+                android:gravity="center"
+                android:layout_gravity="center|bottom"
+
+                android:background="@drawable/round_more_border_for_select_child"
+                android:backgroundTint="@color/btn_back"
+                android:elevation="10dp"
+
+                android:paddingHorizontal="20dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"
+                />
+        </FrameLayout>
+    </LinearLayout>
+
+</FrameLayout>

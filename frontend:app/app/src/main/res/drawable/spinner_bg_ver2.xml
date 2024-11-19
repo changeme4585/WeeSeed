@@ -1,0 +1,26 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape android:shape="rectangle">
+      <solid android:color="@color/sys_50" />
+      <stroke
+          android:width="1dp"
+          android:color="@color/sys_300" />
+      <corners android:radius="50dp" />
+    </shape>
+  </item>
+  <item>
+    <vector
+        android:width="312dp"
+        android:height="48dp"
+        android:viewportWidth="312"
+        android:viewportHeight="48">
+      <path
+          android:pathData="M288.67,20.67L282,27.33L275.33,20.67"
+          android:strokeLineJoin="round"
+          android:strokeWidth="1.66667"
+          android:fillColor="#00000000"
+          android:strokeColor="#111111"
+          android:strokeLineCap="round" />
+    </vector>
+  </item>
+</layer-list>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".setting.ModifyUserProfileFragment"
+    android:fitsSystemWindows="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <!--상단바-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_bar"
+            android:padding="10dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:text="회원 정보"
+                android:textColor="@color/app_bar_text"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <!--입력칸들-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            >
+            <TextView
+                android:id="@+id/mu_tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="52dp"
+                android:text="" />
+
+            <!--여기부터 입력칸들 layout_input_-->
+            <!--비밀번호-->
+            <LinearLayout
+                android:id="@+id/mu_layout_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아이디"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textColor="@color/font_black"
+                    android:textSize="15dp"
+                    android:layout_marginBottom="15dp"
+                    />
+                <LinearLayout
+                    android:id="@+id/layout_input_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <EditText
+                        android:id="@+id/et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="아이디"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:maxLength="20"
+                        android:digits="@string/idDigit"
+                        android:imeOptions="actionDone"
+
+                        android:enabled="false"
+                        />
+                    <TextView
+                        android:id="@+id/dest_et_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        />
+                </LinearLayout>
+
+                <!--이메일-->
+                <LinearLayout
+                    android:id="@+id/layout_input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이메일"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="이메일"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:maxLength="50"
+                        android:digits="@string/emailDigit"
+                        android:imeOptions="actionDone"
+
+                        android:enabled="false"
+                        />
+                    <TextView
+                        android:id="@+id/desc_et_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        />
+                </LinearLayout>
+                <!--이름-->
+                <LinearLayout
+                    android:id="@+id/layout_input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="이름"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="이름"
+                        android:background="@drawable/edit_text_border"
+
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:imeOptions="actionDone"
+                        android:enabled="false"
+
+                        />
+                    <TextView
+                        android:id="@+id/desc_et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        android:maxLines="1"
+                        />
+                </LinearLayout>
+                <!--소속기관-->
+                <LinearLayout
+                    android:id="@+id/layout_input_org"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="소속기관"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textColor="@color/font_black"
+                        android:textSize="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15dp"
+                        />
+                    <EditText
+                        android:id="@+id/et_org"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="소속기관"
+                        android:background="@drawable/edit_text_border"
+                        android:textColor="@color/font_black"
+                        android:textColorHint="@color/font_black"
+                        android:fontFamily="@font/pretendard_regular"
+                        android:textSize="15dp"
+
+                        android:paddingHorizontal="20dp"
+
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:maxLength="10"
+                        android:enabled="false"
+
+                        />
+                    <TextView
+                        android:id="@+id/desc_org"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text=" "
+                        android:gravity="right"
+                        android:textColor="@color/brand_red"
+                        android:maxLines="1"
+                        android:imeOptions="actionDone"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.widget.Button
+        android:id="@+id/mu_btn_go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수정하기"
+        android:layout_gravity="end|bottom"
+        android:background="@color/brand_yellow"
+        />
+
+
+</FrameLayout>

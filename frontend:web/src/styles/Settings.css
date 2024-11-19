@@ -1,0 +1,340 @@
+.setting-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin-left: 345px;
+  width: calc(100% - 345px);
+  max-width: 1520px;
+  margin-top: 60px;
+  margin-right: 55px;
+  overflow: visible;
+}
+
+.profile-div {
+  width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+/*프로필 문구 부분*/
+.set-text {
+  font-family: "Pretendard-Bold";
+  font-size: 32px;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+.set-text-child {
+  font-family: "Pretendard-Bold";
+  font-size: 32px;
+  margin-left: 40px;
+}
+
+.profile-card {
+  background-color: rgba(247, 246, 245, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 820px;
+  height: 300px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.profile-img {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 40px;
+}
+
+.profile-img > img {
+  width: 220px;
+  height: 220px;
+}
+
+.modifyImg {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  margin-left: 764px;
+  margin-top: 20px;
+}
+
+.user-info,
+.user-real-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info span,
+.user-real-info span {
+  margin-bottom: 24px;
+  font-size: 16px;
+}
+
+.user-info span {
+  font-family: "Pretendard-Bold";
+  width: 90px;
+}
+.user-real-info span {
+  font-family: "Pretendard-Regular";
+}
+
+.user-info {
+  text-align: right;
+  margin-top: 104px;
+  margin-left: 350px;
+  margin-right: 40px;
+}
+
+.user-real-info {
+  margin-top: 104px;
+}
+
+.user-info-content {
+  display: flex;
+}
+.no-login {
+  font-family: "Pretendard-Bold";
+  text-align: center;
+  margin-left: 360px;
+  margin-top: 90px;
+}
+
+.no-login-p {
+  padding: 22px;
+}
+
+.no-child-info > img {
+  margin-left: 252px;
+  margin-top: 45px;
+}
+
+.unregister-btn {
+  color: #767676;
+  font-size: 13px;
+  cursor: pointer;
+  width: 45px;
+  height: 18px;
+  font-family: "Pretendard-Regular";
+  margin-left: 756px;
+  margin-top: 55px;
+}
+
+/*여기부터 아동 목록*/
+.child-list-div {
+  position: relative;
+  margin-top: 32px;
+  width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  overflow: visible;
+}
+
+.child-list-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 32px;
+}
+
+.child-list-div > p {
+  font-family: "Pretendard-Bold";
+  margin-left: 190px;
+  padding: 120px 173px;
+}
+
+.child-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  overflow: visible;
+}
+
+.child-list-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.user-edit-mode {
+  border: solid 1px var(--yellow);
+  background-color: var(--white);
+  font-size: 13px;
+  font-family: "Pretendard-Regular";
+  outline: none;
+  width: 90%;
+}
+
+.user-edit-mode:focus {
+  background-color: var(--click-yellow);
+  font-family: "Pretendard-Regular";
+  outline: none;
+}
+
+.chat-icon-btn {
+  position: fixed;
+  top: 87%;
+  right: 5%;
+  z-index: 1001;
+  background-color: rgba(247, 246, 245, 1);
+  border-radius: 50px;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+.chat-icon-btn.shrink {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.chat-icon-btn.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.chat-div {
+  position: fixed;
+  border: none;
+  background-color: rgba(247, 246, 245, 1);
+  border-radius: 15px;
+  top: 28%;
+  right: 5.5%;
+  z-index: 1000;
+  padding: 20px;
+  width: 400px;
+  height: 550px;
+  box-shadow: 1px 1px 12px 2px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.chat-div.visible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-top-div > .chat-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: rgba(247, 246, 245, 1);
+  cursor: pointer;
+}
+.chat-top-div > .chat-analyze-btn {
+  position: absolute;
+  top: 13px;
+  left: 16px;
+  border: none;
+  background-color: #4d4441;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px 8px;
+  padding-bottom: 4px;
+  box-shadow: 1px 1px 7px 0px rgba(0, 0, 0, 0.1);
+}
+.chat-analyze-btn > img {
+  width: 15.7px;
+  height: 15.7px;
+}
+.chat-close-btn > img {
+  width: 26px;
+  height: 26px;
+}
+.send-btn {
+  border: none;
+  background-color: rgba(247, 246, 245, 1);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+.send-btn > img {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+.chatting {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: rgba(247, 246, 245, 1);
+}
+.chat-display {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto; /*채팅 길이에 따라 동적으로 움직이게!*/
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  background-color: rgba(247, 246, 245, 1);
+}
+.message {
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+.message.user {
+  align-self: flex-end;
+  background-color: #d9d4cf;
+  color: black;
+  font-family: "Pretendard-Regular";
+  border-radius: 10px 10px 2px 10px;
+}
+.message.gpt {
+  align-self: flex-start;
+  background-color: #b6aea5;
+  color: black;
+  font-family: "Pretendard-Regular";
+  border-radius: 10px 10px 10px 2px;
+}
+.chat-input-div {
+  display: flex;
+  padding: 0px;
+}
+.chat-input-div .chat-input {
+  flex: 1;
+  padding: 11px;
+  border: 1px solid #b6aea5;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  outline: none;
+}
+.chat-display::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-display::-webkit-scrollbar-track {
+  background: rgba(247, 246, 245, 1);
+  border-radius: 3px;
+}
+.chat-display::-webkit-scrollbar-thumb {
+  background-color: #999999;
+  border-radius: 10px;
+  border: 2px solid rgba(247, 246, 245, 1);
+}

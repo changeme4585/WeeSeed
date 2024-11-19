@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">위시드</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="passwordDigit"><![CDATA[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~!@#$%^*()_+-=,./<>?;:]]></string>
+    <string name="idDigit">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789</string>
+    <string name="emailDigit">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@.</string>
+
+
+    <!--
+
+    <string name="serverURL">172.20.47.160</string>
+    -->
+    <string name="serverURL">3.37.116.233</string>
+    <string name="serverPORT">8080</string>
+    <string name="voice_serverURL">116.126.197.110</string>
+    <string name="voice_serverPORT">30010</string>
+    <string name="ID">qqww11</string>
+    <string name="PW">qqww110000</string>
+    <string name="STRING_DELIMETER">::</string>
+    <string name="appwidget_text">위시드</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">유해어플 경계 ON/OFF용 스위치</string>
+
+    <string name="GPTserverURL">172.20.47.160</string>
+    <string name="GPTserverPORT">8080</string>
+
+</resources>
+

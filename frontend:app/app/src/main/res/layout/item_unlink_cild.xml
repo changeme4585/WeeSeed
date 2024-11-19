@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+
+    android:background="@color/sys_50"
+    android:clickable="true"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_sc_it_child_profImg"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/prof_child4"
+        android:scaleType="centerCrop"
+        android:padding="14dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginStart="100dp"
+        android:padding="15dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:id="@+id/tv_sc_it_childName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="아동명"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/pretendard_regular"
+                    android:textColor="@color/black"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_sc_it_childBirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YYYY.MM.DD"
+                android:textSize="13sp"
+                android:fontFamily="@font/pretendard_regular"
+                android:layout_marginTop="5dp"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_sc_it_childDisaType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="장애유형"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/pretendard_regular"
+
+                    android:visibility="gone"
+                    />
+                <TextView
+                    android:id="@+id/tv_sc_it_childDisaGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="장애등급"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/pretendard_regular"
+
+                    android:visibility="gone"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/icon_s_forward"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="30dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_sc_it_childGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="성별"
+        android:textSize="16sp"
+        android:layout_gravity="end"
+        android:visibility="gone"
+        />
+    <TextView
+        android:id="@+id/tv_sc_it_childCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아동코드"
+
+        android:textSize="16sp"
+        android:layout_gravity="end|bottom"
+        android:visibility="gone"
+        />
+
+</FrameLayout>

@@ -1,0 +1,146 @@
+.signin-path-root {
+  background-color: var(--yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/svg/back_pattern.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+.signin-page {
+  background-color: #f7f6f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 740px;
+  height: 738px;
+  z-index: 1;
+  margin: 0px auto;
+  font-family: "Pretendard-Regular";
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 480px;
+  height: 448px;
+  margin: 60px 0px;
+}
+
+.pw-input > input {
+  width: 480px;
+  height: 48px;
+  box-shadow: none;
+  background-color: var(--white);
+  color: #33312b;
+  font-family: "Pretendard-Regular";
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+.pw-confirm-input > input {
+  width: 480px;
+  height: 48px;
+  box-shadow: none;
+  background-color: var(--white);
+  color: #33312b;
+  font-family: "Pretendard-Regular";
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.form-group > input {
+  width: 480px;
+  height: 48px;
+  box-shadow: none;
+  background-color: var(--white);
+  color: #33312b;
+  font-family: "Pretendard-Regular";
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.form-group input:hover {
+  background-color: var(--light-yellow);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+.form-group input:focus {
+  background-color: var(--click-yellow);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+.form-group input[type="email"] {
+  border: solid 1px var(--yellow);
+  background-color: var(--white);
+  font-family: "Pretendard-Regular";
+}
+
+.form-group input[type="email"]:hover {
+  background-color: var(--light-yellow);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+.form-group input[type="email"]:focus {
+  background-color: var(--click-yellow);
+  font-family: "Pretendard-Regular";
+  outline: none;
+  height: 48px;
+}
+
+.sign-btn {
+  font-family: "Pretendard-Bold";
+  border: none;
+  color: rgba(17, 17, 17, 1);
+  font-size: 16px;
+  background-color: rgba(255, 206, 27, 1);
+  width: 480px;
+  height: 48px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  margin-top: -25px;
+}
+
+.sign-btn:hover {
+  transition: background-color 0.3s ease;
+  background-color: #555555;
+  color: var(--white);
+  font-family: "Pretendard-Bold";
+}
+
+.pw-input,
+.pw-confirm-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 45%; /* 상하 중앙 정렬 */
+  right: 20px; /* 우측 여백 설정 */
+  transform: translateY(-50%); /* 상하 중앙 정렬을 위한 변환 */
+  cursor: pointer;
+}
+
+.sign-in-h2 {
+  font-family: "Pretendard-Bold";
+  font-size: 32px;
+  color: #33312b;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".card.ViewerAacFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/background_pattern"
+    >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btn_back_card_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/abtn_back2"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="top|start"
+        android:layout_margin="20dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="100dp"
+        android:gravity="center"
+        >
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:padding="30dp"
+            app:cardBackgroundColor="@color/background_color"
+            app:cardCornerRadius="50dp"
+            android:elevation="30dp"
+            android:layout_gravity="center"
+            app:cardElevation="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                >
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/wv_slider_view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:orientation="horizontal"
+                    android:layoutDirection="ltr"
+
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_av_aac_img_default"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/chara_bear_error"
+                    android:layout_gravity="center_horizontal"
+
+                    android:visibility="gone"
+
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:clipToOutline="true"
+                    android:background="@drawable/round_border_for_select_child"
+                    android:backgroundTint="@color/white"
+                    />
+
+            <LinearLayout
+                android:id="@+id/ll_layout_indicators"
+                android:layout_width="match_parent"
+                android:layout_height="7dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                />
+
+
+                <TextView
+                    android:id="@+id/tv_av_aac_cardName"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:gravity="center"
+                    android:text="카드명"
+                    android:textSize="24dp"
+                    android:fontFamily="@font/right_life_140"
+                    android:textColor="@color/font_black"
+
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="30dp"
+                >
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/btn_av_aac_listen"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="15dp"
+                    android:src="@drawable/abtn_play"
+                    android:background="@android:color/transparent"
+                    android:elevation="5dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="들어보자"
+                    android:layout_gravity="center_horizontal|bottom"
+
+                    android:textSize="16dp"
+                    android:fontFamily="@font/right_life_140"
+                    android:textColor="@color/font_black"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    >
+                    <ProgressBar
+                        android:id="@+id/pb_av_determine_for_study"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center"
+                        android:indeterminate="false"
+                        android:max="100"
+
+                        android:visibility="visible"
+
+                        android:progressDrawable="@drawable/circle_progress_bar"
+                        android:progressTint="@color/white"
+                        android:progressBackgroundTint="@android:color/transparent"
+                        android:elevation="2dp"
+                        />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/btn_av_aac_study_record"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/abtn_mic"
+
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:elevation="4dp"
+                        />
+
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="말해보자"
+                    android:layout_gravity="center_horizontal|bottom"
+
+                    android:textSize="16dp"
+                    android:fontFamily="@font/right_life_140"
+                    android:textColor="@color/font_black"
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--이미지테스트-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="top|end"
+        android:layout_marginEnd="50dp"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            >
+            <Button
+                android:id="@+id/btn_temp_refresh_img_list"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="RF"
+                android:backgroundTint="@color/ic_700"
+                android:visibility="gone"
+                />
+            <Button
+                android:id="@+id/btn_temp_add_img_list"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lt_loading_dots"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
+
+        android:visibility="gone"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_loading_dots2"
+        android:paddingTop="60dp"
+        android:paddingBottom="0dp"
+        />
+    <View
+        android:id="@+id/v_for_study_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55111111"
+        android:visibility="invisible"
+        />
+    <LinearLayout
+        android:id="@+id/ll_for_study_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        />
+
+</FrameLayout>

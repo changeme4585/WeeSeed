@@ -1,0 +1,23 @@
+package org.weeseed.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+
+@Configuration
+public class OpenAiConfig {
+
+    @Value("${openai.api.key}")
+    private String apiKey;
+
+    @Bean(name = "openAiRestTemplate")  // 빈 이름 변경
+    public RestTemplate openAiRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.getInterceptors().add((request, body, execution) -> {
+            request.getHeaders().add("Authorization", "Bearer " + apiKey);
+            return execution.execute(request, body);
+        });
+        return restTemplate;
+    }
+}
