@@ -21,7 +21,7 @@ WeeSeed는 다음과 같은 기술 스택을 활용하여 개발되었습니다.
 | 기술 구성 | 세부 사항                     |
 |-----------|--------------------------------|
 | **프론트엔드** | React (웹), Android Native (모바일) |
-| **백엔드** | Spring Boot                  |
+| **백엔드** | Spring Boot, mysql, jpa                  |
 | **클라우드 인프라** | AWS EC2, S3, RDS, Route 53 |
 | **음성 AI** | Whisper, gTTS               |
 | **시각 AI** | TensorFlow, MobileNetV2     |
