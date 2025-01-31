@@ -77,10 +77,16 @@ WeeSeed는 다음과 같은 기술 스택을 활용하여 개발되었습니다.
      
 ---
 
-## 프로젝트 팀 👥
+## 프로젝트 팀 및 역할 👥
 - **GitHub 팀원 계정** : [<img src="https://avatars.githubusercontent.com/u/90965441?s=96&v=4" width="20" height="20">](https://github.com/heily-tech) [<img src="https://avatars.githubusercontent.com/u/129397073?s=96&v=4" width="20" height="20">](https://github.com/kmk9970) [<img src="https://avatars.githubusercontent.com/u/150992230?s=96&v=4" width="20" height="20">](https://github.com/SEjiji) [<img src="https://avatars.githubusercontent.com/u/93308824?s=96&v=4" width="20" height="20">](https://github.com/changeme4585) [<img src="https://avatars.githubusercontent.com/u/128035504?s=96&v=4" width="20" height="20">](https://github.com/tndu1212)
+- 음성 AI: 권민강
+- 이미지 AI: 황윤주
+- 백엔드: 조승빈
+- 웹 프론트: 김수현
+- 앱 프론트: 최지원
 
-- **GitHub 레포지토리** : [PointOfViewS](https://github.com/orgs/PointOfViewS/repositories)
+
+
 
 ----
 
